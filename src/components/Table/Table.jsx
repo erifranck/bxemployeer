@@ -7,16 +7,16 @@ export const Table = (props) => (
         <thead>
             <tr>
                 {
-                    props.dataLabels.map(key => (
-                        <th>{key}</th>
+                    props.dataLabels.map((key, index) => (
+                        <th key={index} >{key}</th>
                     ))
                 }
             </tr>
         </thead>
         <tbody>
         {
-            props.data.map(objectValue => (
-                <tr>
+            props.data.map((objectValue, index) => (
+                <tr key={index}>
                     {
                         Object.values(objectValue).map( (value) => (
                             <td>{value}</td>
