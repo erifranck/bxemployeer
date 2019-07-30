@@ -1,5 +1,5 @@
 import React from 'react';
-import './table.css';
+//import './table.css';
 import PropTypes from "prop-types";
 
 export const Table = (props) => (
