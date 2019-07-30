@@ -16,17 +16,17 @@ export const Table = (props) => (
         </thead>
         <tbody>
         {
-            props.data.map((objectValue, index) => (
-                <tr key={index}>
+            props.data.map((objectValue) => (
+                <tr key={objectValue.id}>
                     {
-                        Object.values(objectValue).map( (value) => (
-                            <td>{value}</td>
+                        Object.values(objectValue).slice(1).map( (value, index) => (
+                            <td key={index}>{value}</td>
                         ))
                     }
                     <td>
                         <Button isOption={true}>Details</Button>
                         <Button isOption={true}>Add kinship</Button>
-                        <Button isOption={true}>Delete</Button>
+                        <Button isOption={true} onClick={() => props.onDelete(objectValue.id)}>Delete</Button>
                     </td>
                 </tr>
             ))
@@ -37,5 +37,6 @@ export const Table = (props) => (
 
 Table.propTypes = {
     dataLabels: PropTypes.array.isRequired,
+    onDelete: PropTypes.func.isRequired,
     data: PropTypes.array.isRequired,
 }
