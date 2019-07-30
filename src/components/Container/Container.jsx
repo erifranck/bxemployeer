@@ -10,15 +10,26 @@ class Container extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            openModal: false
+            openModal: false,
+            listeners: []
         }
     }
-    toggleModal = (value) => {
+    toggleModal = (value, confirmValue, callback) => () => {
        this.setState({openModal: value});
+       if(callback) {
+           this.setState({
+               listeners: this.state.listeners.concat([callback])
+           })
+       }
+       if (confirmValue && this.state.listeners.length) {
+           this.state.listeners.forEach(listener => listener());
+           this.setState({listeners: []});
+       }
     };
     render() {
+        const {openModal} = this.state;
        return (
-           <Provider value={{...this.state, toggleModal: this.toggleModal}} >
+           <Provider value={{openModal, toggleModal: this.toggleModal}} >
                <div className="bx-dashboard-wrapper">
                    <div className="bx-dashboard-container">
                        <Header />
@@ -27,7 +38,9 @@ class Container extends React.Component {
                    <Modal confirmLabel={'confirm'}
                           message={'are you sure ?'}
                           openModal={this.state.openModal}
-                          onCloseModal={() => this.toggleModal(false)} />
+                          onCloseModal={this.toggleModal(false, false)}
+                          onConfirmModal={this.toggleModal(false, true)}
+                   />
                </div>
            </Provider>
        )

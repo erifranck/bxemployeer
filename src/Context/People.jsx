@@ -18,9 +18,19 @@ export class PeopleProvider extends React.Component {
             this.setState({data: data});
         })
     };
+    deletePerson = (id) => {
+      this.setState((prevState) => ({
+          data: prevState.data.filter(item => item.id !== id),
+      }));
+    };
     render() {
         return (
-           <PeopleContext.Provider value={{...this.state, getList: this.getList }}>
+           <PeopleContext.Provider
+               value={{
+                   ...this.state,
+                   getList: this.getList,
+                   deletePerson: this.deletePerson
+               }}>
                {this.props.children}
            </PeopleContext.Provider>
         );

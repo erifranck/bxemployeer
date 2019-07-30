@@ -11,10 +11,14 @@ export const PeopleList = () => {
                 {({openModal, toggleModal}) => (
                     <PeopleConsumer>
                         {
-                            ({data, getData}) => (
+                            ({data, deletePerson}) => (
                                 <>
-                                    <Table dataLabels={peopleListLabels} data={data}/>
-                                    <button onClick={() => toggleModal(!openModal)}>
+                                    <Table
+                                        dataLabels={peopleListLabels}
+                                        data={data}
+                                        onDelete={ (id) => toggleModal(true, null, () => deletePerson(id))()}
+                                    />
+                                    <button onClick={() => toggleModal(!openModal, null)}>
                                         {openModal ? 'close modal' : 'open modal'}
                                     </button>
                                 </>
