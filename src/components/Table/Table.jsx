@@ -1,6 +1,7 @@
 import React from 'react';
 import './table.css';
 import PropTypes from "prop-types";
+import {Button} from "../Button/Button";
 
 export const Table = (props) => (
     <table>
@@ -22,6 +23,11 @@ export const Table = (props) => (
                             <td>{value}</td>
                         ))
                     }
+                    <td>
+                        <Button isOption={true}>Details</Button>
+                        <Button isOption={true}>Add kinship</Button>
+                        <Button isOption={true}>Delete</Button>
+                    </td>
                 </tr>
             ))
         }

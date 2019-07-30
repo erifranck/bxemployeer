@@ -3,4 +3,5 @@ export const peopleListLabels = [
   'Lastname',
   'Document',
   'Nationality',
+    'Manage'
 ];
