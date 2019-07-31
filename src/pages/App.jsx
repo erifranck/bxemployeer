@@ -16,10 +16,6 @@ class App extends React.Component {
         }
     }
 
-    saveEmployee() {
-
-    }
-
     closePopup() {
         this.setState({showPopup : false});
     }
