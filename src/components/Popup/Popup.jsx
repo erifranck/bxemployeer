@@ -18,7 +18,7 @@ export class Popup extends React.Component {
 
     render() {  
         return (  
-            <div className='popup-wrapper' /*onClick={this.props.closePopup}*/>  
+            <div className='popup-background' /*onClick={this.props.closePopup}*/>  
                 <div className='popup'>  
                     <div className='popup-content'>
                         <NewEmployee/>

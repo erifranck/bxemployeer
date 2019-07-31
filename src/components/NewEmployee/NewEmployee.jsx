@@ -6,7 +6,7 @@ export class NewEmployee extends React.Component {
     render() {
         return (
             <div className="bx-emp-form-container">
-                <form>
+                <form autoComplete="off">
                     <div className="bx-emp-form-row">
                         <div className="bx-emp-form-elem">
                             <label>
@@ -40,7 +40,7 @@ export class NewEmployee extends React.Component {
                         </div>    
                         <div className="bx-emp-form-elem">
                             <label>
-                                <input type="number" required name="doc-number" />
+                            <input type="number" required name="doc-number" />
                             </label>
                         </div> 
                     </div>
@@ -71,14 +71,13 @@ export class NewEmployee extends React.Component {
                     <div className="bx-emp-form-row">
                         <div className="bx-emp-form-elem">
                             <label>
-                                Phone number: 
-                                <input type="tel" required name="phone-number" />
-                            </label>
+                                Phone: 
+                                <input type="tel" name="telphone" placeholder="(+88) 888 8888 8888" pattern="(+[0-9]{2})? [0-9]{3} [0-9]{4}-[0-9]{4}" maxLength="14" required/>                            </label>
                         </div>
                         <div className="bx-emp-form-elem">
                             <label>
                                 E-mail: 
-                                <input type="email" required name="email" />
+                                <input type="email" name="email" />
                             </label>
                         </div>
 
