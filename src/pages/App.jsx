@@ -1,80 +1,53 @@
 import React from 'react';
-import Container from "../components/Container/Container";
-import {Modal} from "../components/Modal/Modal";
-import {Table} from "../components/Table/Table";
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {myRequest} from "../services/mockEmployeersService";
-import {Popup} from '../components/Popup/Popup';
+import {PeopleList} from "./PeopleList";
+import {PeopleProvider} from "../Context/People";
+import {Popup} from "../components/Popup/Popup";
 
 import '../App.css';
 
-
-
 class App extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            openModal: false,
             showPopup: false,
-            data: [],
         }
-
-    }
-    componentDidMount() {
-        myRequest().then((data) => {
-            this.setState({data: data});
-        })
     }
 
-    handleOpenModal = () => {
-        this.setState({openModal: true});
-    };
-    handleCloseModal = () => {
-        this.setState({openModal: false});
-    };
-    handleConfirmModal = () => {
-        this.setState({openModal: false});
-        console.log("se confirmo la accion");
-    };
+    saveEmployee() {
 
+    }
 
-    togglePopup = () => {
-        this.setState({ showPopup: !this.state.showPopup });
-    };
+    closePopup() {
+        this.setState({showPopup : false});
+    }
 
+    openPopup() {
+        this.setState({showPopup : true});
+    }
 
     render () {
         return (
-            <>
-                <div className="bx-wrapper" onClick={this.handleOpenModal}>
-                    <Container>
-                        <Table
-                            data={this.state.data}
-                            dataLabels={['Nombre', 'Apellido', 'Documento', 'Nacionalidad']}
-                        />
+            <PeopleProvider>
+                <Router>
+                    <Route path="/" component={PeopleList} />
+                </Router>
 
-                        <hr></hr>
-                        <button onClick={this.togglePopup.bind(this)}>Add Employee</button>
+                <hr></hr>
 
-                        {this.state.showPopup ?
-                            <Popup 
-                                openFormPopup={this.state.openFormPopup}
-                                closePopup={this.togglePopup.bind(this)}>
-                            </Popup>
-                        : null
-                        }
+                <button onClick={this.openPopup.bind(this)}>Add Employee</button>
+                
+                {
+                    this.state.showPopup ?
+                        <Popup 
+                            closePopup={this.closePopup.bind(this)}>
+                        </Popup>
+                    : null
+                }
+                </PeopleProvider>
 
-                    </Container>
-                </div>
-
-               { /*<Modal
-                    message="are you sure?"
-                    confirmLabel="confirm"
-                    openModal={this.state.openModal}
-                    onCloseModal={this.handleCloseModal}
-                    onConfirmModal={this.handleConfirmModal}
-               />*/}
-
-            </>
         );
     }
 }

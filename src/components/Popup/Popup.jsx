@@ -3,20 +3,9 @@ import {NewEmployee} from '../NewEmployee/NewEmployee';
 
 import './popup.css';  
 
-export class Popup extends React.Component {  
-
-    closePopup() {
-        if(this.props.onClosePopup) {
-            this.props.onClosePopup();
-        }
-    }
-
-    saveEmployee() {
-
-    }
-
-
-    render() {  
+export class Popup extends React.Component { 
+    
+    render() {
         return (  
             <div className='popup-background' /*onClick={this.props.closePopup}*/>  
                 <div className='popup'>  
@@ -29,6 +18,9 @@ export class Popup extends React.Component {
                     </div>
                 </div>  
             </div>  
-        );  
+        )
     }  
 }  
+
+      
+

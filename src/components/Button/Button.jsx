@@ -8,6 +8,7 @@ export const Button = (props) =>  {
         "bx-button": true,
         primary: props.primary,
         secondary: props.secondary,
+        "bx-button-options": props.isOption
     });
     return !props.isLink ? (
         <button className={classes} onClick={props.onClick} >
