@@ -3,25 +3,39 @@ import './newEmployee.css';
 
 export class NewEmployee extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            firtsName: "",
-            lastName: "",
-            dateOfBirth: "",
-            docType: "",
-            docNum: "",
-            gender: "",
-            nationality: "",
-            phone: "",
-            email: "",
+
+    onChangeInput(inputName) { 
+        return (e) => {
+            this.props.onChangeInput(inputName, e.target.value)
         }
     }
 
-    saveEmployee() {
-        console.log(this.state);
 
+/* 
+        fetch('http://localhost:8080/personAPI/employees', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              //'Access-Control-Allow-Origin': '*',
+
+            },
+            body: JSON.stringify({
+                firstNames: this.state.firtsName,
+                lastNames: this.state.lastName,
+                dateOfBirth: this.state.dateOfBirth,
+                documentType: this.state.docType,
+                documentID: this.state.docNum,
+                gender: this.state.gender,
+                nationality: this.state.nationality,        
+                contact: this.state.email,  
+                relationships: [],
+            })
+          })
     }
+ */
+
+ 
 
     render() {
         return (
@@ -35,10 +49,7 @@ export class NewEmployee extends React.Component {
                                 required 
                                 name="first-name" 
                                 placeholder="First name" 
-                                value={this.state.firtsName}
-                                onChange={
-                                    e => this.setState({ firtsName : e.target.value})
-                                }
+                                onChange={this.onChangeInput('firstName')}
                             />
                         </label>
                     </div>
@@ -49,10 +60,7 @@ export class NewEmployee extends React.Component {
                                 required 
                                 name="last-name" 
                                 placeholder="Last name"
-                                value={this.state.lastName}
-                                onChange={
-                                    e => this.setState({ lastName : e.target.value})
-                                }
+                                onChange={this.onChangeInput('lastName')}
                             />
                         </label>
                     </div>
@@ -63,11 +71,9 @@ export class NewEmployee extends React.Component {
                             Date of birth: 
                             <input 
                                 type="date" 
-                                required name="date-of-birth"
-                                value={this.state.dateOfBirth}
-                                onChange={
-                                    e => this.setState({ dateOfBirth : e.target.value})
-                                }
+                                required 
+                                name="date-of-birth"
+                                onChange={this.onChangeInput('dateOfBirth')}
                             />
                         </label>
                     </div>
@@ -78,11 +84,9 @@ export class NewEmployee extends React.Component {
                             Document: 
                             <select 
                                 name="doc-type" 
-                                value={this.state.docType}
-                                onChange={
-                                    e => this.setState({ docType : e.target.value})
-                                }
+                                onChange={this.onChangeInput('docType')}
                             >
+                                <option value="-">-</option>
                                 <option value="DNI">DNI</option>
                                 <option value="LC">LC</option>
                             </select>
@@ -94,10 +98,7 @@ export class NewEmployee extends React.Component {
                             type="number" 
                             required 
                             name="doc-num" 
-                            value={this.state.docNum}
-                            onChange={
-                                e => this.setState({ docNum : e.target.value})
-                            }
+                            onChange={this.onChangeInput('docNumber')}
                         />                            
                         </label>
                     </div> 
@@ -108,11 +109,9 @@ export class NewEmployee extends React.Component {
                             Gender: 
                             <select 
                                 name="gender"
-                                value={this.state.gender}
-                                onChange={
-                                    e => this.setState({ gender : e.target.value})
-                                }
+                                onChange={this.onChangeInput('gender')}
                             >
+                                <option value="-">-</option>
                                 <option value="M">Male</option>
                                 <option value="F">Female</option>
                                 <option value="O">Other</option>
@@ -124,10 +123,7 @@ export class NewEmployee extends React.Component {
                             Nationality: 
                             <select 
                                 name="nationality"
-                                value={this.state.nationality}
-                                onChange={
-                                    e => this.setState({ nationality : e.target.value})
-                                }
+                                onChange={this.onChangeInput('nationality')}
                             >
                                 <option value="-">-</option>
                                 <option value="Argentina">Argentina</option>
@@ -147,11 +143,8 @@ export class NewEmployee extends React.Component {
                                 name="telphone" 
                                 placeholder="(+88) 888 8888 8888" 
                                 pattern="(+[0-9]{2})? [0-9]{3} [0-9]{4}-[0-9]{4}" 
-                                maxLength="14"
-                                value={this.state.phone}
-                                onChange={
-                                    e => this.setState({ phone : e.target.value})
-                                }
+                                maxLength="18"
+                                onChange={this.onChangeInput('phone')}
                             />                            
                         </label>
                     </div>
@@ -161,17 +154,14 @@ export class NewEmployee extends React.Component {
                             <input 
                                 type="email" 
                                 name="email" 
-                                value={this.state.email}
-                                onChange={
-                                    e => this.setState({ email : e.target.value})
-                                }
+                                onChange={this.onChangeInput('email')}
+
                             />
                         </label>
                     </div>
 
 
                 </div>
-                <button onClick={this.saveEmployee.bind(this)}>Add</button>
             </div>
         
         );
