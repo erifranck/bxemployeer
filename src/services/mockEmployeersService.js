@@ -8,7 +8,13 @@ export function myRequest() {
             nationality: 'Española',
         }));
         setTimeout(() => {
-            resolve(data);
+            if (Math.round(Math.random())) {
+                resolve({
+                    data: data,
+                });
+            } else {
+                reject(new Error('the request failed'))
+            }
         }, 1000)
     })
 }
