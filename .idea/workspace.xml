@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ab1d70a7-af39-491d-923c-f0a6ac99ba52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Context/People.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Context/People.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal/Modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/Modal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/modal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/PeopleList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PeopleList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/mockEmployeersService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/mockEmployeersService.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,7 +33,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RunDashboard">
@@ -76,7 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1563853011310</updated>
       <workItem from="1563853014190" duration="1065000" />
-      <workItem from="1564575052629" duration="29326000" />
+      <workItem from="1564575052629" duration="35245000" />
     </task>
     <servers />
   </component>

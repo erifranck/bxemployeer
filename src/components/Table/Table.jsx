@@ -20,7 +20,7 @@ export const Table = (props) => (
             props.data.map((objectValue) => (
                 <tr key={objectValue.id}>
                     {
-                        Object.values(objectValue).slice(1).map( (value, index) => (
+                        Object.values(objectValue).map( (value, index) => (
                             <td key={index}>{value}</td>
                         ))
                     }

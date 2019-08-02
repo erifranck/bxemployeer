@@ -4,9 +4,7 @@ export function myRequest() {
 }
 
 export function deletePerson(id, url) {
-    fetch(url + '/' + id, {
-        method: 'DELETE',
+    return fetch(url + '/' + id, {
+        method: 'delete',
     }).then(response => response.json());
-    /*response es undefined*/
 }
-

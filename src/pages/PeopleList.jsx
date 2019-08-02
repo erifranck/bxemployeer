@@ -18,11 +18,6 @@ export const PeopleList = () => {
                                         data={data}
                                         onDelete={ (id) => toggleModal(true, null, () => deletePerson(id))()}
                                     />
-                                    {/*
-                                        <button onClick={() => toggleModal(!openModal, null)}>
-                                            {openModal ? 'close modal' : 'open modal'}
-                                        </button>
-                                    */}
                                 </>
                             )
                         }
