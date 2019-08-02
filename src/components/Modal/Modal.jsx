@@ -37,7 +37,7 @@ export class Modal extends React.Component {
                             {this.props.message}
                         </p>
                         <Button secondary={true} onClick={this.closeModal} >
-                            <i className="fas fa-times fa-sm"/>
+                            <i className="fas fa-times fa-lg"/>
                         </Button>
                     </div>
                     <div className="bx-modal-footer">
