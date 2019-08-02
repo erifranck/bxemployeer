@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab1d70a7-af39-491d-923c-f0a6ac99ba52" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/redux/createStore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/people.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/rootReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/peopleService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Context/People.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Container/container.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Container/container.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/PeopleList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PeopleList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/mockEmployeersService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/mockEmployeersService.js" afterDir="false" />
     </list>
@@ -15,6 +23,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectId" id="1OmFpjMeU9o9qO0spWJoL6xj17Z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -74,7 +85,7 @@
       <option name="presentableId" value="Default" />
       <updated>1563853011310</updated>
       <workItem from="1563853014190" duration="1065000" />
-      <workItem from="1564575052629" duration="35245000" />
+      <workItem from="1564575052629" duration="37452000" />
     </task>
     <servers />
   </component>
