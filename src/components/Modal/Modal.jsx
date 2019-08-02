@@ -36,13 +36,19 @@ export class Modal extends React.Component {
                         <p>
                             {this.props.message}
                         </p>
+                        <Button secondary={true} onClick={this.closeModal} >
+                            <i className="fas fa-times fa-sm"/>
+                        </Button>
                     </div>
-                    <Button secondary={true} onClick={this.closeModal} >
-                        Cancel
-                    </Button>
-                    <Button primary={true} onClick={this.onConfirm} >
-                        {this.props.confirmLabel}
-                    </Button>
+                    <div className="bx-modal-footer">
+                        <Button secondary={true} onClick={this.closeModal} >
+                            Cancel
+                        </Button>
+                        <Button confirmButton={true} primary={true} onClick={this.onConfirm} >
+                             {this.props.confirmLabel}
+                        </Button>
+                    </div>
+
                 </div>
             </div>
         )

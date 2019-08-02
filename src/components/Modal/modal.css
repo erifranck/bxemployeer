@@ -16,5 +16,56 @@
 .bx-modal-container {
     background: white;
     width: 300px;
-    min-height: 200px;
+}
+.bx-modal-message{
+    padding: 10px 8px;
+    background-color: #f6f7f9;
+    border-bottom: 1px solid #e5e5e5;
+}
+.bx-modal-message p{
+    font-size: 14px;
+    margin: 0;
+    color: #555;
+    display: inline-block;
+    font-weight: bold;
+}
+.bx-modal-message button{
+    float: right;
+    color: #c4c5c7;
+    cursor: pointer;
+    transition: all .5s ease;
+    padding: 0 2px;
+    border-radius: 1px;
+    height: auto;
+}
+.bx-modal-message button:hover{
+    color: #000000;
+}
+.bx-modal-message button:active{
+    box-shadow: 0 0 5px #673AB7;
+    color: #a2a2a2;
+}
+.bx-modal-footer{
+    border-top: 1px solid #e5e5e5;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: flex-end;
+    height: auto;
+}
+.bx-modal-footer button{
+    padding: 5px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: auto;
+}
+.bx-modal-footer button:hover{
+    background: rgba(219, 213, 209, 0.75);
+}
+.bx-modal-footer button.confirmButton{
+    background-color: #f44336;
+    border: 1px solid #d32f2f;
+    color: #f5f5f5;
+}
+.bx-modal-footer button.confirmButton:hover {
+    opacity: 0.8;
 }
