@@ -1,0 +1,16 @@
+.bx-button.home{
+    width: 40px;
+}
+.bx-button {
+    width: auto;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.bx-button:active {
+    border: none;
+}
+.bx-button:focus {
+    border: none;
+}
