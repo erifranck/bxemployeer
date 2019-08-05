@@ -1,0 +1,11 @@
+
+.bx-searcher-container{
+    border: '1px #ddd solid';
+    display: 'inline-flex';
+    margin-left: 35%;
+
+};
+.bx-searcher{
+    border-radius: 14px;
+}
+
