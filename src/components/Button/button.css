@@ -1,5 +1,8 @@
+.bx-button.home{
+    width: 40px;
+}
 .bx-button {
-    width: 50px;
+    width: auto;
     height: 50px;
     background: transparent;
     border: none;
