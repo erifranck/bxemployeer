@@ -1,3 +1,5 @@
+
+
 export function myRequest() {
     return new Promise((resolve, reject) => {
         const data = Array.from({length: 5}).map(() => ({
@@ -18,3 +20,8 @@ export function myRequest() {
         }, 1000)
     })
 }
+  
+
+  /*return fetch('http://localhost:8080/personAPI/employees')
+      .then(res => res.json());
+}*/

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button} from "../Button/Button";
 import {Menu} from "../Menu/Menu";
+import { Searcher } from '../Searcher/Searcher';
 
 export const Header = (props) => (
     <header>
@@ -15,6 +16,7 @@ export const Header = (props) => (
                 <div>button</div>
                 <div>avatar</div>
             */}
+            <Searcher/>
         </nav>
     </header>
 );
