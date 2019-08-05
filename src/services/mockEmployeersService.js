@@ -18,3 +18,14 @@ export function myRequest() {
         }, 1000)
     })
 }
+export function deleteMock(id) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (Math.round(Math.random())) {
+                resolve(id);
+            } else {
+                reject(new Error('the request failed'))
+            }
+        }, 1000)
+    })
+}

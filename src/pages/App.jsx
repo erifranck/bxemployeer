@@ -37,7 +37,7 @@ class App extends React.Component {
 
                 {
                     this.state.showPopup ?
-                        <Popup 
+                        <Popup
                             closePopup={this.closePopup.bind(this)}>
                         </Popup>
                     : null
