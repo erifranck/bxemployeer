@@ -1,4 +1,6 @@
 export const PEOPLE_REQUEST = 'PEOPLE_REQUEST';
+export const CREATE_PEOPLE_SUCCESS = 'CREATE_PEOPLE_SUCCESS';
+export const CREATE_PEOPLE_FAIL = 'CREATE_PEOPLE_FAIL';
 export const GET_PEOPLE_SUCCESS = 'GET_PEOPLE_SUCCESS';
 export const GET_PEOPLE_FAIL = 'GET_PEOPLE_FAIL';
 
@@ -29,6 +31,18 @@ export function peopleReducer(state = INITIAL_STATE, action) {
                 ...state,
                 error: action.response.error,
                 isFetch: false,
+            };
+        case CREATE_PEOPLE_SUCCESS:
+            return {
+                ...state,
+                isFetch: false,
+                data: action.response.data
+            };
+        case CREATE_PEOPLE_FAIL:
+            return {
+                ...state,
+                isFetch: false,
+                error: action.response.error
             };
         case DELETE_PEOPLE_SUCCESS:
             return {

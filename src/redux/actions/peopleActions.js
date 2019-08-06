@@ -3,10 +3,10 @@ import {
     DELETE_PEOPLE_SUCCESS,
     GET_PEOPLE_FAIL,
     PEOPLE_REQUEST,
-    GET_PEOPLE_SUCCESS
+    GET_PEOPLE_SUCCESS, CREATE_PEOPLE_FAIL, CREATE_PEOPLE_SUCCESS
 } from "../reducers/people";
 import {deleteMock, myRequest} from "../../services/mockEmployeersService";
-import {deletePerson, getPeople} from "../../services/peopleService";
+import {createPerson, deletePerson, getPeople} from "../../services/peopleService";
 
 const onFetch = () => (  { type: PEOPLE_REQUEST, } );
 
@@ -17,6 +17,10 @@ const getPeopleFail = (error) =>  ({ type: GET_PEOPLE_FAIL, response: {error: er
 const deletePeopleSuccess = (id) => ( { type: DELETE_PEOPLE_SUCCESS, id: id } );
 
 const deletePeopleFail = (error) => ({ type: DELETE_PEOPLE_FAIL, response: { error: error } });
+
+const createPeopleSuccess = (data) => ( { type: CREATE_PEOPLE_SUCCESS, response: data } );
+
+const createPeopleFail = (error) =>  ({ type: CREATE_PEOPLE_FAIL, response: {error: error}});
 
 export function getPeopleRequest() {
     return (dispatch, getState) => {
@@ -41,6 +45,19 @@ export function deletePersonRequest(id) {
             })
             .catch(error => {
                 dispatch(deletePeopleFail(error));
+            })
+    }
+}
+
+export function createPersonRequest(payload) {
+    return (dispatch, getState) => {
+        dispatch(onFetch());
+        createPerson(payload)
+            .then((value) => {
+                dispatch(createPeopleSuccess(value));
+            })
+            .catch(error => {
+                dispatch(createPeopleFail(error));
             })
     }
 }

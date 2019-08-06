@@ -8,3 +8,16 @@ export function deletePerson(id, url) {
         method: 'delete',
     }).then(response => response.json());
 }
+
+export function createPerson(payload) {
+    fetch('http://localhost:8080/personAPI/employees', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify(payload)
+    })
+        .then( (response) => response.json());
+}
