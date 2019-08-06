@@ -1,7 +1,7 @@
 import React from 'react';
 import { withFormik , Form , Field } from 'formik';
 import * as Yup from 'yup';
-// import countriesData from './countries/countries'
+import countriesData from './countries/countries'
 import './newEmployeeWithFormik.css';
 
 
@@ -11,9 +11,11 @@ const genderRegEx = /^(M|F|O)$/;
 const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const phoneRegEx = /^(([+]{1}[0-9]{2}|0)[0-9]{9})$/
 
+const handle = () => {console.log(countriesData)}
 
 
 const MyForm = props => {
+
   const {
     values,
     errors,
@@ -21,6 +23,8 @@ const MyForm = props => {
 
   } = props;
 
+
+  
 
   return (
     <Form>
@@ -83,7 +87,17 @@ const MyForm = props => {
             </Field>
           </div>
         </label>
-        <label>Nationality
+
+
+        {/* <Select name={Nationality}>
+          {countriesData.map(fbb =>
+            <option key={fbb.key} value={fbb.name}>{fbb.value}</option>
+          )};
+        </Select> */}
+
+
+
+        {/* <label>Nationality
           <div className="bx-emp-form-field">
             <Field component="select" name="nationality">
               <option value="">Select</option>
@@ -93,7 +107,13 @@ const MyForm = props => {
               <option value="Uruguay">Uruguay</option>
             </Field>
           </div>
-        </label>
+        </label> */}
+
+
+
+
+
+
       </div>
       { touched.gender && errors.gender && <p>{errors.gender}</p> }
       { touched.nationality && errors.nationality && <p>{errors.nationality}</p> }
@@ -118,7 +138,7 @@ const MyForm = props => {
       { touched.email && errors.email && <p>{errors.email}</p> }
 
       <button type="submit">Save</button>
-      <button onClick={this.handle}>load</button>
+      <button onClick={handle}>load</button>
     </Form>
   );
 };
