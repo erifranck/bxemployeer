@@ -8,10 +8,13 @@ export const Button = (props) =>  {
         "bx-button": true,
         primary: props.primary,
         secondary: props.secondary,
-        "bx-button-options": props.isOption
+        "bx-button-options": props.isOption,
+        "confirmButton": props.confirmButton,
+        "home": props.home
     });
+
     return !props.isLink ? (
-        <button className={classes} onClick={props.onClick} >
+        <button title={props.title} className={classes} onClick={props.onClick} >
             {props.children}
         </button>
     ) : (
@@ -27,4 +30,8 @@ Button.propTypes = {
     isLink: PropTypes.bool,
     link: PropTypes.string,
     onClick: PropTypes.func,
+    title: PropTypes.string,
+    isOption: PropTypes.bool,
+    confirmButton: PropTypes.bool,
+    home: PropTypes.bool,
 };

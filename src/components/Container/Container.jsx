@@ -35,8 +35,8 @@ class Container extends React.Component {
                        <Header />
                        {this.props.children}
                    </div>
-                   <Modal confirmLabel={'confirm'}
-                          message={'are you sure ?'}
+                   <Modal confirmLabel={'Confirm'}
+                          message={'Are you sure ?'}
                           openModal={this.state.openModal}
                           onCloseModal={this.toggleModal(false, false)}
                           onConfirmModal={this.toggleModal(false, true)}
