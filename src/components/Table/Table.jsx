@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import {Button} from "../Button/Button";
 
 export const Table = (props) => (
-    <table>
+    <table className="bx-table-container">
+        <caption className="bx-table-caption">Belatrix Employees</caption>
         <thead>
             <tr>
                 {
@@ -19,14 +20,14 @@ export const Table = (props) => (
             props.data.map((objectValue) => (
                 <tr key={objectValue.id}>
                     {
-                        Object.values(objectValue).slice(1).map( (value, index) => (
+                        Object.values(objectValue).map( (value, index) => (
                             <td key={index}>{value}</td>
                         ))
                     }
                     <td>
-                        <Button isOption={true}>Details</Button>
-                        <Button isOption={true}>Add kinship</Button>
-                        <Button isOption={true} onClick={() => props.onDelete(objectValue.id)}>Delete</Button>
+                        <Button title={"Details"} isOption={true}><i className="fas fa-info-circle"/></Button>
+                        <Button title={"Add kinship"} isOption={true}><i className="fas fa-user-plus"/></Button>
+                        <Button title={"Delete employee"} isOption={true} onClick={() => props.onDelete(objectValue.id)}><i className="fas fa-trash-alt"/></Button>
                     </td>
                 </tr>
             ))
