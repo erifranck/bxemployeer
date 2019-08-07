@@ -60,11 +60,10 @@ export class Popup extends React.Component {
         return (  
             <div className='popup-background' /*onClick={this.props.closePopup}*/>  
                 <div className='popup'>  
-                    <div className="closeBtn" onClick={this.props.closePopup}> + </div>
+                    <div className="popup-header">
+                        <div className="closeBtn" onClick={this.props.closePopup}> + </div>
+                    </div>
                     <div className='popup-content'>
-                        {/* <NewEmployee onChangeInput={this.onChangeInputForm} /> 
-                        firstName="Dani" lastName="Brosio" dateOfBirth="1994-02-18" docType="DNI" docNumber="35886976" gender="M" nationality="Argentina" phone="-" email="danebrosio@gmail.com"
-                    */}
                         <NewEmployeeWithFormik  />
                     </div> 
                 </div>  

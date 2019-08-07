@@ -1,5 +1,5 @@
 import React from 'react';
-import {withFormik, Form, Field, Formik} from 'formik';
+import { Form, Field, Formik} from 'formik';
 import * as Yup from 'yup';
 // import countriesData from './countries/countries'
 import './newEmployeeWithFormik.css';
@@ -7,11 +7,75 @@ import {docTypeRegEx, emailRegEx, genderRegEx, nameRegEx, phoneRegEx} from "../.
 import {connect} from "react-redux";
 import {createPersonRequest} from "../../redux/actions/peopleActions";
 
+
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
+
+
+
+class CountrySelector extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.options = countryList().getData().filter( ({label}) => {
+        return (
+        label === "Argentina" ||
+        label === "Chile" ||
+        label === "Colombia" ||
+        label === "Brazil" ||
+        label === "Paraguay" ||
+        label === "Peru" ||
+        label === "United States" ||
+        label === "Uruguay"
+        )
+    })
+    
+    this.state = {
+      options: this.options,
+      value: null,
+    }
+
+  }
+
+  changeHandler = value => {
+    this.setState({ value })
+    this.props.onSelectCountry(value.label)
+  }
+
+  render() {
+    return (
+      <Select
+        options={this.state.options}
+        value={this.state.value}
+        onChange={this.changeHandler}
+      />
+    )
+  }
+}
+
+
+
+
+
 const MyForm = props => {
   const {
-    initialValues = {},
+    initialValues = {
+      firstName: '',
+      lastName: '',
+      dateOfBirth: '',
+      docType: '',
+      docNumber: '',
+      gender: '',
+      nationality: '',
+      phone: '',
+      email: '',
+
+  },
     createPerson,
   } = props;
+
+
+
 
   return (
       <Formik
@@ -28,9 +92,15 @@ const MyForm = props => {
                 phone: Yup.string().matches(phoneRegEx,"Phone number doesn't look ok"),
                 email: Yup.string().matches(emailRegEx,"Email is not a valid adress"),
 
-              })
+                  })
           }
+
+
+
           onSubmit={ (values) => {
+
+            console.log(values);
+
               const objToSend = {
                   firstNames: values.firstName,
                   lastNames: values.lastName,
@@ -42,13 +112,18 @@ const MyForm = props => {
                   contact: values.email,
                   relationships: []
               };
+              debugger;
               createPerson(objToSend);
           }}
+
+
           render={
-              ({touched, errors}) => (
+              ({touched, errors, setFieldValue}) => (
                   <Form>
+                    
+                    <label>Name</label>
+
                       <div className="bx-emp-form-row">
-                          <label>Name
                               <div className="bx-emp-form-field">
                                   <Field
                                       type="firstName"
@@ -63,23 +138,21 @@ const MyForm = props => {
                                       placeholder="last name"
                                   />
                               </div>
-                          </label>
                       </div>
                       { touched.firstName && errors.firstName && <li>{errors.firstName}</li> }
                       { touched.lastName && errors.lastName && <li>{errors.lastName}</li> }
                       <div className="bx-emp-form-row">
-                          <label>Date of birth
+                          <label>Date of birth</label>
                               <div className="bx-emp-form-field">
                                   <Field
                                       type="date"
                                       name="dateOfBirth"
                                   />
                               </div>
-                          </label>
                       </div>
                       { touched.dateOfBirth && errors.dateOfBirth && <li>{errors.dateOfBirth}</li> }
                       <div className="bx-emp-form-row">
-                          <label>Document number
+                          <label>Document number</label>
                               <div className="bx-emp-form-field">
                                   <Field component="select" name="docType">
                                       <option value="">Select</option>
@@ -91,12 +164,12 @@ const MyForm = props => {
                                       name="docNumber"
                                   />
                               </div>
-                          </label>
                       </div>
                       { touched.docType && errors.docType && <li>{errors.docType}</li> }
                       { touched.docNumber && errors.docNumber && <li>{errors.docNumber}</li> }
                       <div className="bx-emp-form-row">
-                          <label>Gender
+                          <label>Gender</label>
+
                               <div className="bx-emp-form-field">
                                   <Field component="select" name="gender">
                                       <option value="">Select</option>
@@ -105,24 +178,27 @@ const MyForm = props => {
                                       <option value="O">Other</option>
                                   </Field>
                               </div>
-                          </label>
-                          <label>Nationality
-                              <div className="bx-emp-form-field">
-                                  <Field component="select" name="nationality">
-                                      <option value="">Select</option>
-                                      <option value="Argentina">Argentina</option>
-                                      <option value="Brazil">Brazil</option>
-                                      <option value="Chile">Chile</option>
-                                      <option value="Uruguay">Uruguay</option>
-                                  </Field>
-                              </div>
-                          </label>
-                      </div>
-                      { touched.gender && errors.gender && <p>{errors.gender}</p> }
+                        </div>
+                        { touched.gender && errors.gender && <p>{errors.gender}</p> }
+
+                        <div className="bx-emp-form-row">
+
+                          <label>Nationality</label>
+
+                            <div className="bx-emp-nationality-field">
+                                
+                                <CountrySelector 
+                                    onSelectCountry = {(value) => setFieldValue('nationality',value)} 
+                                />
+                                
+                                
+                            </div>
+
+                        </div>
                       { touched.nationality && errors.nationality && <p>{errors.nationality}</p> }
 
                       <div className="bx-emp-form-row">
-                          <label>Contact
+                          <label>Contact</label>
                               <div className="bx-emp-form-field">
                                   <Field
                                       type="tel"
@@ -135,7 +211,6 @@ const MyForm = props => {
                                       name="email"
                                   />
                               </div>
-                          </label>
                       </div>
                       { touched.phone && errors.phone && <p>{errors.phone}</p> }
                       { touched.email && errors.email && <p>{errors.email}</p> }
