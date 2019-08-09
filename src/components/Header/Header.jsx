@@ -9,12 +9,6 @@ export const Header = (props) => (
                 <Menu/>
             </Button>
             <h1>Bxemployeers</h1>
-            {/*
-                <div>buscador</div>
-                < div > button < /div>
-                <div>button</div>
-                <div>avatar</div>
-            */}
         </nav>
     </header>
 );

@@ -2,6 +2,7 @@ import React from 'react';
 import './container.css';
 import {Header} from "../Header/Header";
 import {Modal} from "../Modal/Modal";
+import {DetailsEmployee} from "../DetailsEmployee/DetailsEmployee";
 
 const {Consumer, Provider} = React.createContext({});
 export const ModalConsumer = Consumer;
@@ -11,7 +12,9 @@ class Container extends React.Component {
         super(props);
         this.state = {
             openModal: false,
-            listeners: []
+            listeners: [],
+            openDetails: false,
+            objectValue: null,
         }
     }
     toggleModal = (value, confirmValue, callback) => () => {
@@ -26,10 +29,19 @@ class Container extends React.Component {
            this.setState({listeners: []});
        }
     };
+
+    toggleDetails = (value, objectValue) => () => {
+        console.log(value, objectValue);
+        this.setState({
+            openDetails: value,
+            objectValue: objectValue,
+        });
+    };
+
     render() {
-        const {openModal} = this.state;
+        const {openModal, openDetails, objectValue} = this.state;
        return (
-           <Provider value={{openModal, toggleModal: this.toggleModal}} >
+           <Provider value={{openModal, toggleModal: this.toggleModal, openDetails, toggleDetails:this.toggleDetails, objectValue: objectValue}} >
                <div className="bx-dashboard-wrapper">
                    <div className="bx-dashboard-container">
                        <Header />
@@ -40,6 +52,11 @@ class Container extends React.Component {
                           openModal={this.state.openModal}
                           onCloseModal={this.toggleModal(false, false)}
                           onConfirmModal={this.toggleModal(false, true)}
+                   />
+                   <DetailsEmployee openDetails={this.state.openDetails}
+                                    onCloseDetails={this.toggleDetails(false, null)}
+                                    onConfirmDetails={() => alert("Employee updated")}
+                                    objectValue={this.state.objectValue}
                    />
                </div>
            </Provider>

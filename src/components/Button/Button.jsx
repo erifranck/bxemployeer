@@ -14,7 +14,7 @@ export const Button = (props) =>  {
     });
 
     return !props.isLink ? (
-        <button title={props.title} className={classes} onClick={props.onClick} >
+        <button id={props.id} title={props.title} className={classes} onClick={props.onClick} disabled={props.disabled}>
             {props.children}
         </button>
     ) : (
@@ -34,4 +34,6 @@ Button.propTypes = {
     isOption: PropTypes.bool,
     confirmButton: PropTypes.bool,
     home: PropTypes.bool,
+    disabled: PropTypes.bool,
+    id: PropTypes.string,
 };
