@@ -8,13 +8,16 @@ export const Header = (props) => (
             <Button home={true} onClick={() => console.log("clicked")}>
                 <Menu/>
             </Button>
-            <h1>Bxemployeers</h1>
+            <h1>Bxemployeers
+                {props.children}
+            </h1>
             {/*
                 <div>buscador</div>
                 < div > button < /div>
                 <div>button</div>
                 <div>avatar</div>
             */}
+
         </nav>
     </header>
 );
