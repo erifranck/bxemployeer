@@ -26,10 +26,14 @@
 }
 
 .popup-content {
-  height: 80%;
+  height: 85%;
   position: relative;
-  overflow: auto;
   min-height: 400px;
+}
+
+.popup-content button {
+  float: right;
+  bottom: 15px;
 }
 
 .popup-header {

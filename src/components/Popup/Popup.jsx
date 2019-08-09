@@ -1,7 +1,7 @@
 import React from 'react';  
 //import {NewEmployee} from '../NewEmployee/NewEmployee';
 import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik'
-
+import {Button} from '../Button/Button'
 import './popup.css';  
 
 export class Popup extends React.Component { 
@@ -64,7 +64,7 @@ export class Popup extends React.Component {
                         <div className="closeBtn" onClick={this.props.closePopup}> + </div>
                     </div>
                     <div className='popup-content'>
-                        <NewEmployeeWithFormik  />
+                        <NewEmployeeWithFormik/>
                     </div> 
                 </div>  
             </div>  

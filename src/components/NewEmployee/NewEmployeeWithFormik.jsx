@@ -2,15 +2,14 @@ import React from 'react';
 import { Form, Field, Formik} from 'formik';
 import * as Yup from 'yup';
 // import countriesData from './countries/countries'
-import './newEmployeeWithFormik.css';
 import {docTypeRegEx, emailRegEx, genderRegEx, nameRegEx, phoneRegEx} from "../../utils/validations";
 import {connect} from "react-redux";
 import {createPersonRequest} from "../../redux/actions/peopleActions";
-
-
+import {Button} from '../Button/Button'
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
 
+import './newEmployeeWithFormik.css';
 
 
 class CountrySelector extends React.Component {
@@ -141,108 +140,110 @@ const MyForm = props => {
           render={
               ({touched, errors, setFieldValue}) => (
                   <Form>
-                    
-                    <label>Name</label>
+                    <div className="bx-form-inputs">
 
-                      <div className="bx-emp-form-row">
-                              <div className="bx-emp-form-field">
-                                  <Field
-                                      type="firstName"
-                                      name="firstName"
-                                      placeholder="first name"
-                                  />
-                              </div>
-                              <div className="bx-emp-form-field">
-                                  <Field
-                                      type="lastName"
-                                      name="lastName"
-                                      placeholder="last name"
-                                  />
-                              </div>
-                      </div>
-                      { touched.firstName && errors.firstName && <li>{errors.firstName}</li> }
-                      { touched.lastName && errors.lastName && <li>{errors.lastName}</li> }
+                      <label>Name</label>
 
-                      <label>Date of birth</label>
-                      <div className="bx-emp-form-row">
-                              <div className="bx-emp-form-field">
-                                  <Field
-                                      type="date"
-                                      name="dateOfBirth"
-                                  />
-                              </div>
-                      </div>
-                      { touched.dateOfBirth && errors.dateOfBirth && <li>{errors.dateOfBirth}</li> }
-
-                      <label>Document number</label>
-                      <div className="bx-emp-form-row">
-                            <div className="bx-emp-form-row">
-                              <div className="bx-emp-form-field">
-                                  <Field component="select" name="docType">
-                                    <option value="">Select</option>
-                                    <option value="DNI">DNI</option>
-                                    <option value="LC">LC</option>
-                                  </Field>
-                              </div>
-                              <div className="bx-emp-form-field">
-                                <Field
-                                  type="number"
-                                  name="docNumber"
-                                />
-                              </div>  
-                            </div>     
-                      </div>
-                      { touched.docType && errors.docType && <li>{errors.docType}</li> }
-                      { touched.docNumber && errors.docNumber && <li>{errors.docNumber}</li> }
-
-                      <label>Gender</label>
-                      <div className="bx-emp-form-row">
-                              <div className="bx-emp-form-field">
-                                  <Field component="select" name="gender">
-                                      <option value="">Select</option>
-                                      <option value="M">Male</option>
-                                      <option value="F">Female</option>
-                                      <option value="O">Other</option>
-                                  </Field>
-                              </div>
-                        </div>
-                        { touched.gender && errors.gender && <li>{errors.gender}</li> }
-
-                        <label>Nationality</label>
                         <div className="bx-emp-form-row">
-                            <div className="bx-emp-nationality-field">
-                                
-                                <CountrySelector 
-                                    onSelectCountry = {(value) => setFieldValue('nationality',value)} 
-                                />
-                                
-                                
-                            </div>
-
+                                <div className="bx-emp-form-field">
+                                    <Field
+                                        type="firstName"
+                                        name="firstName"
+                                        placeholder="first name"
+                                    />
+                                </div>
+                                <div className="bx-emp-form-field">
+                                    <Field
+                                        type="lastName"
+                                        name="lastName"
+                                        placeholder="last name"
+                                    />
+                                </div>
                         </div>
-                      { touched.nationality && errors.nationality && <li>{errors.nationality}</li> }
+                        { touched.firstName && errors.firstName && <li>{errors.firstName}</li> }
+                        { touched.lastName && errors.lastName && <li>{errors.lastName}</li> }
 
-                      <label>Contact</label>
-                      <div className="bx-emp-form-row">
-                              <div className="bx-emp-form-field">
-                                  <Field
-                                      type="tel"
-                                      name="phone"
-                                  />
-                              </div>
-                              <div className="bx-emp-form-field">
-                                  <Field
-                                      type="email"
-                                      name="email"
-                                  />
-                              </div>
-                      </div>
-                      { touched.phone && errors.phone && <li>{errors.phone}</li> }
-                      { touched.email && errors.email && <li>{errors.email}</li> }
+                        <label>Date of birth</label>
+                        <div className="bx-emp-form-row">
+                                <div className="bx-emp-form-field">
+                                    <Field
+                                        type="date"
+                                        name="dateOfBirth"
+                                    />
+                                </div>
+                        </div>
+                        { touched.dateOfBirth && errors.dateOfBirth && <li>{errors.dateOfBirth}</li> }
 
-                      <button type="submit" >Save</button>
+                        <label>Document number</label>
+                        <div className="bx-emp-form-row">
+                              <div className="bx-emp-form-row">
+                                <div className="bx-emp-form-field">
+                                    <Field component="select" name="docType">
+                                      <option value="">Select</option>
+                                      <option value="DNI">DNI</option>
+                                      <option value="LC">LC</option>
+                                    </Field>
+                                </div>
+                                <div className="bx-emp-form-field">
+                                  <Field
+                                    type="number"
+                                    name="docNumber"
+                                  />
+                                </div>  
+                              </div>     
+                        </div>
+                        { touched.docType && errors.docType && <li>{errors.docType}</li> }
+                        { touched.docNumber && errors.docNumber && <li>{errors.docNumber}</li> }
+
+                        <label>Gender</label>
+                        <div className="bx-emp-form-row">
+                                <div className="bx-emp-form-field">
+                                    <Field component="select" name="gender">
+                                        <option value="">Select</option>
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                        <option value="O">Other</option>
+                                    </Field>
+                                </div>
+                          </div>
+                          { touched.gender && errors.gender && <li>{errors.gender}</li> }
+
+                          <label>Nationality</label>
+                          <div className="bx-emp-form-row">
+                              <div className="bx-emp-nationality-field">
+                                  
+                                  <CountrySelector 
+                                      onSelectCountry = {(value) => setFieldValue('nationality',value)} 
+                                  />
+                                  
+                                  
+                              </div>
+
+                          </div>
+                        { touched.nationality && errors.nationality && <li>{errors.nationality}</li> }
+
+                        <label>Contact</label>
+                        <div className="bx-emp-form-row">
+                                <div className="bx-emp-form-field">
+                                    <Field
+                                        type="tel"
+                                        name="phone"
+                                    />
+                                </div>
+                                <div className="bx-emp-form-field">
+                                    <Field
+                                        type="email"
+                                        name="email"
+                                    />
+                                </div>
+                        </div>
+                        { touched.phone && errors.phone && <li>{errors.phone}</li> }
+                        { touched.email && errors.email && <li>{errors.email}</li> }
                       
+                      </div>
+                        <Button saveButton={true} type="submit">Save</Button>                      
                   </Form>
+                  
               )
           }
       >
