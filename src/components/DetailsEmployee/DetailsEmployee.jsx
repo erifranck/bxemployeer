@@ -13,27 +13,18 @@ export class DetailsEmployee extends React.Component {
     }
     componentDidMount() {
         this.setState({show: this.props.openDetails});
-        document.getElementById('confirmEditDetails').disabled = true;
     }
     closeDetails = () => {
         if(this.props.onCloseDetails) {
-            document.getElementById('confirmEditDetails').disabled = true;
             this.props.onCloseDetails();
         }
     };
-    onConfirm = () => {
-        if(this.props.onConfirmDetails) {
-            this.props.onConfirmDetails();
-        }
-        document.getElementById('confirmEditDetails').disabled = true;
-    };
 
     editDetails = () => {
-        document.getElementById('confirmEditDetails').disabled = false;
+        this.props.onEdit();
     };
 
     openKinships = () => {
-        document.getElementById('confirmEditDetails').disabled = true;
         alert("Debe abrir otro modal con las kinships");
     };
 
@@ -72,9 +63,6 @@ export class DetailsEmployee extends React.Component {
                         <p>Nationality: {this.props.objectValue.nationality}</p>
                         <p>Contact: {this.props.objectValue.contact}</p>
                     </div>
-                    <div className="bx-details-footer">
-                        <Button id="confirmEditDetails" primary={true} onClick={this.onConfirm} >Confirm changes</Button>
-                    </div>
                 </div>
             </div>
         )
@@ -86,4 +74,5 @@ DetailsEmployee.propTypes = {
     onCloseDetails: PropTypes.func,
     onConfirmDetails: PropTypes.func,
     objectValue: PropTypes.object,
+    onEdit: PropTypes.func,
 };

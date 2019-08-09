@@ -22,6 +22,10 @@ const createPeopleSuccess = (person) => ( { type: CREATE_PEOPLE_SUCCESS, person:
 
 const createPeopleFail = (error) =>  ({ type: CREATE_PEOPLE_FAIL, response: {error: error}});
 
+const editPeopleSuccess = (person) => ( { type: EDIT_PEOPLE_SUCCESS, person: person } );
+
+const editPeopleFail = (error) =>  ({ type: EDIT_PEOPLE_FAIL, response: {error: error}});
+
 export function getPeopleRequest() {
     return (dispatch, getState) => {
         dispatch(onFetch());
@@ -59,6 +63,19 @@ export function createPersonRequest(payload) {
             })
             .catch(error => {
                 dispatch(createPeopleFail(error));
+            })
+    }
+}
+
+export function editPersonRequest(payload) {
+    return (dispatch, getState) => {
+        dispatch(onFetch());
+        createPerson(payload)
+            .then( () => {
+                dispatch(editPeopleSuccess({...payload,id: Math.random()}));
+            })
+            .catch(error => {
+                dispatch(editPeopleFail(error));
             })
     }
 }

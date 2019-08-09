@@ -8,6 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid black;
 }
 .bx-details-wrapper.hide {
     display: none;
@@ -47,17 +48,4 @@
 .bx-details-footer {
     display: flex;
     justify-content: center;
-}
-#confirmEditDetails:disabled{
-    display: none;
-}
-#confirmEditDetails:enabled {
-    border: 1px solid black;
-    margin: 10px;
-    background-color: #03b703;
-    color: white;
-}
-#confirmEditDetails:enabled:hover {
-    cursor: pointer;
-    opacity: 0.6;
 }

@@ -8,28 +8,29 @@ export class Popup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
-            dateOfBirth: "",
-            docType: "-",
-            docNumber: "",
-            gender: "-",
-            nationality: "-",
-            phone: "",
-            email: "",
+            firstName: "" || this.props.initialValues.firstNames,
+            lastName: "" || this.props.initialValues.lastNames,
+            dateOfBirth: "" || this.props.initialValues.dateOfBirth,
+            docType: ""|| this.props.initialValues.documentType,
+            docNumber: "" || this.props.initialValues.documentID,
+            gender: "" || this.props.initialValues.gender,
+            nationality: "" || this.props.initialValues.nationality,
+            phone: "" || this.props.initialValues.contact,
+            email: "" || this.props.initialValues.contact,
+            id: this.props.initialValues.id,
         }
     }
 
     onChangeInputForm = (key, value) => {
         this.setState({[key]: value});
-    }
+    };
 
     onSaveEmployee = () => {
 
         if(this.validateFields(this.state)) {
             this.saveEmployee(this.state);
         }
-    }
+    };
 
     saveEmployee(empData) {
 
@@ -64,7 +65,7 @@ export class Popup extends React.Component {
                         <div className="closeBtn" onClick={this.props.closePopup}> + </div>
                     </div>
                     <div className='popup-content'>
-                        <NewEmployeeWithFormik/>
+                        <NewEmployeeWithFormik initialValues={this.state}/>
                     </div> 
                 </div>  
             </div>  

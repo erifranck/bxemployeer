@@ -18,7 +18,9 @@ class Container extends React.Component {
             openDetails: false,
             objectValue: null,
             showPopup: false,
-        }
+        };
+        this.openPopup = this.openPopup.bind(this);
+        this.closePopup = this.closePopup.bind(this);
     }
 
     closePopup() {
@@ -56,13 +58,13 @@ class Container extends React.Component {
                <div className="bx-dashboard-wrapper">
                    <div className="bx-dashboard-container">
                         <Header>
-                            <Button addButton={true} primary={true} onClick={this.openPopup.bind(this)}>+</Button>
+                            <Button addButton={true} primary={true} onClick={this.openPopup}>+</Button>
                         </Header>
                        {this.props.children}
 
                         {
                             this.state.showPopup ?
-                                <Popup closePopup={this.closePopup.bind(this)}/>
+                                <Popup initialValues={this.state.objectValue || {}} closePopup={this.closePopup}/>
                             : null
                         }
 
@@ -73,10 +75,10 @@ class Container extends React.Component {
                           onCloseModal={this.toggleModal(false, false)}
                           onConfirmModal={this.toggleModal(false, true)}
                    />
-                   <DetailsEmployee openDetails={this.state.openDetails}
+                   <DetailsEmployee openDetails={this.state.openDetails && !this.state.showPopup}
                                     onCloseDetails={this.toggleDetails(false, null)}
-                                    onConfirmDetails={() => alert("Employee updated")}
                                     objectValue={objectValue || {}}
+                                    onEdit={this.openPopup}
                    />
                </div>
            </Provider>

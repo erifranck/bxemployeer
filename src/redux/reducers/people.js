@@ -7,6 +7,9 @@ export const GET_PEOPLE_FAIL = 'GET_PEOPLE_FAIL';
 export const DELETE_PEOPLE_SUCCESS = 'DELETE_PEOPLE_SUCCESS';
 export const DELETE_PEOPLE_FAIL = 'DELETE_PEOPLE_FAIL';
 
+export const EDIT_PEOPLE_SUCCESS = 'EDIT_PEOPLE_SUCCESS';
+export const EDIT_PEOPLE_FAIL = 'EDIT_PEOPLE_FAIL';
+
 const INITIAL_STATE = {
     isFetch: false,
     data: [],
@@ -55,6 +58,18 @@ export function peopleReducer(state = INITIAL_STATE, action) {
                 ...state,
                 isFetch: false,
                 error: action.response.error,
+            };
+        case EDIT_PEOPLE_SUCCESS:
+            return {
+                ...state,
+                isFetch: false,
+                data: state.data.concat([action.person])
+            };
+        case EDIT_PEOPLE_FAIL:
+            return {
+                ...state,
+                isFetch: false,
+                error: action.response.error
             };
         default:
             return state;
