@@ -2,7 +2,6 @@ import React from 'react';
 import './table.css';
 import PropTypes from "prop-types";
 import {Button} from "../Button/Button";
-import {sortPeopleBy } from '../../redux/actions/peopleActions';
 
 export const Table = (props) => (
 
