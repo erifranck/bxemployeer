@@ -10,7 +10,7 @@ export function deletePerson(id, url) {
 }
 
 export function createPerson(payload) {
-    fetch('http://localhost:8080/personAPI/employees', {
+    return fetch('http://localhost:8080/personAPI/employees', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

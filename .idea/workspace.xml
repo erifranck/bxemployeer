@@ -3,11 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="ab1d70a7-af39-491d-923c-f0a6ac99ba52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Button/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/Button.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Container/Container.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Container/Container.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DetailsEmployee/DetailsEmployee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailsEmployee/DetailsEmployee.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DetailsEmployee/detailsEmployee.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailsEmployee/detailsEmployee.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Container/container.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Container/container.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewEmployee/NewEmployeeWithFormik.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewEmployee/NewEmployeeWithFormik.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewEmployee/newEmployeeWithFormik.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewEmployee/newEmployeeWithFormik.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Popup/Popup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Popup/Popup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Popup/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Popup/popup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/actions/peopleActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/peopleActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/people.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/people.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/peopleService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/peopleService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/validations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/validations.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

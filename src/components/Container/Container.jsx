@@ -3,6 +3,8 @@ import './container.css';
 import {Header} from "../Header/Header";
 import {Modal} from "../Modal/Modal";
 import {DetailsEmployee} from "../DetailsEmployee/DetailsEmployee";
+import {Popup} from "../Popup/Popup";
+import {Button} from "../Button/Button"
 
 const {Consumer, Provider} = React.createContext({});
 export const ModalConsumer = Consumer;
@@ -15,8 +17,18 @@ class Container extends React.Component {
             listeners: [],
             openDetails: false,
             objectValue: null,
+            showPopup: false,
         }
     }
+
+    closePopup() {
+        this.setState({showPopup : false});
+    }
+
+    openPopup() {
+        this.setState({showPopup : true});
+    }
+
     toggleModal = (value, confirmValue, callback) => () => {
        this.setState({openModal: value});
        if(callback) {
@@ -43,8 +55,17 @@ class Container extends React.Component {
            <Provider value={{openModal, toggleModal: this.toggleModal, openDetails, toggleDetails:this.toggleDetails, objectValue: objectValue}} >
                <div className="bx-dashboard-wrapper">
                    <div className="bx-dashboard-container">
-                       <Header />
+                        <Header>
+                            <Button addButton={true} primary={true} onClick={this.openPopup.bind(this)}>+</Button>
+                        </Header>
                        {this.props.children}
+
+                        {
+                            this.state.showPopup ?
+                                <Popup closePopup={this.closePopup.bind(this)}/>
+                            : null
+                        }
+
                    </div>
                    <Modal confirmLabel={'Confirm'}
                           message={'Are you sure ?'}

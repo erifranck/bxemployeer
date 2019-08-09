@@ -36,7 +36,7 @@ export function peopleReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 isFetch: false,
-                data: action.response.data
+                data: state.data.concat([action.person])
             };
         case CREATE_PEOPLE_FAIL:
             return {
