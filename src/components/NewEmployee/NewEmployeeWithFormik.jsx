@@ -118,7 +118,7 @@ const MyForm = props => {
       { touched.email && errors.email && <p>{errors.email}</p> }
 
       <button type="submit">Save</button>
-      <button onClick={this.handle}>load</button>
+      {/*<button onClick={this.handle}>load</button>*/}
     </Form>
   );
 };

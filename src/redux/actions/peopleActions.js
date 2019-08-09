@@ -3,7 +3,9 @@ import {
     DELETE_PEOPLE_SUCCESS,
     GET_PEOPLE_FAIL,
     PEOPLE_REQUEST,
-    GET_PEOPLE_SUCCESS
+    GET_PEOPLE_SUCCESS,
+    SEARCH_PEOPLE,
+    SORT_PEOPLE_BY
 } from "../reducers/people";
 import {deleteMock, myRequest} from "../../services/mockEmployeersService";
 import {deletePerson, getPeople} from "../../services/peopleService";
@@ -18,12 +20,17 @@ const deletePeopleSuccess = (id) => ( { type: DELETE_PEOPLE_SUCCESS, id: id } );
 
 const deletePeopleFail = (error) => ({ type: DELETE_PEOPLE_FAIL, response: { error: error } });
 
+export const searchPeople = (search) => ({type: SEARCH_PEOPLE, search: search});
+
+export const sortPeopleBy = (key) => ({type: SORT_PEOPLE_BY, key: key});
+
 export function getPeopleRequest() {
     return (dispatch, getState) => {
         dispatch(onFetch());
-        myRequest()
+       getPeople()
             .then(value => {
-                dispatch(getPeopleSuccess(value));
+                console.log(value);
+                dispatch(getPeopleSuccess({data: value}))
             })
             .catch(error => {
                 dispatch(getPeopleFail(error));

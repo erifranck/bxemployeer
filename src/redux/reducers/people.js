@@ -1,9 +1,14 @@
+import { sortBy } from "../../utils/methods";
+
 export const PEOPLE_REQUEST = 'PEOPLE_REQUEST';
 export const GET_PEOPLE_SUCCESS = 'GET_PEOPLE_SUCCESS';
 export const GET_PEOPLE_FAIL = 'GET_PEOPLE_FAIL';
 
 export const DELETE_PEOPLE_SUCCESS = 'DELETE_PEOPLE_SUCCESS';
 export const DELETE_PEOPLE_FAIL = 'DELETE_PEOPLE_FAIL';
+
+export const SEARCH_PEOPLE = 'SEARCH_PEOPLE';
+export const SORT_PEOPLE_BY = 'SORT_PEOPLE_BY';
 
 const INITIAL_STATE = {
     isFetch: false,
@@ -41,6 +46,16 @@ export function peopleReducer(state = INITIAL_STATE, action) {
                 ...state,
                 isFetch: false,
                 error: action.response.error,
+            };
+        case SEARCH_PEOPLE:
+            return {
+                ...state,
+                search: action.search,
+            };
+        case SORT_PEOPLE_BY:
+            return {
+                ...state,
+               data: sortBy(action.key, state.data),
             };
         default:
             return state;
