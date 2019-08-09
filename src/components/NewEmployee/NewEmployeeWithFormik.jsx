@@ -84,17 +84,39 @@ const MyForm = props => {
               Yup.object().shape({
                 firstName: Yup.string().min(3).max(20).matches(nameRegEx,"This first name doesn't seem ok").required(),
                 lastName: Yup.string().min(3).max(20).matches(nameRegEx,"This last name doesn't seem ok").required(),
-                dateOfBirth:Yup.date().required(),
+                dateOfBirth:Yup.date().min('1900-01-01','Fecha no valida').max('2002-01-01',"Fecha no valida").required(),
                 docType: Yup.string().matches(docTypeRegEx,"The selected document type is not valid").required(),
                 docNumber: Yup.number().positive().required(),
                 gender: Yup.string().matches(genderRegEx,"The selected gender is not valid").required(),
                 nationality: Yup.string().required(),
                 phone: Yup.string().matches(phoneRegEx,"Phone number doesn't look ok"),
                 email: Yup.string().matches(emailRegEx,"Email is not a valid adress"),
-
-                  })
+                // email: Yup.string().matches(emailRegEx,"Email is not a valid adress").test( (value) => {
+                //   console.log(value)
+                //   const {phone} = this.parent;
+                //   if (!phone) return value != null
+                //   return true
+                // }),
+              })
           }
 
+/*           validate = { ({values, touched}) => {
+
+            console.log(touched.firstName,values.firstName)
+            let errors = {};
+            if (touched.firstName){
+              console.log("validating")
+
+              if (!values.firstName) {
+                errors.firstName = 'name Required';
+              } else if (nameRegEx.test(values.email)) {
+                errors.firstName = 'Invalid name ';
+              }
+
+            }
+            return errors;
+          }
+        } */
 
 
           onSubmit={ (values) => {
@@ -112,7 +134,6 @@ const MyForm = props => {
                   contact: values.email,
                   relationships: []
               };
-              debugger;
               createPerson(objToSend);
           }}
 
@@ -141,8 +162,9 @@ const MyForm = props => {
                       </div>
                       { touched.firstName && errors.firstName && <li>{errors.firstName}</li> }
                       { touched.lastName && errors.lastName && <li>{errors.lastName}</li> }
+
+                      <label>Date of birth</label>
                       <div className="bx-emp-form-row">
-                          <label>Date of birth</label>
                               <div className="bx-emp-form-field">
                                   <Field
                                       type="date"
@@ -151,25 +173,30 @@ const MyForm = props => {
                               </div>
                       </div>
                       { touched.dateOfBirth && errors.dateOfBirth && <li>{errors.dateOfBirth}</li> }
+
+                      <label>Document number</label>
                       <div className="bx-emp-form-row">
-                          <label>Document number</label>
+                            <div className="bx-emp-form-row">
                               <div className="bx-emp-form-field">
                                   <Field component="select" name="docType">
-                                      <option value="">Select</option>
-                                      <option value="DNI">DNI</option>
-                                      <option value="LC">LC</option>
+                                    <option value="">Select</option>
+                                    <option value="DNI">DNI</option>
+                                    <option value="LC">LC</option>
                                   </Field>
-                                  <Field
-                                      type="number"
-                                      name="docNumber"
-                                  />
                               </div>
+                              <div className="bx-emp-form-field">
+                                <Field
+                                  type="number"
+                                  name="docNumber"
+                                />
+                              </div>  
+                            </div>     
                       </div>
                       { touched.docType && errors.docType && <li>{errors.docType}</li> }
                       { touched.docNumber && errors.docNumber && <li>{errors.docNumber}</li> }
-                      <div className="bx-emp-form-row">
-                          <label>Gender</label>
 
+                      <label>Gender</label>
+                      <div className="bx-emp-form-row">
                               <div className="bx-emp-form-field">
                                   <Field component="select" name="gender">
                                       <option value="">Select</option>
@@ -179,12 +206,10 @@ const MyForm = props => {
                                   </Field>
                               </div>
                         </div>
-                        { touched.gender && errors.gender && <p>{errors.gender}</p> }
+                        { touched.gender && errors.gender && <li>{errors.gender}</li> }
 
+                        <label>Nationality</label>
                         <div className="bx-emp-form-row">
-
-                          <label>Nationality</label>
-
                             <div className="bx-emp-nationality-field">
                                 
                                 <CountrySelector 
@@ -195,10 +220,10 @@ const MyForm = props => {
                             </div>
 
                         </div>
-                      { touched.nationality && errors.nationality && <p>{errors.nationality}</p> }
+                      { touched.nationality && errors.nationality && <li>{errors.nationality}</li> }
 
+                      <label>Contact</label>
                       <div className="bx-emp-form-row">
-                          <label>Contact</label>
                               <div className="bx-emp-form-field">
                                   <Field
                                       type="tel"
@@ -212,10 +237,11 @@ const MyForm = props => {
                                   />
                               </div>
                       </div>
-                      { touched.phone && errors.phone && <p>{errors.phone}</p> }
-                      { touched.email && errors.email && <p>{errors.email}</p> }
+                      { touched.phone && errors.phone && <li>{errors.phone}</li> }
+                      { touched.email && errors.email && <li>{errors.email}</li> }
 
                       <button type="submit" >Save</button>
+                      
                   </Form>
               )
           }
@@ -228,7 +254,7 @@ const mapDispatchToProps = (dispatch) => ({
   createPerson: (payload) => dispatch(createPersonRequest(payload)),
 });
 
-const MyEnhancedForm = connect()(MyForm);
+const MyEnhancedForm = connect(null,mapDispatchToProps)(MyForm);
 
 export class NewEmployeeWithFormik extends React.Component {
 

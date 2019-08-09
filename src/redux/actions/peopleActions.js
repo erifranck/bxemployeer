@@ -18,7 +18,7 @@ const deletePeopleSuccess = (id) => ( { type: DELETE_PEOPLE_SUCCESS, id: id } );
 
 const deletePeopleFail = (error) => ({ type: DELETE_PEOPLE_FAIL, response: { error: error } });
 
-const createPeopleSuccess = (data) => ( { type: CREATE_PEOPLE_SUCCESS, response: data } );
+const createPeopleSuccess = (person) => ( { type: CREATE_PEOPLE_SUCCESS, person: person } );
 
 const createPeopleFail = (error) =>  ({ type: CREATE_PEOPLE_FAIL, response: {error: error}});
 
@@ -53,8 +53,8 @@ export function createPersonRequest(payload) {
     return (dispatch, getState) => {
         dispatch(onFetch());
         createPerson(payload)
-            .then((value) => {
-                dispatch(createPeopleSuccess(value));
+            .then( () => {
+                dispatch(createPeopleSuccess({...payload,id: Math.random()}));
             })
             .catch(error => {
                 dispatch(createPeopleFail(error));
