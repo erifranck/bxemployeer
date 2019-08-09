@@ -31,7 +31,6 @@ class Container extends React.Component {
     };
 
     toggleDetails = (value, objectValue) => () => {
-        console.log(value, objectValue);
         this.setState({
             openDetails: value,
             objectValue: objectValue,
@@ -56,7 +55,7 @@ class Container extends React.Component {
                    <DetailsEmployee openDetails={this.state.openDetails}
                                     onCloseDetails={this.toggleDetails(false, null)}
                                     onConfirmDetails={() => alert("Employee updated")}
-                                    objectValue={this.state.objectValue}
+                                    objectValue={objectValue || {}}
                    />
                </div>
            </Provider>

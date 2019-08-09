@@ -27,6 +27,7 @@ export function getPeopleRequest() {
         dispatch(onFetch());
         getPeople()
             .then(value => {
+
                 dispatch(getPeopleSuccess({data: value}));
             })
             .catch(error => {

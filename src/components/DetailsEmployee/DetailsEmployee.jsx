@@ -13,6 +13,7 @@ export class DetailsEmployee extends React.Component {
     }
     componentDidMount() {
         this.setState({show: this.props.openDetails});
+        document.getElementById('confirmEditDetails').disabled = true;
     }
     closeDetails = () => {
         if(this.props.onCloseDetails) {
@@ -21,10 +22,10 @@ export class DetailsEmployee extends React.Component {
         }
     };
     onConfirm = () => {
-        document.getElementById('confirmEditDetails').disabled = true;
         if(this.props.onConfirmDetails) {
             this.props.onConfirmDetails();
         }
+        document.getElementById('confirmEditDetails').disabled = true;
     };
 
     editDetails = () => {
@@ -62,10 +63,17 @@ export class DetailsEmployee extends React.Component {
                         </Button>
                     </div>
                     <div className="bx-details-form">
-                        (/* Importar del form de dani con los campos disabled hasta que se oprima edit button y se pueden editar algunos*/)
+                        <p>Name: {this.props.objectValue.firstNames}</p>
+                        <p>LastName: {this.props.objectValue.lastNames}</p>
+                        <p>Birth: {this.props.objectValue.dateOfBirth}</p>
+                        <p>Doc. Type: {this.props.objectValue.documentType}</p>
+                        <p>Doc. Number: {this.props.objectValue.documentID}</p>
+                        <p>Gender: {this.props.objectValue.gender}</p>
+                        <p>Nationality: {this.props.objectValue.nationality}</p>
+                        <p>Contact: {this.props.objectValue.contact}</p>
                     </div>
                     <div className="bx-details-footer">
-                        <Button id="confirmEditDetails" disabled={true} primary={true} onClick={this.onConfirm} >Confirm changes</Button>
+                        <Button id="confirmEditDetails" primary={true} onClick={this.onConfirm} >Confirm changes</Button>
                     </div>
                 </div>
             </div>
@@ -77,4 +85,5 @@ DetailsEmployee.propTypes = {
     openDetails: PropTypes.bool.isRequired,
     onCloseDetails: PropTypes.func,
     onConfirmDetails: PropTypes.func,
+    objectValue: PropTypes.object,
 };

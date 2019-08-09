@@ -57,3 +57,7 @@
     background-color: #03b703;
     color: white;
 }
+#confirmEditDetails:enabled:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
