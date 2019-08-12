@@ -16,16 +16,26 @@
 .bx-details-container {
     background: white;
     width: auto;
+    border-radius: 20px;
 }
 .bx-details-header{
     display: inline-flex;
     background-color: #f6f7f9;
     border-bottom: 1px solid #e5e5e5;
     width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 .bx-details-header > *{
     margin: auto;
 }
+.bx-details-header button{
+    cursor: pointer;
+}
+.bx-details-header button:hover{
+    color: #a2a2a2;
+}
+
 .bx-details-options {
     border: 1px solid black;
     width: max-content;
@@ -46,5 +56,12 @@
     background-color: rgba(255, 177, 180, 0.5);
 }
 .bx-details-form{
-
+    margin: 10% auto;
+    border-top: 2px solid black;
+    padding: 0 12px;
+}
+.bx-details-form p{
+    margin: 0;
+    font-size: 20px;
+    color: #403c3c;
 }

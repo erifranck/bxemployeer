@@ -54,14 +54,14 @@ export class DetailsEmployee extends React.Component {
                         </Button>
                     </div>
                     <div className="bx-details-form">
-                        <p>Name: {this.props.objectValue.firstNames}</p>
-                        <p>LastName: {this.props.objectValue.lastNames}</p>
-                        <p>Birth: {this.props.objectValue.dateOfBirth}</p>
-                        <p>Doc. Type: {this.props.objectValue.documentType}</p>
-                        <p>Doc. Number: {this.props.objectValue.documentID}</p>
-                        <p>Gender: {this.props.objectValue.gender}</p>
-                        <p>Nationality: {this.props.objectValue.nationality}</p>
-                        <p>Contact: {this.props.objectValue.contact}</p>
+                        <strong>Name:</strong> <p>{this.props.objectValue.firstNames}</p>
+                        <strong>LastName:</strong> <p>{this.props.objectValue.lastNames}</p>
+                        <strong>Birth:</strong> <p>{this.props.objectValue.dateOfBirth}</p>
+                        <strong>Doc. Type:</strong> <p>{this.props.objectValue.documentType}</p>
+                        <strong>Doc. Number:</strong> <p>{this.props.objectValue.documentID}</p>
+                        <strong>Gender:</strong> <p>{this.props.objectValue.gender}</p>
+                        <strong>Nationality:</strong> <p>{this.props.objectValue.nationality}</p>
+                        <strong>Contact:</strong> <p>{this.props.objectValue.contact}</p>
                     </div>
                 </div>
             </div>
