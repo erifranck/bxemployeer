@@ -3,6 +3,7 @@ import {Button} from "../Button/Button";
 import PropTypes from "prop-types";
 import './detailsEmployee.css';
 import {classNames} from "../../utils/classNames";
+import {getDate} from "../../utils/dateManagement";
 
 export class DetailsEmployee extends React.Component {
     constructor(props) {
@@ -56,7 +57,7 @@ export class DetailsEmployee extends React.Component {
                     <div className="bx-details-form">
                         <p>Name: {this.props.objectValue.firstNames}</p>
                         <p>LastName: {this.props.objectValue.lastNames}</p>
-                        <p>Birth: {this.props.objectValue.dateOfBirth}</p>
+                        <p className="birth">Birth: {this.props.objectValue.dateOfBirth}</p>
                         <p>Doc. Type: {this.props.objectValue.documentType}</p>
                         <p>Doc. Number: {this.props.objectValue.documentID}</p>
                         <p>Gender: {this.props.objectValue.gender}</p>

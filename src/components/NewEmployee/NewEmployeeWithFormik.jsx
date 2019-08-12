@@ -4,13 +4,14 @@ import * as Yup from 'yup';
 // import countriesData from './countries/countries'
 import {docTypeRegEx, emailRegEx, genderRegEx, nameRegEx, phoneRegEx} from "../../utils/validations";
 import {connect} from "react-redux";
-import {createPersonRequest} from "../../redux/actions/peopleActions";
+import {createPersonRequest, editPersonRequest} from "../../redux/actions/peopleActions";
 import {Button} from '../Button/Button'
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
 
 import './newEmployeeWithFormik.css';
 import {getDate} from "../../utils/dateManagement";
+import {editPerson} from "../../services/peopleService";
 
 
 class CountrySelector extends React.Component {
@@ -72,7 +73,7 @@ const MyForm = props => {
       email: '',
 
   },
-    createPerson,
+    createPerson, editPerson
   } = props;
 
 
@@ -134,8 +135,9 @@ const MyForm = props => {
                   relationships: []
               };
               props.initialValues.id ?
-                  createPerson(objToSend);
+                  editPerson(objToSend)
               :
+                  createPerson(objToSend)
 
           }}
 
@@ -253,9 +255,9 @@ const MyForm = props => {
                       </div>
                       {
                         props.initialValues.id ?
-                            <Button saveButton={true} type="submit">Save</Button>
+                            <Button editButton={true} type="submit">Confirm changes</Button>
                             :
-                            <Button saveButton={true} type="submit">Confirm changes</Button>
+                            <Button saveButton={true} type="submit">Save</Button>
                       }
                   </Form>
                   
@@ -269,7 +271,8 @@ const MyForm = props => {
 
 
 const mapDispatchToProps = (dispatch) => ({
-  createPerson: (payload) => dispatch(createPersonRequest(payload)),
+    createPerson: (payload) => dispatch(createPersonRequest(payload)),
+    editPerson: (payload) => dispatch((editPersonRequest(payload))),
 });
 
 const MyEnhancedForm = connect(null,mapDispatchToProps)(MyForm);

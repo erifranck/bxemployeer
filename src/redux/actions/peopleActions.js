@@ -3,10 +3,10 @@ import {
     DELETE_PEOPLE_SUCCESS,
     GET_PEOPLE_FAIL,
     PEOPLE_REQUEST,
-    GET_PEOPLE_SUCCESS, CREATE_PEOPLE_FAIL, CREATE_PEOPLE_SUCCESS
+    GET_PEOPLE_SUCCESS, CREATE_PEOPLE_FAIL, CREATE_PEOPLE_SUCCESS, EDIT_PEOPLE_SUCCESS, EDIT_PEOPLE_FAIL
 } from "../reducers/people";
 import {deleteMock, myRequest} from "../../services/mockEmployeersService";
-import {createPerson, deletePerson, getPeople} from "../../services/peopleService";
+import {createPerson, deletePerson, getPeople, editPerson} from "../../services/peopleService";
 
 const onFetch = () => (  { type: PEOPLE_REQUEST, } );
 
@@ -70,7 +70,7 @@ export function createPersonRequest(payload) {
 export function editPersonRequest(payload) {
     return (dispatch, getState) => {
         dispatch(onFetch());
-        createPerson(payload)
+        editPerson(payload)
             .then( () => {
                 dispatch(editPeopleSuccess({...payload,id: Math.random()}));
             })

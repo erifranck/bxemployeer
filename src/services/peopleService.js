@@ -21,3 +21,16 @@ export function createPerson(payload) {
     })
         .then( (response) => response.json());
 }
+
+export function editPerson(payload) {
+    return fetch('http://localhost:8080/personAPI/employees', {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify(payload)
+    })
+        .then( (response) => response.json());
+}
