@@ -45,7 +45,6 @@
 .bx-details-options button:first-child:hover {
     background-color: rgba(255, 177, 180, 0.5);
 }
-.bx-details-footer {
-    display: flex;
-    justify-content: center;
+.bx-details-form{
+
 }

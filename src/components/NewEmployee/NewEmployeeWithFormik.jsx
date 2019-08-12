@@ -73,7 +73,7 @@ const MyForm = props => {
       email: '',
 
   },
-    createPerson, editPerson
+    createPerson
   } = props;
 
 
@@ -132,13 +132,12 @@ const MyForm = props => {
                   gender: values.gender,
                   nationality: values.nationality,
                   contact: values.email,
-                  relationships: []
               };
               props.initialValues.id ?
-                  editPerson(objToSend)
+                  editPerson({...objToSend, id: props.initialValues.id})
               :
-                  createPerson(objToSend)
-
+                  createPerson({...objToSend, relationships: []});
+            alert(props.initialValues.id ? "Update successful, please refresh the page to see the changes" : "Person saved successfully");
           }}
 
 
