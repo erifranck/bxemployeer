@@ -11,7 +11,10 @@ export const Table = (props) => (
             <tr>
                 {
                     props.dataLabels.map((dataLabel, index) => (
-                        <th key={index} onClick= {() => props.onClickColumn(dataLabel.key)}>{dataLabel.label}</th>
+                        <th key={index} onClick={() => props.onClickColumn(dataLabel.key)}>
+                            {dataLabel.label}
+                            <Button title={"Sort by this field"} isOption={true}><i className="fas fa-sort"/></Button> 
+                        </th>
                     ))
                 }
                 <th>Manage</th>

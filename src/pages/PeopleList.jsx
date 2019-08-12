@@ -32,7 +32,6 @@ class PeopleListComponent extends React.Component {
                             dataLabels={peopleListLabels}
                             data={this.props.data.filter(items => {
                                 const regex = new RegExp(this.props.searchValue);
-                                console.log(regex.test(items.documentID), items.documentID);
                                 return regex.test(items.documentID);
                             })}
                             onDelete={ (id) => toggleModal(true, null, () => this.deletePerson(id))()}
