@@ -16,7 +16,7 @@ export const Button = (props) =>  {
     });
 
     return !props.isLink ? (
-        <button title={props.title} className={classes} onClick={props.onClick} >
+        <button title={props.title} type={props.type} className={classes} onClick={props.onClick} >
             {props.children}
         </button>
     ) : (

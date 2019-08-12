@@ -8,8 +8,10 @@ import {createPersonRequest} from "../../redux/actions/peopleActions";
 import {Button} from '../Button/Button'
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
+import DatePicker from 'react-toolbox/lib/date_picker';
 
 import './newEmployeeWithFormik.css';
+
 
 
 class CountrySelector extends React.Component {
@@ -79,6 +81,7 @@ const MyForm = props => {
   return (
       <Formik
           initialValues={initialValues}
+
           validationSchema= {
               Yup.object().shape({
                 firstName: Yup.string().min(3).max(20).matches(nameRegEx,"This first name doesn't seem ok").required(),
