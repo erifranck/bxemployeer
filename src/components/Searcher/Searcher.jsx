@@ -16,7 +16,7 @@ class SearchComponent extends React.Component {
         this.setState({
           filtered: this.props.items
         });
-      }
+    }
       
     componentWillReceiveProps(nextProps) {
     this.setState({

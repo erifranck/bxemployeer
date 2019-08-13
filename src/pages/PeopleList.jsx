@@ -17,7 +17,7 @@ class PeopleListComponent extends React.Component {
 
     deletePerson(id){
         this.props.deletePeopleRequest(id);
-    }
+    }  
 
     render () {
         return (
@@ -49,7 +49,8 @@ class PeopleListComponent extends React.Component {
 const mapStateToProps = (state) => ({
    data: state.people.data,
     error: state.people.error,
-    searchValue: state.people.search
+    searchValue: state.people.search,
+    //sortKey: state.people.key
 });
 const mapDispatchToProps = (dispatch) => ({
     getPeopleRequest: () => dispatch(getPeopleRequest()),
