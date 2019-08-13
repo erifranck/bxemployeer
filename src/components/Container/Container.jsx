@@ -2,7 +2,7 @@ import React from 'react';
 import './container.css';
 import {Header} from "../Header/Header";
 import {Modal} from "../Modal/Modal";
-import {Popup} from "../Popup/Popup";
+import {PopupNewEmployee} from "../Popups/PopUpEmployee/PopupNewEmployee";
 import {Button} from "../Button/Button"
 const {Consumer, Provider} = React.createContext({});
 export const ModalConsumer = Consumer;
@@ -50,7 +50,7 @@ class Container extends React.Component {
 
                         {
                             this.state.showPopup ?
-                                <Popup closePopup={this.closePopup.bind(this)}/>
+                                <PopupNewEmployee closePopup={this.closePopup.bind(this)}/>
                             : null
                         }
 

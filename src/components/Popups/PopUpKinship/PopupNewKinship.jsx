@@ -1,21 +1,15 @@
 import React from 'react';  
 //import {NewEmployee} from '../NewEmployee/NewEmployee';
-import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik'
-import './popup.css';  
+import {NewEmployeeWithFormik} from '../../NewEmployee/NewEmployeeWithFormik'
+import './popupNewKinship.css';  
 
-export class Popup extends React.Component { 
+export class PopupNewKinship extends React.Component { 
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
-            dateOfBirth: "",
-            docType: "-",
-            docNumber: "",
-            gender: "-",
-            nationality: "-",
-            phone: "",
-            email: "",
+            sourceEmployee: "",
+            targetEmployee: "",
+            kinshipType: "",
         }
     }
 
@@ -23,28 +17,22 @@ export class Popup extends React.Component {
         this.setState({[key]: value});
     }
 
-    onSaveEmployee = () => {
+    onsaveKinship = () => {
 
         if(this.validateFields(this.state)) {
-            this.saveEmployee(this.state);
+            this.saveKinship(this.state);
         }
     }
 
-    saveEmployee(empData) {
+    saveKinship(kinData) {
 
         var objToSend = {};
 
-        objToSend["firstNames"] = empData.firstName;
-        objToSend["lastNames"] = empData.lastName;
-        objToSend["dateOfBirth"] = empData.dateOfBirth;
-        objToSend["documentType"] = empData.docType;
-        objToSend["documentID"] = empData.docNumber;
-        objToSend["gender"] = empData.gender;
-        objToSend["nationality"] = empData.nationality;
-        objToSend["contact"] = empData.email;
-        objToSend["relationships"] = [];      
+        objToSend["idSourceEmployee"] = kinData.idSourceEmployee;
+        objToSend["idTargetEmployee"] = kinData.idTargetEmployee;
+        objToSend["type"] = kinData.type;      
     
-        fetch('http://localhost:8080/personAPI/employees', {
+        fetch('http://localhost:8080/personAPI/kinships', {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
