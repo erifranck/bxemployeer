@@ -28,9 +28,23 @@
 .bx-emp-form-field input{
     border: 1px solid lightgray;
     border-radius: 4px;
-    height: 20px;
     margin: 0 10px;
     width: 90%;
+    height: 36px;
+    font-size: 16px;
+    padding-left: 10px;
+
+}
+
+.bx-emp-form-field select{
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    margin: 0 10px;
+    width: 90%;
+    height: 36px;
+    font-size: 16px;
+    padding-left: 10px;
+
 }
 
 .bx-emp-nationality-field {
@@ -49,6 +63,7 @@
 
 
 .popup button.saveButton{
+    cursor: pointer;
     float: right;
     margin-right: 25px;
     height: 30px;

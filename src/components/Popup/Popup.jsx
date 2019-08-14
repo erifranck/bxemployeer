@@ -1,7 +1,6 @@
 import React from 'react';  
 //import {NewEmployee} from '../NewEmployee/NewEmployee';
 import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik'
-import {Button} from '../Button/Button'
 import './popup.css';  
 
 export class Popup extends React.Component { 
