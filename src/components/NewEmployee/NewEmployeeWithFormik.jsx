@@ -3,11 +3,15 @@ import { Form, Field, Formik} from 'formik';
 import * as Yup from 'yup';
 import {docTypeRegEx, emailRegEx, genderRegEx, nameRegEx, phoneRegEx} from "../../utils/validations";
 import {connect} from "react-redux";
-import {createPersonRequest} from "../../redux/actions/peopleActions";
-import {Button} from '../Button/Button';
-import {CountryPicker} from './CountryPicker/CountryPicker';
 
+import {createPersonRequest, editPersonRequest} from "../../redux/actions/peopleActions";
+import {Button} from '../Button/Button'
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
+import {CountryPicker} from './CountryPicker/CountryPicker';
 import './newEmployeeWithFormik.css';
+import {getDate} from "../../utils/dateManagement";
+import {editPerson} from "../../services/peopleService";
 
 const MyForm = props => {
   const {
@@ -23,13 +27,12 @@ const MyForm = props => {
       email: '',
 
   },
-    createPerson,
+    createPerson
   } = props;
 
   return (
       <Formik
           initialValues={initialValues}
-
           validationSchema= {
               Yup.object().shape({
                 firstName: Yup.string().min(3).max(20).matches(nameRegEx,"This first name doesn't seem ok").required(),
@@ -52,7 +55,6 @@ const MyForm = props => {
 
           onSubmit={ (values) => {
 
-            console.log(values);
 
               const objToSend = {
                   firstNames: values.firstName,
@@ -63,9 +65,12 @@ const MyForm = props => {
                   gender: values.gender,
                   nationality: values.nationality,
                   contact: values.email,
-                  relationships: []
               };
-              createPerson(objToSend);
+              props.initialValues.id ?
+                  editPerson({...objToSend, id: props.initialValues.id})
+              :
+                  createPerson({...objToSend, relationships: []});
+            alert(props.initialValues.id ? "Update successful, please refresh the page to see the changes" : "Person saved successfully");
           }}
 
 
@@ -98,7 +103,7 @@ const MyForm = props => {
                         <label>Date of birth</label>
                         <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
-                                    <Field
+                                    <Field render={({field}) => <input type="date" value={getDate(new Date(field.value))}/>}
                                         type="date"
                                         name="dateOfBirth"
                                     />
@@ -145,11 +150,17 @@ const MyForm = props => {
                           <label>Nationality</label>
                           <div className="bx-emp-form-row">
                               <div className="bx-emp-nationality-field">
-                                  
-                                  <CountryPicker 
-                                      onSelectCountry = {(value) => setFieldValue('nationality',value)} 
-                                  />
-                                  
+
+                                  <Field render={(field) => {
+                                      return (
+                                      <CountryPicker value={field.field.value}
+                                      onSelectCountry = {(value) => setFieldValue('nationality',value)}
+                                    />
+                                  )
+                                  }
+                                  }
+                                    name="nationality"
+                                  />                               
                                   
                               </div>
 
@@ -179,7 +190,12 @@ const MyForm = props => {
                         { touched.email && errors.email && <li>{errors.email}</li> }
                       
                       </div>
-                        <Button saveButton={true} type="submit">Save</Button>                      
+                      {
+                        props.initialValues.id ?
+                            <Button editButton={true} type="submit">Confirm changes</Button>
+                            :
+                            <Button saveButton={true} type="submit">Save</Button>
+                      }
                   </Form>
                   
               )
@@ -189,8 +205,11 @@ const MyForm = props => {
   );
 };
 
+
+
 const mapDispatchToProps = (dispatch) => ({
-  createPerson: (payload) => dispatch(createPersonRequest(payload)),
+    createPerson: (payload) => dispatch(createPersonRequest(payload)),
+    editPerson: (payload) => dispatch((editPersonRequest(payload))),
 });
 
 const MyEnhancedForm = connect(null,mapDispatchToProps)(MyForm);
@@ -201,7 +220,7 @@ export class NewEmployeeWithFormik extends React.Component {
     return (
 
         <div className="bx-emp-form-container">
-            <MyEnhancedForm />
+            <MyEnhancedForm initialValues={this.props.initialValues}/>
         </div>
 
     );

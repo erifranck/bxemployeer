@@ -40,13 +40,17 @@
   display: inline-block;
   width: 100%;
 }
-
-.closeBtn{
-  position: relative;
-  float: right;
-  right: 15px;
-  top: 0;
-  font-size: 42px;
-  transform: rotate(45deg);
-  cursor: pointer;
+.popup-header button:first-child{
+    cursor: pointer;
+    position: relative;
+    float: left;
+    left: 10px;
+    top: 0;
+}
+.popup-header button{
+    cursor: pointer;
+    position: relative;
+    float: right;
+    right: 10px;
+    top: 0;
 }

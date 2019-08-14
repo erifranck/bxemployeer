@@ -2,24 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab1d70a7-af39-491d-923c-f0a6ac99ba52" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/createStore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/people.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/rootReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/peopleService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Context/People.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Container/container.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Container/container.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PeopleList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PeopleList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/mockEmployeersService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/mockEmployeersService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DetailsEmployee/detailsEmployee.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailsEmployee/detailsEmployee.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,6 +31,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -44,7 +42,8 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RunDashboard">
@@ -86,6 +85,8 @@
       <updated>1563853011310</updated>
       <workItem from="1563853014190" duration="1065000" />
       <workItem from="1564575052629" duration="37452000" />
+      <workItem from="1565615241655" duration="150000" />
+      <workItem from="1565615406099" duration="12943000" />
     </task>
     <servers />
   </component>

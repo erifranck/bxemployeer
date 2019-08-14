@@ -26,14 +26,15 @@ class PeopleListComponent extends React.Component {
         return (
             <Container>
                 <ModalConsumer>
+                {({toggleModal, toggleDetails}) => (
 
-                {({toggleModal}) => (
                     <>
 
                         <Table
                             dataLabels={peopleListLabels}
                             data={this.props.data}
                             onDelete={ (id) => toggleModal(true, null, () => this.deletePerson(id))()}
+                            onDetails={ (objectValue) => toggleDetails(true, objectValue)()}
                         />
                     </>
                 )}
