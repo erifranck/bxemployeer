@@ -1,6 +1,7 @@
 import React from 'react';  
 //import {NewEmployee} from '../NewEmployee/NewEmployee';
 import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik'
+import {popupContent} from '../Container/Container'
 import './popup.css';  
 
 export class Popup extends React.Component { 
@@ -14,7 +15,7 @@ export class Popup extends React.Component {
 
     onSaveEmployee = () => {
 
-        if(this.validateFields(this.state)) {
+        if (this.validateFields(this.state)) {
             this.saveEmployee(this.state);
         }
     }
@@ -53,10 +54,10 @@ export class Popup extends React.Component {
                     </div>
                     <div className='popup-content'> 
                         {
-                            this.props.content === "newEmployeeForm" ? <NewEmployeeWithFormik/> : null
+                            this.props.content === popupContent.NEW_EMPLOYEE ? <NewEmployeeWithFormik/> : null
                         }
                         {
-                        //    this.props.content === "newKishipForm" ? <NewKinshipForm/> : null
+                            // this.props.content === popupContent.NEW_Kinship ? <NewKinship/> : null
                         }
                     </div> 
                 </div>  

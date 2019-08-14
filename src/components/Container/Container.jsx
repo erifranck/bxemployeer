@@ -10,7 +10,7 @@ import {Button} from "../Button/Button"
 const {Consumer, Provider} = React.createContext({});
 export const ModalConsumer = Consumer;
 
-const popupContent = {
+export const popupContent = {
     NEW_EMPLOYEE: 'newEmployee',
     NEW_KINSHIP: 'newKinship',
 }
@@ -26,16 +26,19 @@ class Container extends React.Component {
             content: '',
             listeners: []
         };
-        // this.openPopup = this.openPopup.bind(this);
-        // this.closePopup = this.closePopup.bind(this);
+        
     }
 
     closePopup() {
-        this.setState({showPopup : false});
+        this.setState({showPopup : false})
     }
 
     openPopup(content) {
-        this.setState({showPopup : true, content : content});
+        console.log(this.state)
+        this.setState({showPopup : true, content: content})
+        setTimeout( () => { console.log(this.state); }, 1000);
+        
+    
     }    
     
     toggleModal = (value, confirmValue, callback) => () => {
@@ -57,14 +60,15 @@ class Container extends React.Component {
                <div className="bx-dashboard-wrapper">
                    <div className="bx-dashboard-container">
                         <Header>
-                            <Button addButton={true} primary={true} onClick={ () => this.openPopup(popupContent.NEW_EMPLOYEE) }>
+                            <Button addEmployeeButton={true} primary={true} onClick={ () => this.openPopup(popupContent.NEW_EMPLOYEE) }>
                                 +
                             </Button>
                         </Header>
                        {this.props.children}
-                       {
+
+                        {
                             this.state.showPopup ?
-                               <Popup  closePopup={this.closePopup()}/>
+                               <Popup content={this.state.content} closePopup={ () => this.closePopup() }/>
                             : null
                         }
 

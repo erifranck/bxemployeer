@@ -10,7 +10,7 @@ export const Button = (props) =>  {
         secondary: props.secondary,
         "bx-button-options": props.isOption,
         "confirmButton": props.confirmButton,
-        "addButton": props.addButton,
+        "addEmployeeButton": props.addEmployeeButton,
         "saveButton": props.saveButton,
         "home": props.home
     });
@@ -35,7 +35,7 @@ Button.propTypes = {
     title: PropTypes.string,
     isOption: PropTypes.bool,
     confirmButton: PropTypes.bool,
-    addButton: PropTypes.bool,
+    addEmployeeButton: PropTypes.bool,
     saveButton: PropTypes.bool,
     home: PropTypes.bool,
 };
