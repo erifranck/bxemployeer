@@ -1,22 +1,11 @@
 import React from 'react';  
 //import {NewEmployee} from '../NewEmployee/NewEmployee';
-import {NewEmployeeWithFormik} from '../../NewEmployee/NewEmployeeWithFormik'
-import './popupNewEmployee.css';  
+import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik'
+import './popup.css';  
 
-export class PopupNewEmployee extends React.Component { 
+export class Popup extends React.Component { 
     constructor(props) {
         super(props);
-        this.state = {
-            firstName: "",
-            lastName: "",
-            dateOfBirth: "",
-            docType: "-",
-            docNumber: "",
-            gender: "-",
-            nationality: "-",
-            phone: "",
-            email: "",
-        }
     }
 
     onChangeInputForm = (key, value) => {
@@ -62,8 +51,13 @@ export class PopupNewEmployee extends React.Component {
                     <div className="popup-header">
                         <div className="closeBtn" onClick={this.props.closePopup}> + </div>
                     </div>
-                    <div className='popup-content'>
-                        <NewEmployeeWithFormik/>
+                    <div className='popup-content'> 
+                        {
+                            this.props.content === "newEmployeeForm" ? <NewEmployeeWithFormik/> : null
+                        }
+                        {
+                        //    this.props.content === "newKishipForm" ? <NewKinshipForm/> : null
+                        }
                     </div> 
                 </div>  
             </div>  
