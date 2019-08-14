@@ -1,6 +1,14 @@
 export function getPeople() {
-    return fetch('http://localhost:8080/personAPI/employees')
-        .then(res => res.json());
+    return new Promise((resolve, reject) => {
+        fetch('http://localhost:8080/personAPI/employees')
+            .then(res => {
+                if(res.status === 200) {
+                    resolve(res.json());
+                } else {
+                    reject( new Error(res.json()));
+                }
+            })
+    });
 }
 
 export function deletePerson(id, url) {

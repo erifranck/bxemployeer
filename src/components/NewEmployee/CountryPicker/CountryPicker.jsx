@@ -4,7 +4,7 @@ import countryList from 'react-select-country-list'
 
 export class CountryPicker extends React.Component {
     constructor(props) {
-      super(props)
+      super(props);
   
       this.options = countryList().getData().filter( ({label}) => {
           return (
@@ -17,30 +17,29 @@ export class CountryPicker extends React.Component {
           label === "United States" ||
           label === "Uruguay"
           )
-      })
+      });
       
       this.state = {
         options: this.options,
-        value: null,
       }
   
     }
-  
+
     changeHandler = value => {
-      this.setState({ value })
       this.props.onSelectCountry(value.label)
-    }
+    };
   
     render() {
       return (
         <Select
           options={this.state.options}
-          value={this.state.value}
+          value={this.state.options.filter(item => {
+              return item.label === this.props.value;
+          })[0]}
           onChange={this.changeHandler}
         />
       )
     }
   }
-  
   
   

@@ -103,7 +103,16 @@ const MyForm = props => {
                         <label>Date of birth</label>
                         <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
-                                    <Field render={({field}) => <input type="date" value={getDate(new Date(field.value))}/>}
+                                    <Field render={
+                                        ({field}) =>
+                                            (<input
+                                                type="date"
+                                                value={getDate(new Date(field.value))}
+                                                onChange={(ev) => {
+                                                    setFieldValue('dateOfBirth', String(ev.target.value))
+                                                }}
+                                            />)
+                                    }
                                         type="date"
                                         name="dateOfBirth"
                                     />

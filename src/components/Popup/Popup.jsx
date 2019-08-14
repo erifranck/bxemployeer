@@ -1,7 +1,7 @@
 import React from 'react';  
-//import {NewEmployee} from '../NewEmployee/NewEmployee';
 import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik'
-import './popup.css';  
+import './popup.css';
+import {Button} from "../Button/Button";
 
 export class Popup extends React.Component { 
     constructor(props) {
