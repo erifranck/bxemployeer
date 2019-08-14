@@ -3,6 +3,7 @@ import './container.css';
 import {Header} from "../Header/Header";
 import {Modal} from "../Modal/Modal";
 import {Popup} from "../Popup/Popup";
+import {NewKinship} from "../NewKinship/NewKinship"
 // import {PopupNewKinship} from "../Popups/PopUpKinship/PopupNewKinship";
 
 import {Button} from "../Button/Button"
@@ -61,7 +62,6 @@ class Container extends React.Component {
                             </Button>
                         </Header>
                        {this.props.children}
-
                        {
                             this.state.showPopup ?
                                <Popup  closePopup={this.closePopup()}/>
