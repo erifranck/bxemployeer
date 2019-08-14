@@ -25,7 +25,7 @@ const createPeopleFail = (error) =>  ({ type: CREATE_PEOPLE_FAIL, response: {err
 export function getPeopleRequest() {
     return (dispatch, getState) => {
         dispatch(onFetch());
-        myRequest()
+        getPeople()
             .then(value => {
                 dispatch(getPeopleSuccess(value));
             })
@@ -38,7 +38,7 @@ export function getPeopleRequest() {
 export function deletePersonRequest(id) {
     return (dispatch, getState) => {
         dispatch(onFetch());
-        deleteMock(id, 'http://localhost:8080/personAPI/employees')
+        deletePerson(id, 'http://localhost:8080/personAPI/employees')
             .then(() => {
                 dispatch(deletePeopleSuccess(id));
                 alert("Person with id: " + id + " deleted correctly")
