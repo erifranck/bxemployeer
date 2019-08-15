@@ -5,13 +5,15 @@ import {store} from "../redux/createStore";
 import {PeopleList} from "./PeopleList";
 
 import '../App.css';
+import {KinshipList} from "./KinshipList";
 
 class App extends React.Component {
     render () {
         return (
             <Provider store={store}>
                 <Router>
-                    <Route path="/" component={PeopleList} />
+                    <Route path="/" component={KinshipList} />
+                    <Route path="/kinships" component={KinshipList}/>
                 </Router>
             </Provider>
         );

@@ -54,7 +54,9 @@ class Container extends React.Component {
     render() {
         const {openModal, openDetails, objectValue} = this.state;
        return (
-           <Provider value={{openModal, toggleModal: this.toggleModal, openDetails, toggleDetails:this.toggleDetails, objectValue: objectValue}} >
+           <Provider value={{openModal, toggleModal: this.toggleModal,
+                openDetails, toggleDetails:this.toggleDetails, objectValue: objectValue,}}
+           >
                <div className="bx-dashboard-wrapper">
                    <div className="bx-dashboard-container">
                         <Header>
@@ -79,6 +81,8 @@ class Container extends React.Component {
                                     onCloseDetails={this.toggleDetails(false, null)}
                                     objectValue={objectValue || {}}
                                     onEdit={this.openPopup}
+                   />
+                   /* crear componente para editar kinship*/
                    />
                </div>
            </Provider>

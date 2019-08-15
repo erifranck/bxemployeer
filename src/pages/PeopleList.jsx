@@ -14,15 +14,6 @@ class PeopleListComponent extends React.Component {
         this.props.deletePeopleRequest(id);
     }
     render () {
-
-        var dataCopy = this.props.data
-        console.log("data: ",this.props.data)
-
-        dataCopy.forEach( (d) => console.log(d))
-
-        console.log("dataCopy: ",dataCopy)
-
-        
         return (
             <Container>
                 <ModalConsumer>
