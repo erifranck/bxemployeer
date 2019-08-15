@@ -5,12 +5,12 @@ import {
     PEOPLE_REQUEST,
     GET_PEOPLE_SUCCESS,
     SEARCH_PEOPLE,
-    SORT_PEOPLE_BY
+    SORT_PEOPLE_BY,
+    CREATE_PEOPLE_FAIL, 
+    CREATE_PEOPLE_SUCCESS, 
+    EDIT_PEOPLE_SUCCESS, 
+    EDIT_PEOPLE_FAIL,
 } from "../reducers/people";
-import {deletePerson, getPeople} from "../../services/peopleService";
-    GET_PEOPLE_SUCCESS, CREATE_PEOPLE_FAIL, CREATE_PEOPLE_SUCCESS, EDIT_PEOPLE_SUCCESS, EDIT_PEOPLE_FAIL
-} from "../reducers/people";
-import {deleteMock, myRequest} from "../../services/mockEmployeersService";
 import {createPerson, deletePerson, getPeople, editPerson} from "../../services/peopleService";
 
 const onFetch = () => (  { type: PEOPLE_REQUEST, } );
