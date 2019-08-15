@@ -82,8 +82,6 @@ class Container extends React.Component {
                                     objectValue={objectValue || {}}
                                     onEdit={this.openPopup}
                    />
-                   /* crear componente para editar kinship*/
-                   />
                </div>
            </Provider>
        )
