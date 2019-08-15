@@ -7,7 +7,6 @@ import {
     SEARCH_PEOPLE,
     SORT_PEOPLE_BY
 } from "../reducers/people";
-import {deleteMock, myRequest} from "../../services/mockEmployeersService";
 import {deletePerson, getPeople} from "../../services/peopleService";
 
 const onFetch = () => (  { type: PEOPLE_REQUEST, } );
@@ -41,7 +40,7 @@ export function getPeopleRequest() {
 export function deletePersonRequest(id) {
     return (dispatch, getState) => {
         dispatch(onFetch());
-        deleteMock(id, 'http://localhost:8080/personAPI/employees')
+        deletePerson(id, 'http://localhost:8080/personAPI/employees')
             .then(() => {
                 dispatch(deletePeopleSuccess(id));
                 alert("Person with id: " + id + " deleted correctly")

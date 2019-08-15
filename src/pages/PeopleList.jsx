@@ -12,7 +12,9 @@ class PeopleListComponent extends React.Component {
     }
 
     componentDidUpdate(preProps){
-        console.log(preProps, this.props);
+       if(preProps !== this.props){
+           this.setState(this.props);
+       }
     }
 
     deletePerson(id){
