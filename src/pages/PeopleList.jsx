@@ -35,7 +35,7 @@ class PeopleListComponent extends React.Component {
                             dataLabels={peopleListLabels}
                             data={this.props.data}
                             onDelete={ (id) => toggleModal(true, null, () => this.deletePerson(id))()}
-                            onAddKinship={ (id) => openPopup(popupContent.NEW_KINSHIP,id) }
+                            onAddKinship={ (id) => openPopup(popupContent.NEW_KINSHIP,this.props.data,id) }
                             onDetails={ (objectValue) => toggleDetails(true, objectValue)() }
                         />
                     </>

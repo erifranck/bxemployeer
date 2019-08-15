@@ -10,12 +10,21 @@ export class NewKinship extends React.Component {
             targetEmployee: '',
             kinship: ''
         }
+        this.onChangeInput = this.onChangeInput.bind(this);
     }
 
     onChangeInput(e) {
         this.setState({[e.target.name]: e.target.value})
-        setTimeout( () => { console.log(this.state) }, 3000);
+    }
 
+    getSourceInfo(array) {
+        console.log(array)
+        var obj = array.filter( emp => emp.id ===  this.state.sourceEmployee )[0]
+        return this.getEmployeeTag(obj)
+    }    
+    
+    getEmployeeTag(emp) {
+        return emp.firstNames + " " + emp.lastNames + " - " + emp.documentID
     }
 
     render() {
@@ -28,11 +37,12 @@ export class NewKinship extends React.Component {
                                 SourceEmployee:
                             <select
                                     name="sourceEmployee"
-                                    onChange={this.onChangeInput.bind(this)}
+                                    onChange={this.onChangeInput}
                                     value={this.state.sourceEmployee}
                                     disabled={this.state.sourceDisabled}
                                     >
-                                    <option value={this.state.sourceEmployee}>{this.state.sourceEmployee}</option>
+                                    <option value={this.state.sourceEmployee}>{this.getSourceInfo(this.props.employeesData)}
+                                    </option>
                                 </select>
                             </label>
                         </div>
@@ -43,17 +53,17 @@ export class NewKinship extends React.Component {
                                 TargetEmployee:
                                 <select
                                     name="targetEmployee"
-                                    onChange={this.onChangeInput.bind(this)}
+                                    onChange={this.onChangeInput}
                                     value={this.state.targetEmployee}
 
                                 >
-                                    <option value="Father">Father</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="1231">1231</option>
-                                    <option value="5">5</option>
+
+                                {
+                                    this.props.employeesData.map(emp =>
+                                        <option key={emp.id} value={emp.id}>{this.getEmployeeTag(emp)}</option>
+                                      )
+                                };
+
                                 </select>
                             </label>
                         </div>
@@ -64,7 +74,7 @@ export class NewKinship extends React.Component {
                                 Type:
                                 <select
                                     name="kinship"
-                                    onChange={this.onChangeInput.bind(this)}
+                                    onChange={this.onChangeInput}
                                     value={this.state.kinship}
                                 >
                                     <option value="Father">Father</option>

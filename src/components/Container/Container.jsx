@@ -28,6 +28,7 @@ class Container extends React.Component {
             showPopup: false,
             content: '',
             sourceEmployee:'',
+            employeesData:'',
         };
         this.openPopup = this.openPopup.bind(this);
         this.closePopup = this.closePopup.bind(this);
@@ -37,8 +38,8 @@ class Container extends React.Component {
         this.setState({showPopup : false})
     }
 
-    openPopup(content,id) {
-        this.setState({showPopup : true, content: content, sourceEmployee: id})
+    openPopup(content,employeesData,id) {
+        this.setState({showPopup : true, content: content, sourceEmployee: id, employeesData: employeesData})
     }    
     
     toggleModal = (value, confirmValue, callback) => () => {
@@ -81,6 +82,7 @@ class Container extends React.Component {
                                     content={this.state.content} 
                                     sourceEmployee={this.state.sourceEmployee}
                                     closePopup={ () => this.closePopup() }
+                                    employeesData={this.state.employeesData}
                                 />
                             : null
                         }

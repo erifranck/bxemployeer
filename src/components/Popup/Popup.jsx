@@ -76,7 +76,12 @@ export class Popup extends React.Component {
                             this.props.content === popupContent.NEW_EMPLOYEE ? <NewEmployeeWithFormik initialValues={this.state}/> : null
                         }
                         {
-                            this.props.content === popupContent.NEW_KINSHIP ? <NewKinship sourceEmployee={this.props.sourceEmployee} /> : null
+                            this.props.content === popupContent.NEW_KINSHIP ? 
+                            <NewKinship 
+                                sourceEmployee={this.props.sourceEmployee}
+                                employeesData={this.props.employeesData}
+                            /> :
+                            null
                         }
                     </div> 
                 </div>  
