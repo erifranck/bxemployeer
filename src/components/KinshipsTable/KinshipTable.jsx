@@ -1,0 +1,43 @@
+import React from 'react';
+import '../Table/table.css';
+import PropTypes from "prop-types";
+import {Button} from "../Button/Button";
+
+export const KinshipTable = (props) => (
+    <table className="bx-table-container">
+        <caption className="bx-table-caption">Belatrix Employees - Kinships</caption>
+        <thead>
+            <tr>
+                {
+                    props.dataLabels.map((key, index) => (
+                        <th key={index} >{key}</th>
+                    ))
+                }
+            </tr>
+        </thead>
+        <tbody>
+        {
+            props.data.map((objectValue) => (
+                <tr key={objectValue.id}>
+                    {
+                        Object.values(objectValue).slice(1).map( (value, index) => (
+                            <td key={index}>{value}</td>
+                        ))
+                    }
+                    <td>
+                        <Button title={"Edit Kinship"} isOption={true} onClick={() => alert("Reemplazar alert en KinshipTable.jsx con: props.editKinship(objectValue)")}><i className="fas fa-edit"/></Button>
+                        <Button title={"Delete kinship"} isOption={true} onClick={() => props.onDeleteKinship(objectValue.id)}><i className="fas fa-trash-alt"/></Button>
+                    </td>
+                </tr>
+            ))
+        }
+        </tbody>
+    </table>
+);
+
+KinshipTable.propTypes = {
+    dataLabels: PropTypes.array.isRequired,
+    onDeleteKinship: PropTypes.func.isRequired,
+    data: PropTypes.array.isRequired,
+    editKinship: PropTypes.func.isRequired,
+};

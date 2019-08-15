@@ -4,3 +4,10 @@ export const peopleListLabels = [
   {label: 'Document', key:'documentID'},
   {label: 'Nationality', key: 'nationality'},
 ];
+
+export const kinshipListLabels = [
+  'Employee Source',
+  'Type of kinship',
+  'Employee Target',
+    'Manage'
+];

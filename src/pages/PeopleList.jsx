@@ -20,7 +20,6 @@ class PeopleListComponent extends React.Component {
     deletePerson(id){
         this.props.deletePeopleRequest(id);
     }
-
     render () {
         return (
             <Container>
