@@ -12,6 +12,7 @@ export const Button = (props) =>  {
         "confirmButton": props.confirmButton,
         "addEmployeeButton": props.addEmployeeButton,
         "saveButton": props.saveButton,
+        "editButton": props.editButton,
         "home": props.home
     });
 
@@ -38,4 +39,6 @@ Button.propTypes = {
     addEmployeeButton: PropTypes.bool,
     saveButton: PropTypes.bool,
     home: PropTypes.bool,
+    id: PropTypes.string,
+    editButton: PropTypes.bool,
 };

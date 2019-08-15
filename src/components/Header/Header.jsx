@@ -11,13 +11,6 @@ export const Header = (props) => (
             <h1>Bxemployeers
                 {props.children}
             </h1>
-            {/*
-                <div>buscador</div>
-                < div > button < /div>
-                <div>button</div>
-                <div>avatar</div>
-            */}
-
         </nav>
     </header>
 );

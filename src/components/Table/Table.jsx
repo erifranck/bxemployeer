@@ -25,7 +25,7 @@ export const Table = (props) => (
                         ))
                     }
                     <td>
-                        <Button title={"Details"} isOption={true}><i className="fas fa-info-circle"/></Button>
+                        <Button title={"Details"} isOption={true} onClick={() => props.onDetails(objectValue)}><i className="fas fa-info-circle"/></Button>
                         <Button title={"Add kinship"} isOption={true}><i className="fas fa-user-plus"/></Button>
                         <Button title={"Delete employee"} isOption={true} onClick={() => props.onDelete(objectValue.id)}><i className="fas fa-trash-alt"/></Button>
                     </td>
@@ -40,4 +40,5 @@ Table.propTypes = {
     dataLabels: PropTypes.array.isRequired,
     onDelete: PropTypes.func.isRequired,
     data: PropTypes.array.isRequired,
-}
+    onDetails: PropTypes.func.isRequired,
+};

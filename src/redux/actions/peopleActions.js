@@ -3,10 +3,10 @@ import {
     DELETE_PEOPLE_SUCCESS,
     GET_PEOPLE_FAIL,
     PEOPLE_REQUEST,
-    GET_PEOPLE_SUCCESS, CREATE_PEOPLE_FAIL, CREATE_PEOPLE_SUCCESS
+    GET_PEOPLE_SUCCESS, CREATE_PEOPLE_FAIL, CREATE_PEOPLE_SUCCESS, EDIT_PEOPLE_SUCCESS, EDIT_PEOPLE_FAIL
 } from "../reducers/people";
 import {deleteMock, myRequest} from "../../services/mockEmployeersService";
-import {createPerson, deletePerson, getPeople} from "../../services/peopleService";
+import {createPerson, deletePerson, getPeople, editPerson} from "../../services/peopleService";
 
 const onFetch = () => (  { type: PEOPLE_REQUEST, } );
 
@@ -22,12 +22,17 @@ const createPeopleSuccess = (person) => ( { type: CREATE_PEOPLE_SUCCESS, person:
 
 const createPeopleFail = (error) =>  ({ type: CREATE_PEOPLE_FAIL, response: {error: error}});
 
+const editPeopleSuccess = (person) => ( { type: EDIT_PEOPLE_SUCCESS, person: person } );
+
+const editPeopleFail = (error) =>  ({ type: EDIT_PEOPLE_FAIL, response: {error: error}});
+
 export function getPeopleRequest() {
     return (dispatch, getState) => {
         dispatch(onFetch());
         getPeople()
             .then(value => {
-                dispatch(getPeopleSuccess(value));
+
+                dispatch(getPeopleSuccess({data: value}));
             })
             .catch(error => {
                 dispatch(getPeopleFail(error));
@@ -58,6 +63,19 @@ export function createPersonRequest(payload) {
             })
             .catch(error => {
                 dispatch(createPeopleFail(error));
+            })
+    }
+}
+
+export function editPersonRequest(payload) {
+    return (dispatch, getState) => {
+        dispatch(onFetch());
+        editPerson(payload)
+            .then( () => {
+                dispatch(editPeopleSuccess({...payload,id: Math.random()}));
+            })
+            .catch(error => {
+                dispatch(editPeopleFail(error));
             })
     }
 }

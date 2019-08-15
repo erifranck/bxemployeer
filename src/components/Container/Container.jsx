@@ -2,11 +2,11 @@ import React from 'react';
 import './container.css';
 import {Header} from "../Header/Header";
 import {Modal} from "../Modal/Modal";
+import {DetailsEmployee} from "../DetailsEmployee/DetailsEmployee";
 import {Popup} from "../Popup/Popup";
-import {NewKinship} from "../NewKinship/NewKinship"
-// import {PopupNewKinship} from "../Popups/PopUpKinship/PopupNewKinship";
 
 import {Button} from "../Button/Button"
+
 const {Consumer, Provider} = React.createContext({});
 export const ModalConsumer = Consumer;
 
@@ -22,11 +22,13 @@ class Container extends React.Component {
         super(props);
         this.state = {
             openModal: false,
+            listeners: [],
+            openDetails: false,
+            objectValue: null,
             showPopup: false,
-            content: '',
-            listeners: []
         };
-        
+        this.openPopup = this.openPopup.bind(this);
+        this.closePopup = this.closePopup.bind(this);
     }
 
     closePopup() {
@@ -53,10 +55,18 @@ class Container extends React.Component {
            this.setState({listeners: []});
        }
     };
+
+    toggleDetails = (value, objectValue) => () => {
+        this.setState({
+            openDetails: value,
+            objectValue: objectValue,
+        });
+    };
+
     render() {
-        const {openModal} = this.state;
+        const {openModal, openDetails, objectValue} = this.state;
        return (
-           <Provider value={{openModal, toggleModal: this.toggleModal}} >
+           <Provider value={{openModal, toggleModal: this.toggleModal, openDetails, toggleDetails:this.toggleDetails, objectValue: objectValue}} >
                <div className="bx-dashboard-wrapper">
                    <div className="bx-dashboard-container">
                         <Header>
@@ -68,7 +78,11 @@ class Container extends React.Component {
 
                         {
                             this.state.showPopup ?
-                               <Popup content={this.state.content} closePopup={ () => this.closePopup() }/>
+                                <Popup 
+                                    initialValues={this.state.objectValue || {}} 
+                                    content={this.state.content} 
+                                    closePopup={ () => this.closePopup() }
+                                />
                             : null
                         }
 
@@ -78,6 +92,11 @@ class Container extends React.Component {
                           openModal={this.state.openModal}
                           onCloseModal={this.toggleModal(false, false)}
                           onConfirmModal={this.toggleModal(false, true)}
+                   />
+                   <DetailsEmployee openDetails={this.state.openDetails && !this.state.showPopup}
+                                    onCloseDetails={this.toggleDetails(false, null)}
+                                    objectValue={objectValue || {}}
+                                    onEdit={this.openPopup}
                    />
                </div>
            </Provider>
