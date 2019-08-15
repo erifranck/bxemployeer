@@ -34,7 +34,7 @@ export function kinshipsReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 isFetch: false,
-                data: state.data.filter(item => item.id !== action.id)
+                data: state.data.filter(item => item.id !== action.id),
             };
         case DELETE_KINSHIPS_FAIL:
             return {
