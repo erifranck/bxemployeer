@@ -9,10 +9,9 @@ export const Header = (props) => (
             <Button home={true} onClick={() => console.log("clicked")}>
                 <Menu/>
             </Button>
-            <div>
-            <h1>Bxemployeers</h1>
-            </div>
-            
+            <h1>Bxemployeers
+                {props.children}
+            </h1>
         </nav>
     </header>
 );

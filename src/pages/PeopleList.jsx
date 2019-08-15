@@ -22,10 +22,20 @@ class PeopleListComponent extends React.Component {
     }  
 
     render () {
+
+        var dataCopy = this.props.data
+        console.log("data: ",this.props.data)
+
+        dataCopy.forEach( (d) => console.log(d))
+
+        console.log("dataCopy: ",dataCopy)
+
+        
         return (
             <Container>
                 <ModalConsumer>
-                {({toggleModal}) => (
+                {({toggleModal, toggleDetails}) => (
+
                     <>
                         <div classname='search-bar-container'>
                             <Searcher items={this.props.data}/>
@@ -38,6 +48,7 @@ class PeopleListComponent extends React.Component {
                             })}
                             onDelete={ (id) => toggleModal(true, null, () => this.deletePerson(id))()}
                             onClickColumn={(key) => this.props.sortPeopleBy(key)}
+                            onDetails={ (objectValue) => toggleDetails(true, objectValue)()}
                         />
                     </>
                 )}

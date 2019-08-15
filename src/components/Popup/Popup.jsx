@@ -1,71 +1,39 @@
 import React from 'react';  
-//import {NewEmployee} from '../NewEmployee/NewEmployee';
 import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik'
-
-import './popup.css';  
+import './popup.css';
+import {Button} from "../Button/Button";
 
 export class Popup extends React.Component { 
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
-            dateOfBirth: "",
-            docType: "-",
-            docNumber: "",
-            gender: "-",
-            nationality: "-",
-            phone: "",
-            email: "",
+            firstName: "" || this.props.initialValues.firstNames,
+            lastName: "" || this.props.initialValues.lastNames,
+            dateOfBirth: "" || this.props.initialValues.dateOfBirth,
+            docType: ""|| this.props.initialValues.documentType,
+            docNumber: "" || this.props.initialValues.documentID,
+            gender: "" || this.props.initialValues.gender,
+            nationality: "" || this.props.initialValues.nationality,
+            phone: "" || this.props.initialValues.contact,
+            email: "" || this.props.initialValues.contact,
+            id: this.props.initialValues.id,
         }
-    }
-
-    onChangeInputForm = (key, value) => {
-        this.setState({[key]: value});
-    }
-
-    onSaveEmployee = () => {
-
-        if(this.validateFields(this.state)) {
-            this.saveEmployee(this.state);
-        }
-    }
-
-    saveEmployee(empData) {
-
-        var objToSend = {};
-
-        objToSend["firstNames"] = empData.firstName;
-        objToSend["lastNames"] = empData.lastName;
-        objToSend["dateOfBirth"] = empData.dateOfBirth;
-        objToSend["documentType"] = empData.docType;
-        objToSend["documentID"] = empData.docNumber;
-        objToSend["gender"] = empData.gender;
-        objToSend["nationality"] = empData.nationality;
-        objToSend["contact"] = empData.email;
-        objToSend["relationships"] = [];      
-    
-        fetch('http://localhost:8080/personAPI/employees', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-            },
-            body: JSON.stringify(objToSend)
-          })
     }
     
     render() {
         return (  
-            <div className='popup-background' /*onClick={this.props.closePopup}*/>  
+            <div className='popup-background'>
                 <div className='popup'>  
-                    <div className="closeBtn" onClick={this.props.closePopup}> + </div>
+                    <div className="popup-header">
+                        <Button title={"Go back"} secondary={true} onClick={this.props.closePopup} >
+                            <i className="fas fa-arrow-left fa-lg"/>
+                        </Button>
+                        <Button title={"Close"} secondary={true} onClick={this.props.closePopup} >
+                            <i className="fas fa-times fa-lg"/>
+                        </Button>
+                    </div>
                     <div className='popup-content'>
-                        {/* <NewEmployee onChangeInput={this.onChangeInputForm} /> 
-                        firstName="Dani" lastName="Brosio" dateOfBirth="1994-02-18" docType="DNI" docNumber="35886976" gender="M" nationality="Argentina" phone="-" email="danebrosio@gmail.com"
-                    */}
-                        <NewEmployeeWithFormik  />
+                        <NewEmployeeWithFormik initialValues={this.state}/>
                     </div> 
                 </div>  
             </div>  

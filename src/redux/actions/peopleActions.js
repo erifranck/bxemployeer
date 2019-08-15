@@ -8,6 +8,10 @@ import {
     SORT_PEOPLE_BY
 } from "../reducers/people";
 import {deletePerson, getPeople} from "../../services/peopleService";
+    GET_PEOPLE_SUCCESS, CREATE_PEOPLE_FAIL, CREATE_PEOPLE_SUCCESS, EDIT_PEOPLE_SUCCESS, EDIT_PEOPLE_FAIL
+} from "../reducers/people";
+import {deleteMock, myRequest} from "../../services/mockEmployeersService";
+import {createPerson, deletePerson, getPeople, editPerson} from "../../services/peopleService";
 
 const onFetch = () => (  { type: PEOPLE_REQUEST, } );
 
@@ -22,14 +26,20 @@ const deletePeopleFail = (error) => ({ type: DELETE_PEOPLE_FAIL, response: { err
 export const searchPeople = (search) => ({type: SEARCH_PEOPLE, search: search});
 
 export const sortPeopleBy = (key) => ({type: SORT_PEOPLE_BY, key: key});
+const createPeopleSuccess = (person) => ( { type: CREATE_PEOPLE_SUCCESS, person: person } );
+
+const createPeopleFail = (error) =>  ({ type: CREATE_PEOPLE_FAIL, response: {error: error}});
+
+const editPeopleSuccess = (person) => ( { type: EDIT_PEOPLE_SUCCESS, person: person } );
+
+const editPeopleFail = (error) =>  ({ type: EDIT_PEOPLE_FAIL, response: {error: error}});
 
 export function getPeopleRequest() {
     return (dispatch, getState) => {
         dispatch(onFetch());
-       getPeople()
+        getPeople()
             .then(value => {
-                console.log(value);
-                dispatch(getPeopleSuccess({data: value}))
+                dispatch(getPeopleSuccess({data: value}));
             })
             .catch(error => {
                 dispatch(getPeopleFail(error));
@@ -47,6 +57,32 @@ export function deletePersonRequest(id) {
             })
             .catch(error => {
                 dispatch(deletePeopleFail(error));
+            })
+    }
+}
+
+export function createPersonRequest(payload) {
+    return (dispatch, getState) => {
+        dispatch(onFetch());
+        createPerson(payload)
+            .then( () => {
+                dispatch(createPeopleSuccess({...payload,id: Math.random()}));
+            })
+            .catch(error => {
+                dispatch(createPeopleFail(error));
+            })
+    }
+}
+
+export function editPersonRequest(payload) {
+    return (dispatch, getState) => {
+        dispatch(onFetch());
+        editPerson(payload)
+            .then( () => {
+                dispatch(editPeopleSuccess({...payload,id: Math.random()}));
+            })
+            .catch(error => {
+                dispatch(editPeopleFail(error));
             })
     }
 }
