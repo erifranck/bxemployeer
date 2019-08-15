@@ -1,7 +1,8 @@
 import React from 'react';  
-import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik'
-import {popupContent} from '../Container/Container'
+import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik';
+import {popupContent} from '../Container/Container';
 import {Button} from "../Button/Button";
+import {NewKinship} from '../NewKinship/NewKinship';
 import './popup.css';
 
 export class Popup extends React.Component { 
@@ -75,7 +76,7 @@ export class Popup extends React.Component {
                             this.props.content === popupContent.NEW_EMPLOYEE ? <NewEmployeeWithFormik initialValues={this.state}/> : null
                         }
                         {
-                            // this.props.content === popupContent.NEW_Kinship ? <NewKinship/> : null
+                            this.props.content === popupContent.NEW_KINSHIP ? <NewKinship sourceEmployee={this.props.sourceEmployee} /> : null
                         }
                     </div> 
                 </div>  

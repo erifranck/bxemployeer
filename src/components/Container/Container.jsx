@@ -26,6 +26,8 @@ class Container extends React.Component {
             openDetails: false,
             objectValue: null,
             showPopup: false,
+            content: '',
+            sourceEmployee:'',
         };
         this.openPopup = this.openPopup.bind(this);
         this.closePopup = this.closePopup.bind(this);
@@ -35,12 +37,8 @@ class Container extends React.Component {
         this.setState({showPopup : false})
     }
 
-    openPopup(content) {
-        console.log(this.state)
-        this.setState({showPopup : true, content: content})
-        setTimeout( () => { console.log(this.state); }, 1000);
-        
-    
+    openPopup(content,id) {
+        this.setState({showPopup : true, content: content, sourceEmployee: id})
     }    
     
     toggleModal = (value, confirmValue, callback) => () => {
@@ -66,7 +64,7 @@ class Container extends React.Component {
     render() {
         const {openModal, openDetails, objectValue} = this.state;
        return (
-           <Provider value={{openModal, toggleModal: this.toggleModal, openDetails, toggleDetails:this.toggleDetails, objectValue: objectValue}} >
+           <Provider value={{openModal, toggleModal: this.toggleModal, openDetails, toggleDetails:this.toggleDetails, objectValue: objectValue, openPopup:this.openPopup}} >
                <div className="bx-dashboard-wrapper">
                    <div className="bx-dashboard-container">
                         <Header>
@@ -81,6 +79,7 @@ class Container extends React.Component {
                                 <Popup 
                                     initialValues={this.state.objectValue || {}} 
                                     content={this.state.content} 
+                                    sourceEmployee={this.state.sourceEmployee}
                                     closePopup={ () => this.closePopup() }
                                 />
                             : null

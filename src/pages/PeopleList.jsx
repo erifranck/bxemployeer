@@ -4,6 +4,7 @@ import {Table} from "../components/Table/Table";
 import {peopleListLabels} from "../constants/peopleData";
 import {connect} from 'react-redux';
 import {deletePersonRequest, getPeopleRequest} from "../redux/actions/peopleActions";
+import {popupContent} from '../components/Container/Container';
 
 class PeopleListComponent extends React.Component {
     componentDidMount() {
@@ -26,7 +27,7 @@ class PeopleListComponent extends React.Component {
         return (
             <Container>
                 <ModalConsumer>
-                {({toggleModal, toggleDetails}) => (
+                {({toggleModal, toggleDetails, openPopup}) => (
 
                     <>
 
@@ -34,7 +35,8 @@ class PeopleListComponent extends React.Component {
                             dataLabels={peopleListLabels}
                             data={this.props.data}
                             onDelete={ (id) => toggleModal(true, null, () => this.deletePerson(id))()}
-                            onDetails={ (objectValue) => toggleDetails(true, objectValue)()}
+                            onAddKinship={ (id) => openPopup(popupContent.NEW_KINSHIP,id) }
+                            onDetails={ (objectValue) => toggleDetails(true, objectValue)() }
                         />
                     </>
                 )}
