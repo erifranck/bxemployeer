@@ -6,8 +6,7 @@ export const peopleListLabels = [
 ];
 
 export const kinshipListLabels = [
-  'Employee Source',
-  'Type of kinship',
-  'Employee Target',
-    'Manage'
+  {label: 'Employee Source', key :'emlpoyeeSourceNames'},
+  {label: 'Type of Kinship', key:'type'},
+  {label: 'Employee Target', key:'employeeTargetNames'},
 ];

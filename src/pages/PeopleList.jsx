@@ -27,9 +27,7 @@ class PeopleListComponent extends React.Component {
                 {({toggleModal, toggleDetails}) => (
 
                     <>
-                        <div classname='search-bar-container'>
                             <Searcher items={this.props.data}/>
-                        </div>
                         <Table
                             dataLabels={peopleListLabels}
                             data={this.props.data.filter(items => {
