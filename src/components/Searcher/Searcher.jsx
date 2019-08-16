@@ -1,24 +1,58 @@
 import React from 'react';
 import './searcher.css';
+import PropTypes from "prop-types";
+import {connect} from 'react-redux';
+import {searchPeople} from "../../redux/actions/peopleActions";
 
-export class Searcher extends React.Component {
+class SearchComponent extends React.Component {
     constructor(props) {
        super(props);
        this.state = {
-           value: "",
+           filtered: '',
        }
+       this.handleChange = this.handleChange.bind(this);
     }
-    cleanInput() {
+    componentDidMount() {
         this.setState({
-            value: "",
+          filtered: this.props.items
         });
     }
+      
+    componentWillReceiveProps(nextProps) {
+    this.setState({
+      filtered: nextProps.items
+    });
+    }
+
+    cleanInput() {
+        this.setState({
+            filtered: [],
+        });
+    }
+
+    onSearch = (event) => {
+        this.setState({filtered: event.target.value})
+    }
+
+    handleChange(event){
+       this.props.searchPeople(event.target.value);
+    };
+
     render() {
         return (
             <div>
-                <input type="text" />
-                <span>x</span>
+                <input type="text" className="Searcher" onChange={this.handleChange}  placeholder="Search by document..."/>
             </div>
         )
     }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    searchPeople: (value) => dispatch(searchPeople(value)),
+});
+
+export const Searcher = connect(null,mapDispatchToProps)(SearchComponent)
+
+SearchComponent.propTypes = {
+   items: PropTypes.array.isRequired,
 }

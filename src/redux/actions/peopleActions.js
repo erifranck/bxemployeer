@@ -3,7 +3,13 @@ import {
     DELETE_PEOPLE_SUCCESS,
     GET_PEOPLE_FAIL,
     PEOPLE_REQUEST,
-    GET_PEOPLE_SUCCESS, CREATE_PEOPLE_FAIL, CREATE_PEOPLE_SUCCESS, EDIT_PEOPLE_SUCCESS, EDIT_PEOPLE_FAIL
+    GET_PEOPLE_SUCCESS,
+    SEARCH_PEOPLE,
+    SORT_PEOPLE_BY,
+    CREATE_PEOPLE_FAIL, 
+    CREATE_PEOPLE_SUCCESS, 
+    EDIT_PEOPLE_SUCCESS, 
+    EDIT_PEOPLE_FAIL,
 } from "../reducers/people";
 import {createPerson, deletePerson, getPeople, editPerson} from "../../services/peopleService";
 
@@ -17,6 +23,9 @@ const deletePeopleSuccess = (id) => ( { type: DELETE_PEOPLE_SUCCESS, id: id } );
 
 const deletePeopleFail = (error) => ({ type: DELETE_PEOPLE_FAIL, response: { error: error } });
 
+export const searchPeople = (search) => ({type: SEARCH_PEOPLE, search: search});
+
+export const sortPeopleBy = (key) => ({type: SORT_PEOPLE_BY, key: key});
 const createPeopleSuccess = (person) => ( { type: CREATE_PEOPLE_SUCCESS, person: person } );
 
 const createPeopleFail = (error) =>  ({ type: CREATE_PEOPLE_FAIL, response: {error: error}});
@@ -30,7 +39,6 @@ export function getPeopleRequest() {
         dispatch(onFetch());
         getPeople()
             .then(value => {
-
                 dispatch(getPeopleSuccess({data: value}));
             })
             .catch(error => {

@@ -6,8 +6,6 @@ import {connect} from "react-redux";
 
 import {createPersonRequest, editPersonRequest} from "../../redux/actions/peopleActions";
 import {Button} from '../Button/Button'
-import Select from 'react-select'
-import countryList from 'react-select-country-list'
 import {CountryPicker} from './CountryPicker/CountryPicker';
 import './newEmployeeWithFormik.css';
 import {getDate} from "../../utils/dateManagement";

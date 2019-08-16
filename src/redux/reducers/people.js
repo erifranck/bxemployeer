@@ -1,3 +1,5 @@
+import { sortBy } from "../../utils/methods";
+
 export const PEOPLE_REQUEST = 'PEOPLE_REQUEST';
 export const CREATE_PEOPLE_SUCCESS = 'CREATE_PEOPLE_SUCCESS';
 export const CREATE_PEOPLE_FAIL = 'CREATE_PEOPLE_FAIL';
@@ -7,6 +9,8 @@ export const GET_PEOPLE_FAIL = 'GET_PEOPLE_FAIL';
 export const DELETE_PEOPLE_SUCCESS = 'DELETE_PEOPLE_SUCCESS';
 export const DELETE_PEOPLE_FAIL = 'DELETE_PEOPLE_FAIL';
 
+export const SEARCH_PEOPLE = 'SEARCH_PEOPLE';
+export const SORT_PEOPLE_BY = 'SORT_PEOPLE_BY';
 export const EDIT_PEOPLE_SUCCESS = 'EDIT_PEOPLE_SUCCESS';
 export const EDIT_PEOPLE_FAIL = 'EDIT_PEOPLE_FAIL';
 
@@ -58,6 +62,16 @@ export function peopleReducer(state = INITIAL_STATE, action) {
                 ...state,
                 isFetch: false,
                 error: action.response.error,
+            };
+        case SEARCH_PEOPLE:
+            return {
+                ...state,
+                search: action.search,
+            };
+        case SORT_PEOPLE_BY:
+            return {
+                ...state,
+               data: sortBy(action.key, state.data),
             };
         case EDIT_PEOPLE_SUCCESS:
             return {
