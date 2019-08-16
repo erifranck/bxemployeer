@@ -7,14 +7,14 @@ import {deletePersonRequest, getPeopleRequest, sortPeopleBy} from "../redux/acti
 import {Searcher} from "../components/Searcher/Searcher";
 
 class PeopleListComponent extends React.Component {
+
+
     componentDidMount() {
         this.props.getPeopleRequest();
     }
 
     componentDidUpdate(preProps){
-       if(preProps !== this.props){
-           this.setState(this.props);
-       }
+       console.log(preProps, this.props)
     }
 
     deletePerson(id){
@@ -27,7 +27,7 @@ class PeopleListComponent extends React.Component {
                 {({toggleModal, toggleDetails}) => (
 
                     <>
-                        <div classname='search-bar-container'>
+                        <div className='search-bar-container'>
                             <Searcher items={this.props.data}/>
                         </div>
                         <Table
@@ -53,7 +53,6 @@ const mapStateToProps = (state) => ({
    data: state.people.data,
     error: state.people.error,
     searchValue: state.people.search,
-    //sortKey: state.people.key
 });
 const mapDispatchToProps = (dispatch) => ({
     getPeopleRequest: () => dispatch(getPeopleRequest()),

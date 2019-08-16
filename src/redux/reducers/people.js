@@ -71,7 +71,7 @@ export function peopleReducer(state = INITIAL_STATE, action) {
         case SORT_PEOPLE_BY:
             return {
                 ...state,
-               data: sortBy(action.key, state.data),
+               data: sortBy(action.key, state.data.slice()),
             };
         case EDIT_PEOPLE_SUCCESS:
             return {
