@@ -1,0 +1,9 @@
+.bx-navbar-container{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.bx-navbar-buttons{
+    margin-top: 15px;
+}

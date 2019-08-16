@@ -60,7 +60,8 @@ class Container extends React.Component {
                <div className="bx-dashboard-wrapper">
                    <div className="bx-dashboard-container">
                         <Header>
-                            <Button addButton={true} primary={true} onClick={this.openPopup}>+</Button>
+                            <Button title={"Add new person"} addButton={true} primary={true} onClick={this.openPopup}><i className="fas fa-user-plus"/></Button>
+                            <Button title={"Add new kinship"} addKinship={true} primary={true} onClick={() => alert("hola")}><i className="fas fa-users"/></Button>
                         </Header>
                        {this.props.children}
 
