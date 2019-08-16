@@ -7,5 +7,5 @@ function compareBy(key) {
   }
  
 export function sortBy(key, array) {
-  return array.sort(compareBy(key));
+    return array.sort(compareBy(key));
 }

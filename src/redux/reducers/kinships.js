@@ -55,7 +55,7 @@ export function kinshipsReducer(state = INITIAL_STATE, action) {
         case SORT_KINSHIP_BY:
             return {
                 ...state,
-                data: sortBy(action.key, state.data),
+                data: sortBy(action.key, state.data.slice()),
             };
         default:
             return state;
