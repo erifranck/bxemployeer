@@ -27,48 +27,21 @@
 .bx-kin-form-field input{
     border: 1px solid lightgray;
     border-radius: 4px;
-    height: 20px;
     margin: 0 10px;
     width: 90%;
+    height: 36px;
+    font-size: 16px;
+    padding-left: 10px;
+
 }
 
-.bx-kin-nationality-field {
-    height: 20px;
+.bx-kin-form-elem select{
+    border: 1px solid lightgray;
+    border-radius: 4px;
     margin: 0 10px;
     width: 90%;
-}
-
-.bx-form-inputs{
-    position: relative;
-    height: 65vh;
-    overflow: auto;
-    min-height: 200px;
-    margin: 15px auto;
-}
-
-
-.popup button.saveButton{
-    cursor: pointer;
-    float: right;
-    margin-right: 25px;
-    height: 30px;
-    width: 75px;
-    background-color: #98D48C;
-    color: black;
-    font-size: 15px;
-    border-radius: 10px;
-}
-
-.popup button.saveButton:hover {
-    background-color: #caffbd;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 6px;
-    font-size: 18px;
-}
-
-.popup button.saveButton:active {
-    background-color: #68a25e;
-    font-size: 15px;
-    color:white;
-
+    height: 36px;
+    font-size: 16px;
+    padding-left: 10px;
 
 }

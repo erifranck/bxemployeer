@@ -34,7 +34,7 @@ export class NewKinship extends React.Component {
                     <div className="bx-kin-form-row">
                         <div className="bx-kin-form-elem">
                             <label>
-                                SourceEmployee:
+                                Source employee:
                             <select
                                     name="sourceEmployee"
                                     onChange={this.onChangeInput}
@@ -50,7 +50,7 @@ export class NewKinship extends React.Component {
                     <div className="bx-kin-form-row">
                         <div className="bx-kin-form-elem">
                             <label>
-                                TargetEmployee:
+                                Target employee:
                                 <select
                                     name="targetEmployee"
                                     onChange={this.onChangeInput}
@@ -71,7 +71,7 @@ export class NewKinship extends React.Component {
                     <div className="bx-kin-form-row">
                         <div className="bx-kin-form-elem">
                             <label>
-                                Type:
+                                Kiship:
                                 <select
                                     name="kinship"
                                     onChange={this.onChangeInput}
