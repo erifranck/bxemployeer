@@ -1,7 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
 import './newKinship.css';
 
-export class NewKinship extends React.Component {
+export class NewKinshipComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +20,6 @@ export class NewKinship extends React.Component {
     }
 
     getSourceInfo(array) {
-        console.log(array)
         var obj = array.filter( emp => emp.id ===  this.state.sourceEmployee )[0]
         return this.getEmployeeTag(obj)
     }    
@@ -95,3 +96,12 @@ export class NewKinship extends React.Component {
     }
 }
 
+
+const mapStateToProps = (state) => ({
+    employeesData: state.people.data,
+    error: state.people.error
+ });
+ 
+ 
+ export const NewKinship = connect(mapStateToProps)(NewKinshipComponent);
+ 

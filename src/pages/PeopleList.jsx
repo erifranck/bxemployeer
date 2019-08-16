@@ -14,16 +14,7 @@ class PeopleListComponent extends React.Component {
     deletePerson(id){
         this.props.deletePeopleRequest(id);
     }
-    render () {
-
-        var dataCopy = this.props.data
-        console.log("data: ",this.props.data)
-
-        dataCopy.forEach( (d) => console.log(d))
-
-        console.log("dataCopy: ",dataCopy)
-
-        
+    render () {        
         return (
             <Container>
                 <ModalConsumer>
@@ -35,7 +26,7 @@ class PeopleListComponent extends React.Component {
                             dataLabels={peopleListLabels}
                             data={this.props.data}
                             onDelete={ (id) => toggleModal(true, null, () => this.deletePerson(id))()}
-                            onAddKinship={ (id) => openPopup(popupContent.NEW_KINSHIP,this.props.data,id) }
+                            onAddKinship={ (id) => openPopup(popupContent.NEW_KINSHIP,id) }
                             onDetails={ (objectValue) => toggleDetails(true, objectValue)() }
                         />
                     </>
@@ -51,6 +42,7 @@ const mapStateToProps = (state) => ({
    data: state.people.data,
     error: state.people.error
 });
+
 const mapDispatchToProps = (dispatch) => ({
     getPeopleRequest: () => dispatch(getPeopleRequest()),
     deletePeopleRequest: (id) => dispatch(deletePersonRequest(id)),

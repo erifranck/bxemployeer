@@ -40,14 +40,13 @@ export class Popup extends React.Component {
                     </div>
                     <div className='popup-content'> 
                         {
-                            this.props.content === popupContent.NEW_EMPLOYEE ? <NewEmployeeWithFormik initialValues={this.state}/> : null
+                            this.props.content === popupContent.NEW_EMPLOYEE ? 
+                            <NewEmployeeWithFormik initialValues={this.state}/> :
+                            null
                         }
                         {
                             this.props.content === popupContent.NEW_KINSHIP ? 
-                            <NewKinship 
-                                sourceEmployee={this.props.sourceEmployee}
-                                employeesData={this.props.employeesData}
-                            /> :
+                            <NewKinship sourceEmployee={this.props.sourceEmployee} /> :
                             null
                         }
                     </div> 
