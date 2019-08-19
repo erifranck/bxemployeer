@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './container.css';
 import {Header} from "../Header/Header";
 import {Modal} from "../Modal/Modal";
@@ -56,6 +57,7 @@ class Container extends React.Component {
        return (
            <Provider value={{openModal, toggleModal: this.toggleModal, openDetails, toggleDetails:this.toggleDetails, objectValue: objectValue}} >
                <div className="bx-dashboard-wrapper">
+               <Link to="/">Home</Link> | <Link to="/about">About</Link>
                    <div className="bx-dashboard-container">
                         <Header>
                             <Button addButton={true} primary={true} onClick={this.openPopup}>+</Button>

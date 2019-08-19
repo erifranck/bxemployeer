@@ -5,10 +5,13 @@ import Container from "../components/Container/Container";
 export function About(){
     return(
         <React.Fragment>
-            <Container>
-                <p>This the About page v1.0.0</p>
+            <div className="bx-dashboard-wrapper">
                 <Link to="/">Home</Link> 
-                </Container>
+                   <div className="bx-dashboard-container">
+                        <p>This the About page v1.0.0</p>
+                        
+                    </div>
+            </div>
         </React.Fragment>
     );
 }

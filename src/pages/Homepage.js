@@ -5,10 +5,19 @@ import Container from "../components/Container/Container";
 export function Homepage(){
     return(
         <React.Fragment>
-            <Container>
-                <p>This is the Homepage v1.0.0</p>
+            <div className="bx-dashboard-wrapper">
                 <Link to="/about">About</Link> | <Link to="/employee-list">People</Link>
-            </Container>
+                   <div className="bx-dashboard-container">
+                        <h1>Bxemployeers</h1>
+                        <p>Fernando Balsas</p>
+                        <p>Martin Mazagatti</p>
+                        <p>Agustin Luna</p>
+                        <p>Ivan Salomon</p>
+                        <p>Daniel Brosio</p>
+                        
+                </div>
+            </div>
         </React.Fragment>
+
     )
 }
