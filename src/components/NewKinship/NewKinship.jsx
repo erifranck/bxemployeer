@@ -1,9 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {createKinshipRequest} from "../../redux/actions/kinshipsActions";
 
 import './newKinship.css';
+import { createPerson } from '../../services/peopleService';
 
-export class NewKinshipComponent extends React.Component {
+class NewKinshipComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,6 +15,7 @@ export class NewKinshipComponent extends React.Component {
             kinship: ''
         }
         this.onChangeInput = this.onChangeInput.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChangeInput(e) {
@@ -28,10 +31,18 @@ export class NewKinshipComponent extends React.Component {
         return emp.firstNames + " " + emp.lastNames + " - " + emp.documentID
     }
 
+
+    onSubmit(e) {
+        e.preventDefault()     
+        this.props.createKinship(this.state)
+
+    }
+    
+
     render() {
         return (
             <div className="bx-kin-form-container">
-                <form >
+                <form onSubmit={this.onSubmit}>
                     <div className="bx-kin-form-row">
                         <div className="bx-kin-form-elem">
                             <label>
@@ -42,8 +53,11 @@ export class NewKinshipComponent extends React.Component {
                                     value={this.state.sourceEmployee}
                                     disabled={this.state.sourceDisabled}
                                     >
-                                    <option value={this.state.sourceEmployee}>{this.getSourceInfo(this.props.employeesData)}
-                                    </option>
+                                    {
+                                        this.props.employeesData.filter( emp => emp.id !== this.state.targetEmployee ).map(emp =>
+                                            <option key={emp.id} value={emp.id}>{this.getEmployeeTag(emp)}</option>
+                                        )
+                                    };
                                 </select>
                             </label>
                         </div>
@@ -60,7 +74,7 @@ export class NewKinshipComponent extends React.Component {
                                 >
 
                                 {
-                                    this.props.employeesData.map(emp =>
+                                    this.props.employeesData.filter( emp => emp.id !== this.state.sourceEmployee ).map(emp =>
                                         <option key={emp.id} value={emp.id}>{this.getEmployeeTag(emp)}</option>
                                       )
                                 };
@@ -89,6 +103,8 @@ export class NewKinshipComponent extends React.Component {
                             </label>
                         </div>
                     </div>
+
+                    <input type="submit" value="Save kinship"></input>
                 </form>
             </div>
 
@@ -103,5 +119,10 @@ const mapStateToProps = (state) => ({
  });
  
  
- export const NewKinship = connect(mapStateToProps)(NewKinshipComponent);
+const mapDispatchToProps = (dispatch) => ({
+    createKinship: (payload) => dispatch(createKinshipRequest(payload)),
+});
+
+ 
+ export const NewKinship = connect(mapStateToProps,mapDispatchToProps)(NewKinshipComponent);
  

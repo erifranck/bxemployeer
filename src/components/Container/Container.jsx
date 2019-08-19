@@ -95,7 +95,7 @@ class Container extends React.Component {
                    <DetailsEmployee openDetails={this.state.openDetails && !this.state.showPopup}
                                     onCloseDetails={this.toggleDetails(false, null)}
                                     objectValue={objectValue || {}}
-                                    onEdit={this.openPopup}
+                                    onEdit={ () => this.openPopup(popupContent.NEW_EMPLOYEE) }
                    />
                </div>
            </Provider>
