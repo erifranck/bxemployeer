@@ -5,6 +5,7 @@ import {peopleListLabels} from "../constants/peopleData";
 import {connect} from 'react-redux';
 import {deletePersonRequest, getPeopleRequest, sortPeopleBy} from "../redux/actions/peopleActions";
 import {Searcher} from "../components/Searcher/Searcher";
+import {popupContent} from '../components/Container/Container';
 
 class PeopleListComponent extends React.Component {
     componentDidMount() {
@@ -24,7 +25,7 @@ class PeopleListComponent extends React.Component {
         return (
             <Container>
                 <ModalConsumer>
-                {({toggleModal, toggleDetails}) => (
+                {({toggleModal, toggleDetails, openPopup}) => (
 
                     <>
                             <Searcher items={this.props.data}/>
@@ -36,7 +37,8 @@ class PeopleListComponent extends React.Component {
                             })}
                             onDelete={ (id) => toggleModal(true, null, () => this.deletePerson(id))()}
                             onClickColumn={(key) => this.props.sortPeopleBy(key)}
-                            onDetails={ (objectValue) => toggleDetails(true, objectValue)()}
+                            onAddKinship={ (id) => openPopup(popupContent.NEW_KINSHIP,id) }
+                            onDetails={ (objectValue) => toggleDetails(true, objectValue)() }
                         />
                     </>
                 )}
@@ -53,6 +55,7 @@ const mapStateToProps = (state) => ({
     searchValue: state.people.search,
     //sortKey: state.people.key
 });
+
 const mapDispatchToProps = (dispatch) => ({
     getPeopleRequest: () => dispatch(getPeopleRequest()),
     deletePeopleRequest: (id) => dispatch(deletePersonRequest(id)),

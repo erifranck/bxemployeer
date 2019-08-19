@@ -3,13 +3,12 @@ import { Form, Field, Formik} from 'formik';
 import * as Yup from 'yup';
 import {docTypeRegEx, emailRegEx, genderRegEx, nameRegEx, phoneRegEx} from "../../utils/validations";
 import {connect} from "react-redux";
-
 import {createPersonRequest, editPersonRequest} from "../../redux/actions/peopleActions";
 import {Button} from '../Button/Button'
 import {CountryPicker} from './CountryPicker/CountryPicker';
-import './newEmployeeWithFormik.css';
 import {getDate} from "../../utils/dateManagement";
 import {editPerson} from "../../services/peopleService";
+import './newEmployeeWithFormik.css';
 
 const MyForm = props => {
   const {

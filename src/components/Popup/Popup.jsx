@@ -1,7 +1,9 @@
 import React from 'react';  
-import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik'
-import './popup.css';
+import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik';
+import {popupContent} from '../Container/Container';
 import {Button} from "../Button/Button";
+import {NewKinship} from '../NewKinship/NewKinship';
+import './popup.css';
 
 export class Popup extends React.Component { 
     constructor(props) {
@@ -20,6 +22,10 @@ export class Popup extends React.Component {
         }
     }
     
+    onChangeInputForm = (key, value) => {
+        this.setState({[key]: value});
+    }
+    
     render() {
         return (  
             <div className='popup-background'>
@@ -32,8 +38,17 @@ export class Popup extends React.Component {
                             <i className="fas fa-times fa-lg"/>
                         </Button>
                     </div>
-                    <div className='popup-content'>
-                        <NewEmployeeWithFormik initialValues={this.state}/>
+                    <div className='popup-content'> 
+                        {
+                            this.props.content === popupContent.NEW_EMPLOYEE ? 
+                            <NewEmployeeWithFormik initialValues={this.state}/> :
+                            null
+                        }
+                        {
+                            this.props.content === popupContent.NEW_KINSHIP ? 
+                            <NewKinship sourceEmployee={this.props.sourceEmployee} /> :
+                            null
+                        }
                     </div> 
                 </div>  
             </div>  
