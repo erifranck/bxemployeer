@@ -1,17 +1,14 @@
-export function myRequest() {
+export function getPeopleMock() {
     return new Promise((resolve, reject) => {
-        const data = Array.from({length: 5}).map(() => ({
-            id: Math.random() * 1000,
+        const data = Array.from({length: 100}).map(() => ({
             name: 'Raul',
             lastname: 'Gonzales',
-            document: '730461',
+            document: Math.random() * 100000,
             nationality: 'Española',
         }));
         setTimeout(() => {
             if (Math.round(Math.random())) {
-                resolve({
-                    data: data,
-                });
+                resolve(data);
             } else {
                 reject(new Error('the request failed'))
             }

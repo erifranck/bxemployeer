@@ -37,7 +37,7 @@ const editPeopleFail = (error) =>  ({ type: EDIT_PEOPLE_FAIL, response: {error: 
 export function getPeopleRequest() {
     return (dispatch, getState) => {
         dispatch(onFetch());
-        getPeople()
+        getPeopleMock()
             .then(value => {
                 dispatch(getPeopleSuccess({data: value}));
             })
