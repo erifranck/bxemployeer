@@ -1,9 +1,14 @@
+import {sortBy} from "../../utils/methods";
+
 export const KINSHIPS_REQUEST = 'KINSHIPS_REQUEST';
 export const GET_KINSHIPS_SUCCESS = 'GET_KINSHIPS_SUCCESS';
 export const GET_KINSHIPS_FAIL = 'GET_KINSHIPS_FAIL';
 
 export const DELETE_KINSHIPS_SUCCESS = 'DELETE_KINSHIPS_SUCCESS';
 export const DELETE_KINSHIPS_FAIL = 'DELETE_KINSHIPS_FAIL';
+
+export const SEARCH_KINSHIP = 'SEARCH_KINSHIP';
+export const SORT_KINSHIP_BY = 'SORT_KINSHIP_BY';
 
 const INITIAL_STATE = {
     isFetch: false,
@@ -41,6 +46,16 @@ export function kinshipsReducer(state = INITIAL_STATE, action) {
                 ...state,
                 error: action.response.error,
                 isFetch: false,
+            };
+        case SEARCH_KINSHIP:
+            return {
+                ...state,
+                search: action.search,
+            };
+        case SORT_KINSHIP_BY:
+            return {
+                ...state,
+                data: sortBy(action.key, state.data.slice()),
             };
         default:
             return state;

@@ -44,3 +44,6 @@
     margin-right: 16px;
     font-size: 17px;
 }
+.bx-searcher-container{
+    width: fit-content;
+}

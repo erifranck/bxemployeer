@@ -4,6 +4,8 @@ import {
     GET_KINSHIPS_FAIL,
     KINSHIPS_REQUEST,
     GET_KINSHIPS_SUCCESS,
+    SEARCH_KINSHIP,
+    SORT_KINSHIP_BY,
 } from "../reducers/kinships";
 import {deleteKinships, getKinships} from "../../services/kinshipsService";
 
@@ -16,6 +18,10 @@ const getKinshipsFail = (error) =>  ({ type: GET_KINSHIPS_FAIL, response: {error
 const deleteKinshipsSuccess = (id) => ( { type: DELETE_KINSHIPS_SUCCESS, id: id } );
 
 const deleteKinshipsFail = (error) => ({ type: DELETE_KINSHIPS_FAIL, response: { error: error } });
+
+export const searchKinship = (search) => ({type: SEARCH_KINSHIP, search: search});
+
+export const sortKinshipBy = (key) => ({type: SORT_KINSHIP_BY, key: key});
 
 export function getKinshipsRequest() {
     return (dispatch, getState) => {

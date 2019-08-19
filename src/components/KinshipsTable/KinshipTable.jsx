@@ -9,10 +9,14 @@ export const KinshipTable = (props) => (
         <thead>
             <tr>
                 {
-                    props.dataLabels.map((key, index) => (
-                        <th key={index} >{key}</th>
+                    props.dataLabels.map((dataLabel, index) => (
+                        <th key={index}>
+                            {dataLabel.label}
+                            <Button title={"Sort by " + dataLabel.label} isOption={true} onClick={() => props.onClickColumn(dataLabel.key)}><i className="fas fa-sort"/></Button>
+                        </th>
                     ))
                 }
+                <th>Manage</th>
             </tr>
         </thead>
         <tbody>
@@ -40,4 +44,5 @@ KinshipTable.propTypes = {
     onDeleteKinship: PropTypes.func.isRequired,
     data: PropTypes.array.isRequired,
     editKinship: PropTypes.func.isRequired,
+    onClickColumn: PropTypes.func.isRequired,
 };

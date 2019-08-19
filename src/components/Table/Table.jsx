@@ -13,7 +13,7 @@ export const Table = (props) => (
                     props.dataLabels.map((dataLabel, index) => (
                         <th key={index}>
                             {dataLabel.label}
-                            <Button title={"Sort by this field"} isOption={true} onClick={() => props.onClickColumn(dataLabel.key)}><i className="fas fa-sort"/></Button> 
+                            <Button title={"Sort by " + dataLabel.label} isOption={true} onClick={() => props.onClickColumn(dataLabel.key)}><i className="fas fa-sort"/></Button>
                         </th>
                     ))
                 }

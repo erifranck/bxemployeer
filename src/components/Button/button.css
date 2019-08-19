@@ -29,3 +29,26 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0 3px 6px;
     font-size: 16px;
 }
+
+.bx-button.addKinship{
+    cursor: pointer;
+    position: relative;
+    float: right;
+    margin-right: 25px;
+    height: 50px;
+    width: 50px;
+    background-color: #98D48C;
+    color: black;
+    font-size: 25px;
+    border-radius: 10px;
+}
+.bx-button.addKinship:hover{
+    background-color: #caffbd;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 3px 6px;
+    font-size: 30px;
+}
+.bx-button.addKinship:active{
+    background-color: #68a25e;
+    font-size: 20px;
+    color:white;
+}
