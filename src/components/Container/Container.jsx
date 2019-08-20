@@ -25,7 +25,11 @@ class Container extends React.Component {
             objectValue: null,
             showPopup: false,
             content: '',
-            sourceEmployee: null,
+            kinshipInit: {
+                sourceEmployee: null,
+                targetEmployee: null,
+                kinship: null,
+            },
         };
         this.openPopup = this.openPopup.bind(this);
         this.closePopup = this.closePopup.bind(this);
@@ -35,8 +39,12 @@ class Container extends React.Component {
         this.setState({showPopup : false})
     }
 
-    openPopup(content,id) {
-        this.setState({showPopup : true, content: content, sourceEmployee: id})
+    openPopup(content,kinshipInit) {
+        this.setState({
+            showPopup : true,
+            content: content, 
+            kinshipInit: kinshipInit
+        })
     }    
     
     toggleModal = (value, confirmValue, callback) => () => {
@@ -69,8 +77,28 @@ class Container extends React.Component {
                <div className="bx-dashboard-wrapper">
                    <div className="bx-dashboard-container">
                         <Header>
-                            <Button title={"Add new person"} addEmployeeButton={true} primary={true} onClick={() => this.openPopup(popupContent.NEW_EMPLOYEE,null)}><i className="fas fa-user-plus"/></Button>
-                            <Button title={"Add new kinship"} addKinship={true} primary={true} onClick={() => this.openPopup(popupContent.NEW_KINSHIP,null)}><i className="fas fa-users"/></Button>
+                            <Button 
+                                title={"Add new person"} 
+                                addEmployeeButton={true} 
+                                primary={true} 
+                                onClick={() => this.openPopup(popupContent.NEW_EMPLOYEE,null)}
+                            >
+                                <i className="fas fa-user-plus"/>
+                            </Button>
+                            <Button 
+                                title={"Add new kinship"} 
+                                addKinship={true} 
+                                primary={true} 
+                                onClick={() => {
+                                    let kinshipInit = {}
+                                    kinshipInit.sourceEmployee = null
+                                    kinshipInit.targetEmployee = null
+                                    kinshipInit.kinship = null
+                                    return this.openPopup(popupContent.NEW_KINSHIP,kinshipInit)
+                                    }
+                                }>
+                                    <i className="fas fa-users"/>
+                                </Button>
 
                         </Header>
                        {this.props.children}
@@ -80,7 +108,7 @@ class Container extends React.Component {
                                 <Popup 
                                     initialValues={this.state.objectValue || {}} 
                                     content={this.state.content} 
-                                    sourceEmployee={this.state.sourceEmployee}
+                                    kinshipInit={this.state.kinshipInit}
                                     closePopup={ () => this.closePopup() }
                                 />
                             : null

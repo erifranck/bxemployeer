@@ -1,20 +1,26 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {createKinshipRequest} from "../../redux/actions/kinshipsActions";
-
+import {getPeopleRequest} from "../../redux/actions/peopleActions";
 import './newKinship.css';
 
 class NewKinshipComponent extends React.Component {
     constructor(props) {
         super(props);
+        
         this.state = {
-            sourceDisabled: (this.props.sourceEmployee !== null) ,
-            sourceEmployee: this.props.sourceEmployee,
-            targetEmployee: '',
-            kinship: ''
+            sourceDisabled: this.props.kinshipInit.sourceEmployee !== null ,
+            targetDisabled: this.props.kinshipInit.targetEmployee !== null ,
+            sourceEmployee: this.props.kinshipInit.sourceEmployee || '',
+            targetEmployee: this.props.kinshipInit.targetEmployee || '',
+            kinship:        this.props.kinshipInit.kinship || ''
         }
         this.onChangeInput = this.onChangeInput.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.getPeopleRequest();
     }
 
     onChangeInput(e) {
@@ -46,12 +52,14 @@ class NewKinshipComponent extends React.Component {
                         <div className="bx-kin-form-elem">
                             <label>
                                 Source employee:
-                            <select
+
+                                <select required
                                     name="sourceEmployee"
                                     onChange={this.onChangeInput}
                                     value={this.state.sourceEmployee}
                                     disabled={this.state.sourceDisabled}
-                                    >
+                                >
+                                        <option value="">Select One...</option>
                                     {
                                         this.props.employeesData.filter( emp => emp.id !== this.state.targetEmployee ).map(emp =>
                                             <option key={emp.id} value={emp.id}>{this.getEmployeeTag(emp)}</option>
@@ -65,13 +73,14 @@ class NewKinshipComponent extends React.Component {
                         <div className="bx-kin-form-elem">
                             <label>
                                 Target employee:
-                                <select
+                                <select required
                                     name="targetEmployee"
                                     onChange={this.onChangeInput}
                                     value={this.state.targetEmployee}
+                                    disabled={this.state.targetDisabled}
 
                                 >
-
+                                        <option value="">Select One...</option>
                                 {
                                     this.props.employeesData.filter( emp => emp.id !== this.state.sourceEmployee ).map(emp =>
                                         <option key={emp.id} value={emp.id}>{this.getEmployeeTag(emp)}</option>
@@ -86,11 +95,12 @@ class NewKinshipComponent extends React.Component {
                         <div className="bx-kin-form-elem">
                             <label>
                                 Kiship:
-                                <select
+                                <select required
                                     name="kinship"
                                     onChange={this.onChangeInput}
                                     value={this.state.kinship}
                                 >
+                                    <option value="">Select One...</option>
                                     <option value="Father">Father</option>
                                     <option value="Mother">Mother</option>
                                     <option value="Brother">Brother</option>
@@ -120,6 +130,7 @@ const mapStateToProps = (state) => ({
  
 const mapDispatchToProps = (dispatch) => ({
     createKinship: (payload) => dispatch(createKinshipRequest(payload)),
+    getPeopleRequest: () => dispatch(getPeopleRequest()),
 });
 
  

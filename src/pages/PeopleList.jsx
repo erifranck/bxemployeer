@@ -37,7 +37,14 @@ class PeopleListComponent extends React.Component {
                             })}
                             onDelete={ (id) => toggleModal(true, null, () => this.deletePerson(id))()}
                             onClickColumn={(key) => this.props.sortPeopleBy(key)}
-                            onAddKinship={ (id) => openPopup(popupContent.NEW_KINSHIP,id) }
+                            onAddKinship={ (id) => {
+                                let kinshipInit = {}
+                                kinshipInit.sourceEmployee = id
+                                kinshipInit.targetEmployee = null
+                                kinshipInit.kinship = null
+                                return openPopup(popupContent.NEW_KINSHIP,kinshipInit)
+                                }
+                            }
                             onDetails={ (objectValue) => toggleDetails(true, objectValue)() }
                         />
                     </>

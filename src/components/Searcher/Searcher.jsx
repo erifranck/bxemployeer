@@ -3,7 +3,7 @@ import './searcher.css';
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {searchPeople} from "../../redux/actions/peopleActions";
-import {searchKinship} from "../../redux/actions/kinshipActions";
+import {searchKinship} from "../../redux/actions/kinshipsActions";
 
 class SearchComponent extends React.Component {
     constructor(props) {

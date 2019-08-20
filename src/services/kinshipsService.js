@@ -1,3 +1,4 @@
+
 export function getKinships() {
     return fetch('http://localhost:8080/personAPI/kinships')
         .then(res => res.json());
@@ -19,30 +20,23 @@ export function createKinship(payload) {
         kinBody += payload.targetEmployee
         kinBody += "&type="
         kinBody += payload.kinship
-
+        console.log(kinBody)
         fetch('http://localhost:8080/personAPI/kinships', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
-                "Accept": "*/*",
-                "Cache-Control": "no-cache",
-                "Accept-Encoding": "gzip, deflate",
-                "Content-Length": "33",
-                "Connection": "keep-alive",
-                "cache-control": "no-cache"
             },
             body: kinBody
         })
-            .then(res => {
-                if(res.status === 200) {
-                    resolve(res.json());
-                } else {
-                    reject( new Error(res.json()));
-                }
-            })
-        });
-       
+        .then( async function (res){
+            let response = await res.text()
+            debugger
+            if(res.status === 200) {
+                resolve(res.json());
+            } else {
+                reject( new Error(response[0]));
+            }
+        })
+    });
+   
 }
-
-    
-

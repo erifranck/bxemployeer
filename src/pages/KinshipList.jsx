@@ -3,9 +3,9 @@ import Container, {ModalConsumer} from "../components/Container/Container";
 import {KinshipTable} from "../components/KinshipsTable/KinshipTable";
 import {kinshipListLabels} from "../constants/peopleData";
 import {connect} from 'react-redux';
-import {deleteKinshipsRequest, getKinshipsRequest} from "../redux/actions/kinshipActions";
+import {deleteKinshipsRequest, getKinshipsRequest} from "../redux/actions/kinshipsActions";
 import {Searcher} from "../components/Searcher/Searcher";
-import {sortKinshipBy} from "../redux/actions/kinshipActions";
+import {sortKinshipBy} from "../redux/actions/kinshipsActions";
 
 class KinshipListComponent extends React.Component {
     componentDidMount() {

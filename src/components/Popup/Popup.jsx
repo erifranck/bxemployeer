@@ -46,7 +46,7 @@ export class Popup extends React.Component {
                         }
                         {
                             this.props.content === popupContent.NEW_KINSHIP ? 
-                            <NewKinship sourceEmployee={this.props.sourceEmployee} /> :
+                            <NewKinship kinshipInit={this.props.kinshipInit} /> :
                             null
                         }
                     </div> 
