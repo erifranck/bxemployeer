@@ -57,13 +57,11 @@ class Container extends React.Component {
        return (
            <Provider value={{openModal, toggleModal: this.toggleModal, openDetails, toggleDetails:this.toggleDetails, objectValue: objectValue}} >
                <div className="bx-dashboard-wrapper">
-               <Link to="/">Home</Link> | <Link to="/about">About</Link>
                    <div className="bx-dashboard-container">
                         <Header>
                             <Button addButton={true} primary={true} onClick={this.openPopup}>+</Button>
                         </Header>
                        {this.props.children}
-
                         {
                             this.state.showPopup ?
                                 <Popup initialValues={this.state.objectValue || {}} closePopup={this.closePopup}/>

@@ -1,0 +1,25 @@
+.dropdown {
+    position: absolute;
+    display: flex;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    top:45px;
+    right:0px;
+    width: 200px;
+    background-color: white;
+    font-weight:bold;
+    position: absolute;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.bx-menu-icon {
+    border: 1px solid black;
+    margin-bottom: 5px;
+    display: block;
+    width: 100%;
+}
