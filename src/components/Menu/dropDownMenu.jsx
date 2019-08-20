@@ -31,7 +31,7 @@ export class DropDownMenu extends Component {
   }
 
   render() {
-      const clases = classNames({"dropdown": true, "hide": this.state.showMenu})
+      const clases = classNames({"dropdown": true, "hide": !this.state.showMenu})
     return (
       <div>
         <div onClick={this.showMenu}>
@@ -39,15 +39,13 @@ export class DropDownMenu extends Component {
         <span className='bx-menu-icon'/>
         <span className='bx-menu-icon'/>
         </div>
-        
      
                 <ul className={clases} style = {{background: "white"}}>
-                    <li> <a href="/">Home</a>  </li>
-                    <li> <a href="/employee-list">Employee</a> </li>
-                    <li> <a href="/about">About</a> </li>
+                    <li> <a href="/">Home</a> </li>
+                    <li> <a href="/employee-list">Employee</a></li>
+                    <li> <a href="/about">About</a></li>
                  </ul>
               
-    
       </div>
     );
   }
