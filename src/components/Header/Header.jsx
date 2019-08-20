@@ -6,7 +6,7 @@ import { DropDownMenu } from '../Menu/dropDownMenu';
 export const Header = (props) => (
     <header>
         <nav>
-            <Button home={true}>
+            <Button home={true} onClick={() => console.log("clicked")}>
                 <DropDownMenu/>
             </Button>
             <h1>Bxemployeers

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {Button} from "../Button/Button";
 import "./dropDownMenu.css";
+import { classNames } from '../../utils/classNames';
  
 export class DropDownMenu extends Component {
   constructor() {
@@ -30,6 +31,7 @@ export class DropDownMenu extends Component {
   }
 
   render() {
+      const clases = classNames({"dropdown": true, "hide": this.state.showMenu})
     return (
       <div>
         <div onClick={this.showMenu}>
@@ -38,19 +40,14 @@ export class DropDownMenu extends Component {
         <span className='bx-menu-icon'/>
         </div>
         
-        {
-          this.state.showMenu
-            ? (
-              <div className="dropdown" style = {{background: "white"}}>
-                <Button> <Link to="/">Home</Link>  </Button>
-                <Button>  <Link to="/employee-list">People</Link></Button>
-                <Button> <Link to="/about">About</Link> </Button>
-              </div>
-            )
-            : (
-              null
-            )
-        }
+     
+                <ul className={clases} style = {{background: "white"}}>
+                    <li> <a href="/">Home</a>  </li>
+                    <li> <a href="/employee-list">Employee</a> </li>
+                    <li> <a href="/about">About</a> </li>
+                 </ul>
+              
+    
       </div>
     );
   }

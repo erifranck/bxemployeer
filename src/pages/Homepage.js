@@ -11,7 +11,7 @@ export function Homepage(){
                     <Button home={true} onClick={() => console.log("clicked")}>
                         <DropDownMenu/>
                     </Button>
-                    <h1>Bxemployeers</h1>
+                    <h1>personAPI</h1>
                    
                         
                 </div>
