@@ -45,7 +45,7 @@ class SearchComponent extends React.Component {
     };
 
     ignoreArrows(event){
-        if (event.keyCode === 38 || event.keyCode === 40 || event.keyCode === 190 || event.keyCode === 69 || event.keyCode === 109 || event.keyCode === 110 || event.keyCode === 187 || event.keyCode === 107) {
+        if (event.keyCode === 38 || event.keyCode === 40 || event.keyCode === 190 || event.keyCode === 69 || event.keyCode === 109 || event.keyCode === 110 || event.keyCode === 187 || event.keyCode === 107 || event.keyCode === 189) {
             event.preventDefault();
         }
     };
