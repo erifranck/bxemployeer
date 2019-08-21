@@ -1,10 +1,18 @@
 .Searcher {
     overflow: hidden;
-    background-color: #e9e9e9;
-    border-radius: 20px;
-    padding-left: 60px; 
+    border-radius: 14px;
+    border: 1px solid #707070;
+    padding: 0 20px;
     margin-left: 47px;
     margin-bottom: 10px;
+    font-size: 15px;
+    width: 300px;
+    height: 40px;
+    background: #FFFFFF 0 0 no-repeat padding-box;
+}
+.Searcher:focus{
+    box-shadow: 0 0 3pt 1pt #808080;
+    outline: none;
 }
 
 .Searcher-links{
@@ -46,4 +54,15 @@
 }
 .bx-searcher-container{
     width: fit-content;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }
