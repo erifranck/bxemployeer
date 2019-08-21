@@ -8,7 +8,7 @@ export function Homepage(){
             
             <div className="bx-dashboard-wrapper">
                 <div className="bx-dashboard-container">
-                    <Button home={true} onClick={() => console.log("clicked")}>
+                    <Button home={true}>
                         <DropDownMenu/>
                     </Button>
                     <h1>personAPI</h1>

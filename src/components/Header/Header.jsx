@@ -7,7 +7,7 @@ import './header.css';
 export const Header = (props) => (
     <header>
         <nav className="bx-navbar-container">
-            <Button home={true} onClick={() => console.log("clicked")}>
+            <Button home={true}>
                 <DropDownMenu/>
             </Button>
             <h1>Bxemployeers</h1>
