@@ -3,7 +3,7 @@ import './searcher.css';
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {searchPeople} from "../../redux/actions/peopleActions";
-import {searchKinship} from "../../redux/actions/kinshipActions";
+import {searchKinship} from "../../redux/actions/kinshipsActions";
 
 class SearchComponent extends React.Component {
     constructor(props) {
@@ -29,7 +29,8 @@ class SearchComponent extends React.Component {
 
     handleChange(event){
         let val = event.target.value.replace(/([^a-zA-z0-9]+)/g, s0 => '');
-        if(!(val === '')){
+        this.props.searchPeople(val);
+        this.props.searchKinship(val);
             if(isNaN(val)){
                 if(!val.includes('\\') && !val.includes('[') && !val.includes(']'))
                     this.props.searchKinship(val);
@@ -37,11 +38,6 @@ class SearchComponent extends React.Component {
             else {
                 this.props.searchPeople(val);
             }
-        }
-        else{
-            this.props.searchPeople(val);
-            this.props.searchKinship(val);
-        }
     };
 
     ignoreArrows(event){
@@ -53,7 +49,7 @@ class SearchComponent extends React.Component {
     render() {
         return (
             <div className="bx-searcher-container">
-                { window.location.pathname === '/kinships' ?
+                { window.location.pathname === '/kinships/' ?
                     <input type="text" className="Searcher" onChange={this.handleChange}  placeholder="Search by employee source ..."/>
                     :
                     <input type="number" className="Searcher" onKeyDown={this.ignoreArrows} onChange={this.handleChange}  placeholder="Search by document ..."/>

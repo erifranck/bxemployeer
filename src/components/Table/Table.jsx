@@ -1,7 +1,7 @@
 import React from 'react';
-import './table.css';
 import PropTypes from "prop-types";
 import {Button} from "../Button/Button";
+import './table.css';
 
 export const Table = (props) => (
 
@@ -31,7 +31,7 @@ export const Table = (props) => (
                     }
                     <td>
                         <Button title={"Details"} isOption={true} onClick={() => props.onDetails(objectValue)}><i className="fas fa-info-circle"/></Button>
-                        <Button title={"Add kinship"} isOption={true}><i className="fas fa-user-plus"/></Button>
+                        <Button title={"Add kinship"} isOption={true} onClick={() => props.onAddKinship(objectValue.id)}><i class="fas fa-users"/></Button>
                         <Button title={"Delete employee"} isOption={true} onClick={() => props.onDelete(objectValue.id)}><i className="fas fa-trash-alt"/></Button>
                     </td>
                 </tr>
@@ -47,4 +47,5 @@ Table.propTypes = {
     data: PropTypes.array.isRequired,
     onClickColumn: PropTypes.func.isRequired,
     onDetails: PropTypes.func.isRequired,
+    onAddKinship: PropTypes.func.isRequired,
 };

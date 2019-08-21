@@ -6,7 +6,6 @@
     margin: 15px 0px;
     justify-content: left;
     flex-wrap: wrap;
-
 }
 
 .bx-emp-form-container label{
@@ -84,4 +83,6 @@
     background-color: #68a25e;
     font-size: 15px;
     color:white;
+
+
 }

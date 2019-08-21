@@ -18,10 +18,6 @@ class DetailsEmployeeComponent extends React.Component {
         this.setState({show: this.props.openDetails});
     }
     closeDetails = () => {
-        this.setState({
-            tab: 'Details',
-            kinships: [],
-        })
         if(this.props.onCloseDetails) {
             this.props.onCloseDetails();
         }
@@ -32,7 +28,7 @@ class DetailsEmployeeComponent extends React.Component {
     };
 
     openKinships = () => {
-        this.props.history.push('/kinships/' + this.props.objectValue.id)
+        this.props.history.push('/kinships/' + this.props.objectValue.id);
     };
 
     render() {
@@ -76,7 +72,7 @@ class DetailsEmployeeComponent extends React.Component {
     }
 }
 
-DetailsEmployee.propTypes = {
+DetailsEmployeeComponent.propTypes = {
     openDetails: PropTypes.bool.isRequired,
     onCloseDetails: PropTypes.func,
     onConfirmDetails: PropTypes.func,
