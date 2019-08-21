@@ -30,7 +30,7 @@ export const KinshipTable = (props) => (
                     }
                     <td>
                         <Button title={"Edit Kinship"} isOption={true} onClick={() => alert("Reemplazar alert en KinshipTable.jsx con: props.editKinship(objectValue)")}><i className="fas fa-edit"/></Button>
-                        <Button title={"Delete kinship"} isOption={true} onClick={() => props.onDeleteKinship(objectValue.id)}><i className="fas fa-trash-alt"/></Button>
+                        <Button title={"Delete Kinship"} isOption={true} onClick={() => props.onDeleteKinship(objectValue.id)}><i className="fas fa-trash-alt"/></Button>
                     </td>
                 </tr>
             ))

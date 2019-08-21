@@ -3,12 +3,14 @@ import {Button} from "../Button/Button";
 import PropTypes from "prop-types";
 import './detailsEmployee.css';
 import {classNames} from "../../utils/classNames";
+import {DetailsKinship} from "../DetailsKinship/DetailsKinship";
 
 export class DetailsEmployee extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             show: false,
+            tab: "Details",
         }
     }
     componentDidMount() {
@@ -25,7 +27,10 @@ export class DetailsEmployee extends React.Component {
     };
 
     openKinships = () => {
-        alert("Debe abrir otro modal con las kinships");
+        console.log(this.props.objectValue.relationships);
+        if(this.props.objectValue.relationships.length){
+            this.setState({tab: "Kinships"});
+        }else {alert("This person has no relations");}
     };
 
     render() {
@@ -52,17 +57,17 @@ export class DetailsEmployee extends React.Component {
                         <Button title={"List kinships"} disabled={false} onClick={this.openKinships}>
                             Kinships <i className="fas fa-users fa-lg"/>
                         </Button>
-                    </div>
-                    <div className="bx-details-form">
-                        <strong>Name:</strong> <p>{this.props.objectValue.firstNames}</p>
-                        <strong>LastName:</strong> <p>{this.props.objectValue.lastNames}</p>
-                        <strong>Birth:</strong> <p>{this.props.objectValue.dateOfBirth}</p>
-                        <strong>Doc. Type:</strong> <p>{this.props.objectValue.documentType}</p>
-                        <strong>Doc. Number:</strong> <p>{this.props.objectValue.documentID}</p>
-                        <strong>Gender:</strong> <p>{this.props.objectValue.gender}</p>
-                        <strong>Nationality:</strong> <p>{this.props.objectValue.nationality}</p>
-                        <strong>Contact:</strong> <p>{this.props.objectValue.contact}</p>
-                    </div>
+                    </div>{this.state.tab === "Details" ?
+                        <div className="bx-details-form">
+                            <strong>Name:</strong> <p>{this.props.objectValue.firstNames}</p>
+                            <strong>LastName:</strong> <p>{this.props.objectValue.lastNames}</p>
+                            <strong>Birth:</strong> <p>{this.props.objectValue.dateOfBirth}</p>
+                            <strong>Doc. Type:</strong> <p>{this.props.objectValue.documentType}</p>
+                            <strong>Doc. Number:</strong> <p>{this.props.objectValue.documentID}</p>
+                            <strong>Gender:</strong> <p>{this.props.objectValue.gender}</p>
+                            <strong>Nationality:</strong> <p>{this.props.objectValue.nationality}</p>
+                            <strong>Contact:</strong> <p>{this.props.objectValue.contact}</p>
+                        </div> : <DetailsKinship kinshipArray = {this.props.objectValue.relationships}/>}
                 </div>
             </div>
         )
