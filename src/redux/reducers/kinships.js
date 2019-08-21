@@ -36,7 +36,11 @@ export function kinshipsReducer(state = INITIAL_STATE, action) {
                 isFetch: false,
             };
         case GET_KINSHIPS_FAIL:      
-
+            return {
+                ...state,
+                error: action.response.error,
+                isFetch: false,
+            };
         case GET_KINSHIPS_BY_ID_SUCCESS:
             return {
                 ...state,
@@ -44,7 +48,11 @@ export function kinshipsReducer(state = INITIAL_STATE, action) {
                 isFetch: false,
             };
         case GET_KINSHIPS_BY_ID_FAIL:
-
+            return {
+                ...state,
+                error: action.response.error,
+                isFetch: false,
+            };
         case CREATE_KINSHIP_SUCCESS:
             return {
                 ...state,

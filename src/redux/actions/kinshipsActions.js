@@ -81,12 +81,17 @@ export function createKinshipRequest(payload) {
     }
 }
 
-export function getKinshipByIdRequest(id) {
+export function getKinshipByIdRequest(id,callback) {
     return (dispatch) => {
         dispatch(onFetch());
         getKinshipById(id)
             .then(value => {
                 dispatch(getKinshipByIdSuccess({data: value}))
+                let kinshipInit = {}
+                kinshipInit.sourceEmployee = value.idSource
+                kinshipInit.targetEmployee = value.idTarget
+                kinshipInit.kinship = value.type
+                callback(kinshipInit)
             })
             .catch(error => {
                 dispatch(getKinshipByIdFail(error));

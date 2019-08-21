@@ -40,7 +40,6 @@ class NewKinshipComponent extends React.Component {
     onSubmit(e) {
         e.preventDefault()     
         this.props.createKinship(this.state)
-
     }
     
 

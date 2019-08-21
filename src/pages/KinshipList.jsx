@@ -26,21 +26,16 @@ class KinshipListComponent extends React.Component {
                             <KinshipTable
                                 dataLabels={kinshipListLabels}
                                 data={this.props.data.filter(items => {
-                                    const regex = new RegExp(this.props.searchValue);
-                                    return regex.test(items.emlpoyeeSourceNames);
+                                    if (items) {
+                                        const regex = new RegExp(this.props.searchValue);
+                                        return regex.test(items.emlpoyeeSourceNames);
+                                    }
+                                    return false
                                 })}
                                 onDeleteKinship={ (id) => toggleModal(true, null, () => this.deleteKinships(id))()}
                                 onEditKinship={ (objectValue) => {
-                                    this.props.getKinshipByIdRequest(objectValue.id)  
-                                    setTimeout(() => { 
-                                        console.log(this.props.kinById) 
-                                        let kinshipInit = {}
-                                        kinshipInit.sourceEmployee = this.props.kinById.idSource
-                                        kinshipInit.targetEmployee = this.props.kinById.idTarget
-                                        kinshipInit.kinship = this.props.kinById.type
-                                        return openPopup(popupContent.NEW_KINSHIP,kinshipInit)
-                                    }, 1000);
-                                    }
+                                    this.props.getKinshipByIdRequest(objectValue.id,(kinshipInit) => openPopup(popupContent.NEW_KINSHIP,kinshipInit))  
+                                }
                                 }
                                 onClickColumn={(key) => this.props.sortKinshipBy(key)}
                             />
@@ -63,7 +58,7 @@ const mapDispatchToProps = (dispatch) => ({
     getKinshipsRequest: () => dispatch(getKinshipsRequest()),
     deleteKinshipsRequest: (id) => dispatch(deleteKinshipsRequest(id)),
     sortKinshipBy: (key) => dispatch(sortKinshipBy(key)),
-    getKinshipByIdRequest: (id) => dispatch(getKinshipByIdRequest(id)),
+    getKinshipByIdRequest: (id,callback) => dispatch(getKinshipByIdRequest(id,callback)),
 
 });
 
