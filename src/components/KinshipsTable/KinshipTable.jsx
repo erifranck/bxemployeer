@@ -1,12 +1,11 @@
 import React from 'react';
-import './table.css';
+import '../Table/table.css';
 import PropTypes from "prop-types";
 import {Button} from "../Button/Button";
 
-export const Table = (props) => (
-
+export const KinshipTable = (props) => (
     <table className="bx-table-container">
-        <caption className="bx-table-caption">Belatrix Employees</caption>
+        <caption className="bx-table-caption">Belatrix Employees - Kinships</caption>
         <thead>
             <tr>
                 {
@@ -24,15 +23,14 @@ export const Table = (props) => (
         {
             props.data.map((objectValue) => (
                 <tr key={objectValue.id}>
-                    {   //person array : [id, name, lastname, doc type, doc number, gender, nationality, contacts...]
-                        Object.values(objectValue).slice(1,3).concat(Object.values(objectValue).slice(5,6), Object.values(objectValue).slice(7,8)).map( (value, index) => (
+                    {
+                        Object.values(objectValue).slice(1).map( (value, index) => (
                             <td key={index}>{value}</td>
                         ))
                     }
                     <td>
-                        <Button title={"Details"} isOption={true} onClick={() => props.onDetails(objectValue)}><i className="fas fa-info-circle"/></Button>
-                        <Button title={"Add kinship"} isOption={true}><i className="fas fa-user-plus"/></Button>
-                        <Button title={"Delete employee"} isOption={true} onClick={() => props.onDelete(objectValue.id)}><i className="fas fa-trash-alt"/></Button>
+                        <Button title={"Edit Kinship"} isOption={true} onClick={() => alert("Reemplazar alert en KinshipTable.jsx con: props.editKinship(objectValue)")}><i className="fas fa-edit"/></Button>
+                        <Button title={"Delete kinship"} isOption={true} onClick={() => props.onDeleteKinship(objectValue.id)}><i className="fas fa-trash-alt"/></Button>
                     </td>
                 </tr>
             ))
@@ -41,10 +39,10 @@ export const Table = (props) => (
     </table>
 );
 
-Table.propTypes = {
+KinshipTable.propTypes = {
     dataLabels: PropTypes.array.isRequired,
-    onDelete: PropTypes.func.isRequired,
+    onDeleteKinship: PropTypes.func.isRequired,
     data: PropTypes.array.isRequired,
+    editKinship: PropTypes.func.isRequired,
     onClickColumn: PropTypes.func.isRequired,
-    onDetails: PropTypes.func.isRequired,
 };

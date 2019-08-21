@@ -13,7 +13,8 @@ export const Button = (props) =>  {
         "addButton": props.addButton,
         "saveButton": props.saveButton,
         "editButton": props.editButton,
-        "home": props.home
+        "home": props.home,
+        "addKinship": props.addKinship,
     });
 
     return !props.isLink ? (
@@ -41,4 +42,5 @@ Button.propTypes = {
     home: PropTypes.bool,
     id: PropTypes.string,
     editButton: PropTypes.bool,
+    addKinship: PropTypes.bool,
 };

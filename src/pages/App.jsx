@@ -3,9 +3,9 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {store} from "../redux/createStore";
 import {PeopleList} from "./PeopleList";
+import {KinshipList} from "./KinshipList";
 import {About} from "./About";
 import {Homepage} from "./Homepage";
-
 import '../App.css';
 
 class App extends React.Component {
@@ -14,6 +14,7 @@ class App extends React.Component {
             <Provider store={store}>
                 <Router>
                     <Route exact path="/" component={Homepage}/>
+                    <Route path="/kinships" component={KinshipList} />
                     <Route path="/employee-list" component={PeopleList} />
                     <Route path="/about" component={About}/>
                 </Router>
