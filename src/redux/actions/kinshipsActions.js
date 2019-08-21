@@ -6,12 +6,14 @@ import {
     DELETE_KINSHIPS_SUCCESS,
     GET_KINSHIPS_FAIL,
     GET_KINSHIPS_SUCCESS,
+    GET_KINSHIPS_BY_ID_SUCCESS,
+    GET_KINSHIPS_BY_ID_FAIL,
     SEARCH_KINSHIP,
     SORT_KINSHIP_BY,
 } from "../reducers/kinships";
 
 import {createKinship} from "../../services/kinshipsService";
-import {deleteKinships, getKinships} from "../../services/kinshipsService";
+import {deleteKinships, getKinships, getKinshipById} from "../../services/kinshipsService";
 
 const onFetch = () => (  { type: KINSHIPS_REQUEST, } );
 
@@ -22,6 +24,10 @@ const createKinshipFail = (error) =>  ({ type: CREATE_KINSHIP_FAIL, response: {e
 const getKinshipsSuccess = (data) => ( { type: GET_KINSHIPS_SUCCESS, response: data } );
 
 const getKinshipsFail = (error) =>  ({ type: GET_KINSHIPS_FAIL, response: {error: error}});
+
+const getKinshipByIdSuccess = (data) => ( { type: GET_KINSHIPS_BY_ID_SUCCESS, response: data } );
+
+const getKinshipByIdFail = (error) =>  ({ type: GET_KINSHIPS_BY_ID_FAIL, response: {error: error}});
 
 const deleteKinshipsSuccess = (id) => ( { type: DELETE_KINSHIPS_SUCCESS, id: id } );
 
@@ -71,6 +77,19 @@ export function createKinshipRequest(payload) {
                 dispatch(createKinshipFail(error));
                 alert(error)
 
+            })
+    }
+}
+
+export function getKinshipByIdRequest(id) {
+    return (dispatch) => {
+        dispatch(onFetch());
+        getKinshipById(id)
+            .then(value => {
+                dispatch(getKinshipByIdSuccess({data: value}))
+            })
+            .catch(error => {
+                dispatch(getKinshipByIdFail(error));
             })
     }
 }

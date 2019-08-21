@@ -3,9 +3,10 @@ import Container, {ModalConsumer} from "../components/Container/Container";
 import {KinshipTable} from "../components/KinshipsTable/KinshipTable";
 import {kinshipListLabels} from "../constants/peopleData";
 import {connect} from 'react-redux';
-import {deleteKinshipsRequest, getKinshipsRequest} from "../redux/actions/kinshipsActions";
+import {deleteKinshipsRequest, getKinshipsRequest, getKinshipByIdRequest} from "../redux/actions/kinshipsActions";
 import {Searcher} from "../components/Searcher/Searcher";
 import {sortKinshipBy} from "../redux/actions/kinshipsActions";
+import {popupContent} from "../components/Container/Container";
 
 class KinshipListComponent extends React.Component {
     componentDidMount() {
@@ -19,7 +20,7 @@ class KinshipListComponent extends React.Component {
         return (
             <Container>
                 <ModalConsumer>
-                    {({toggleModal, toggleKinshipDetails}) => (
+                    {({toggleModal, toggleKinshipDetails,openPopup}) => (
                         <>
                             <Searcher items={this.props.data}/>
                             <KinshipTable
@@ -29,7 +30,18 @@ class KinshipListComponent extends React.Component {
                                     return regex.test(items.emlpoyeeSourceNames);
                                 })}
                                 onDeleteKinship={ (id) => toggleModal(true, null, () => this.deleteKinships(id))()}
-                                editKinship={ (objectValue) => toggleKinshipDetails(true, objectValue)()}
+                                onEditKinship={ (objectValue) => {
+                                    this.props.getKinshipByIdRequest(objectValue.id)  
+                                    setTimeout(() => { 
+                                        console.log(this.props.kinById) 
+                                        let kinshipInit = {}
+                                        kinshipInit.sourceEmployee = this.props.kinById.idSource
+                                        kinshipInit.targetEmployee = this.props.kinById.idTarget
+                                        kinshipInit.kinship = this.props.kinById.type
+                                        return openPopup(popupContent.NEW_KINSHIP,kinshipInit)
+                                    }, 1000);
+                                    }
+                                }
                                 onClickColumn={(key) => this.props.sortKinshipBy(key)}
                             />
                         </>
@@ -43,6 +55,7 @@ class KinshipListComponent extends React.Component {
 
 const mapStateToProps = (state) => ({
     data: state.kinships.data,
+    kinById: state.kinships.kinById,
     error: state.kinships.error,
     searchValue: state.kinships.search,
 });
@@ -50,6 +63,8 @@ const mapDispatchToProps = (dispatch) => ({
     getKinshipsRequest: () => dispatch(getKinshipsRequest()),
     deleteKinshipsRequest: (id) => dispatch(deleteKinshipsRequest(id)),
     sortKinshipBy: (key) => dispatch(sortKinshipBy(key)),
+    getKinshipByIdRequest: (id) => dispatch(getKinshipByIdRequest(id)),
+
 });
 
 export const KinshipList = connect(mapStateToProps, mapDispatchToProps)(KinshipListComponent);

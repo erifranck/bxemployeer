@@ -1,6 +1,13 @@
 
 export function getKinships() {
-    return fetch('http://localhost:8080/personAPI/kinships')
+    let url = 'http://localhost:8080/personAPI/kinships'
+    return fetch(url)
+        .then(res => res.json());
+}
+
+export function getKinshipById(id) {
+    let url = 'http://localhost:8080/personAPI/kinships'
+    return fetch(url + '/' + id)
         .then(res => res.json());
 }
 
@@ -30,7 +37,6 @@ export function createKinship(payload) {
         })
         .then( async function (res){
             let response = await res.text()
-            debugger
             if(res.status === 200) {
                 resolve(res.json());
             } else {
