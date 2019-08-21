@@ -102,7 +102,6 @@ class Container extends React.Component {
 
                         </Header>
                        {this.props.children}
-
                         {
                             this.state.showPopup ?
                                 <Popup 

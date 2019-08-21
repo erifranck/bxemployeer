@@ -3,13 +3,15 @@ import {Button} from "../Button/Button";
 import PropTypes from "prop-types";
 import './detailsEmployee.css';
 import {classNames} from "../../utils/classNames";
+import {getDate} from "../../utils/dateManagement";
 
 export class DetailsEmployee extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             show: false,
-        }
+        };
+        this.showGender = this.showGender.bind(this);
     }
     componentDidMount() {
         this.setState({show: this.props.openDetails});
@@ -26,6 +28,12 @@ export class DetailsEmployee extends React.Component {
 
     openKinships = () => {
         alert("Debe abrir otro modal con las kinships");
+    };
+
+    showGender(gender){
+        if(gender === 'M') return 'Male';
+        else if (gender === 'F') return 'Female';
+        else return 'Other';
     };
 
     render() {
@@ -56,10 +64,10 @@ export class DetailsEmployee extends React.Component {
                     <div className="bx-details-form">
                         <strong>Name:</strong> <p>{this.props.objectValue.firstNames}</p>
                         <strong>LastName:</strong> <p>{this.props.objectValue.lastNames}</p>
-                        <strong>Birth:</strong> <p>{this.props.objectValue.dateOfBirth}</p>
+                        <strong>Birth:</strong> <p>{getDate(new Date(this.props.objectValue.dateOfBirth))}</p>
                         <strong>Doc. Type:</strong> <p>{this.props.objectValue.documentType}</p>
                         <strong>Doc. Number:</strong> <p>{this.props.objectValue.documentID}</p>
-                        <strong>Gender:</strong> <p>{this.props.objectValue.gender}</p>
+                        <strong>Gender:</strong> <p>{this.showGender(this.props.objectValue.gender)}</p>
                         <strong>Nationality:</strong> <p>{this.props.objectValue.nationality}</p>
                         <strong>Contact:</strong> <p>{this.props.objectValue.contact}</p>
                     </div>
