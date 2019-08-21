@@ -1,6 +1,5 @@
 import React from 'react';
 import {Button} from "../Button/Button";
-import {Menu} from "../Menu/Menu";
 import { DropDownMenu } from '../Menu/dropDownMenu';
 import './header.css';
 

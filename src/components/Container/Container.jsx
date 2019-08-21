@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import './container.css';
 import {Header} from "../Header/Header";
 import {Modal} from "../Modal/Modal";
