@@ -1,4 +1,5 @@
 import React from 'react';
+import './container.css';
 import {Header} from "../Header/Header";
 import {Modal} from "../Modal/Modal";
 import {DetailsEmployee} from "../DetailsEmployee/DetailsEmployee";

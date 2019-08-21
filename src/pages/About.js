@@ -8,14 +8,15 @@ export function About(){
             <div className="bx-dashboard-wrapper">
             
                    <div className="bx-dashboard-container">
-                    <Button home={true} onClick={() => console.log("clicked")}>
+                    <Button home={true} >
                         <DropDownMenu/>
                     </Button>
-                    <div>
+                    <div className="bx-dashboard-wrapper">
                     <h1>
-                        About personAPI
+                        About "personAPI"
                     </h1>
-                        <p>personAPI it's a project created to introduce "Belatrix" interns to the technologies flooded within the 
+                        <div className="bx-dashboard-wrapper">
+                        <p>"PersonAPI" it's a project created to introduce "Belatrix" interns to the technologies flooded within the 
                             company in real day-to-day projects. Is a web page that is responsible for handling queries to a 
                             database that are made trogh an Api, it was created to be able to maintain an updated database of employees, 
                             and to establish family relationships between them.  
@@ -25,7 +26,8 @@ export function About(){
                                 Technologies used:
                                 <li>Java</li>
                                 <li>JavaScript</li>
-                                <li>ReactJs</li>  
+                                <li>ReactJs</li>
+                                <li>Maven</li>  
                             </p>
 
                         <p>
@@ -48,6 +50,7 @@ export function About(){
                                 <li> Luna Agustin Ricardo</li>
                                 <li> Salomon Ivan</li>
                         </p> 
+                    </div>
                     </div>
                     </div>
             </div>

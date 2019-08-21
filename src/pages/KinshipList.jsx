@@ -28,7 +28,7 @@ class KinshipListComponent extends React.Component {
                                 data={this.props.data.filter(items => {
                                     if (items) {
                                         const regex = new RegExp(this.props.searchValue);
-                                        return regex.test(items.emlpoyeeSourceNames);
+                                        return regex.test(items.employeeSourceNames);
                                     }
                                     return false
                                 })}
