@@ -1,22 +1,27 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import {Button} from "../Button/Button";
 import PropTypes from "prop-types";
 import './detailsEmployee.css';
 import {classNames} from "../../utils/classNames";
 import {DetailsKinship} from "../DetailsKinship/DetailsKinship";
+import {getKinshipsFromPeople} from "../../services/kinshipsService"
 
-export class DetailsEmployee extends React.Component {
+class DetailsEmployeeComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             show: false,
-            tab: "Details",
         }
     }
     componentDidMount() {
         this.setState({show: this.props.openDetails});
     }
     closeDetails = () => {
+        this.setState({
+            tab: 'Details',
+            kinships: [],
+        })
         if(this.props.onCloseDetails) {
             this.props.onCloseDetails();
         }
@@ -27,10 +32,7 @@ export class DetailsEmployee extends React.Component {
     };
 
     openKinships = () => {
-        console.log(this.props.objectValue.relationships);
-        if(this.props.objectValue.relationships.length){
-            this.setState({tab: "Kinships"});
-        }else {alert("This person has no relations");}
+        this.props.history.push('/kinships/' + this.props.objectValue.id)
     };
 
     render() {
@@ -57,7 +59,7 @@ export class DetailsEmployee extends React.Component {
                         <Button title={"List kinships"} disabled={false} onClick={this.openKinships}>
                             Kinships <i className="fas fa-users fa-lg"/>
                         </Button>
-                    </div>{this.state.tab === "Details" ?
+                    </div>
                         <div className="bx-details-form">
                             <strong>Name:</strong> <p>{this.props.objectValue.firstNames}</p>
                             <strong>LastName:</strong> <p>{this.props.objectValue.lastNames}</p>
@@ -67,7 +69,7 @@ export class DetailsEmployee extends React.Component {
                             <strong>Gender:</strong> <p>{this.props.objectValue.gender}</p>
                             <strong>Nationality:</strong> <p>{this.props.objectValue.nationality}</p>
                             <strong>Contact:</strong> <p>{this.props.objectValue.contact}</p>
-                        </div> : <DetailsKinship kinshipArray = {this.props.objectValue.relationships}/>}
+                        </div>
                 </div>
             </div>
         )
@@ -81,3 +83,5 @@ DetailsEmployee.propTypes = {
     objectValue: PropTypes.object,
     onEdit: PropTypes.func,
 };
+
+export const DetailsEmployee = withRouter(DetailsEmployeeComponent);

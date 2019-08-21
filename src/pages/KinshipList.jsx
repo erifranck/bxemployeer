@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import Container, {ModalConsumer} from "../components/Container/Container";
 import {KinshipTable} from "../components/KinshipsTable/KinshipTable";
 import {kinshipListLabels} from "../constants/peopleData";
@@ -7,9 +8,14 @@ import {deleteKinshipsRequest, getKinshipsRequest} from "../redux/actions/kinshi
 import {Searcher} from "../components/Searcher/Searcher";
 import {sortKinshipBy} from "../redux/actions/kinshipActions";
 
+
 class KinshipListComponent extends React.Component {
     componentDidMount() {
+        const { match, location, history } = this.props;
         this.props.getKinshipsRequest();
+        if (match.params.id){
+
+        }
     }
 
     deleteKinships(id){
@@ -52,4 +58,4 @@ const mapDispatchToProps = (dispatch) => ({
     sortKinshipBy: (key) => dispatch(sortKinshipBy(key)),
 });
 
-export const KinshipList = connect(mapStateToProps, mapDispatchToProps)(KinshipListComponent);
+export const KinshipList = connect(mapStateToProps, mapDispatchToProps)(withRouter(KinshipListComponent));

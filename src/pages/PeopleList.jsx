@@ -7,14 +7,8 @@ import {deletePersonRequest, getPeopleRequest, sortPeopleBy} from "../redux/acti
 import {Searcher} from "../components/Searcher/Searcher";
 
 class PeopleListComponent extends React.Component {
-
-
     componentDidMount() {
         this.props.getPeopleRequest();
-    }
-
-    componentDidUpdate(preProps){
-       console.log(preProps, this.props)
     }
 
     deletePerson(id){

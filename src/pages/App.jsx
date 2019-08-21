@@ -13,6 +13,7 @@ class App extends React.Component {
                 <Router>
                     <Route exact path="/" component={PeopleList} />
                     <Route path="/kinships" component={KinshipList} />
+                    <Route path="/kinships/:id" component={KinshipList}/>
                 </Router>
             </Provider>
         );

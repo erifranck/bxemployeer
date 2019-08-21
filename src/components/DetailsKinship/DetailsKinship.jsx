@@ -12,6 +12,7 @@ export class DetailsKinship extends React.Component {
         }
     }
     componentDidMount() {
+        console.log(this.props.kinshipArray);
         this.setState({show: this.props.openDetails});
     }
     closeDetails = () => {
@@ -30,14 +31,13 @@ export class DetailsKinship extends React.Component {
             hide: !this.props.openDetails,
         });
         return (
-            <div className={wrapperClass}>
-                {this.props.kinshipArray.map((kinship) => 
+                this.props.kinshipArray.map((kinship) =>
                 (<div className="bx-details-form">
-                    <strong>Name:</strong> <p>{kinship.firstNames}</p>
-                    <strong>LastName:</strong> <p>{kinship.lastNames}</p>
-                    <strong>Kinships:</strong> <p>{kinship.kinships}</p>
-                </div>))}
-            </div>
+                    <strong>Source Name:</strong> <p>{kinship.emlpoyeeSourceNames}</p>
+                    <strong>Type:</strong> <p>{kinship.type}</p>
+                    <strong>Target Name:</strong> <p>{kinship.employeeTargetNames}</p>
+                </div>))
+
         )
     }
 }

@@ -8,3 +8,8 @@ export function deleteKinships(id, url) {
         method: 'delete',
     }).then(response => response.json());
 }
+
+export function getKinshipsFromPeople(id) {
+    return fetch('http://localhost:8080/personAPI/kinships/employee/' + id)
+        .then(res => res.json());
+}
