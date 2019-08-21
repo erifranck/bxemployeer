@@ -1,14 +1,14 @@
 import React from 'react';
 import {Button} from "../Button/Button";
 import {Menu} from "../Menu/Menu";
+import { DropDownMenu } from '../Menu/dropDownMenu';
 import './header.css';
-
 
 export const Header = (props) => (
     <header>
         <nav className="bx-navbar-container">
             <Button home={true} onClick={() => console.log("clicked")}>
-                <Menu/>
+                <DropDownMenu/>
             </Button>
             <h1>Bxemployeers</h1>
             <div className="bx-navbar-buttons">

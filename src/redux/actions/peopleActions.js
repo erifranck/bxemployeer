@@ -11,6 +11,7 @@ import {
     EDIT_PEOPLE_SUCCESS, 
     EDIT_PEOPLE_FAIL,
 } from "../reducers/people";
+import {deleteMock, getPeopleMock} from "../../services/mockEmployeersService";
 import {createPerson, deletePerson, getPeople, editPerson} from "../../services/peopleService";
 
 const onFetch = () => (  { type: PEOPLE_REQUEST, } );
@@ -37,7 +38,7 @@ const editPeopleFail = (error) =>  ({ type: EDIT_PEOPLE_FAIL, response: {error: 
 export function getPeopleRequest() {
     return (dispatch, getState) => {
         dispatch(onFetch());
-        getPeople()
+        getPeopleMock()
             .then(value => {
                 dispatch(getPeopleSuccess({data: value}));
             })

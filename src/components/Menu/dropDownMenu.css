@@ -1,0 +1,47 @@
+.dropdown {
+    position: absolute;
+    display: block;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 25px;
+    padding: 16px; 
+    width: 200px;
+    transition: width 0.5s;
+    overflow: hidden;
+}
+
+.dropdown.hide{
+    width: 0px;
+    padding: 0px;
+}
+
+.bx-menu-icon {
+    border: 1px solid black;
+    margin-bottom: 5px;
+    display: block;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+  }
+
+  li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color:rgba(255, 177, 180, 1);
+    border-radius: 25px;
+    width: realtive;
+  }
+
+  .dropdown:hover .dropdown {
+    display: block;
+  }

@@ -25,7 +25,6 @@ class PeopleListComponent extends React.Component {
             <Container>
                 <ModalConsumer>
                 {({toggleModal, toggleDetails}) => (
-
                     <>
                             <Searcher items={this.props.data}/>
                         <Table

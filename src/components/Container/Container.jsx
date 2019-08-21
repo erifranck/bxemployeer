@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './container.css';
 import {Header} from "../Header/Header";
 import {Modal} from "../Modal/Modal";
@@ -64,7 +65,6 @@ class Container extends React.Component {
                             <Button title={"Add new kinship"} addKinship={true} primary={true} onClick={() => alert("hola")}><i className="fas fa-users"/></Button>
                         </Header>
                        {this.props.children}
-
                         {
                             this.state.showPopup ?
                                 <Popup initialValues={this.state.objectValue || {}} closePopup={this.closePopup}/>
