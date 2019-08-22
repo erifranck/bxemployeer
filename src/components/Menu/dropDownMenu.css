@@ -9,10 +9,16 @@
     transition: width 0.5s;
     overflow: hidden;
 }
+.bx-menu-dropdown{
+    height: fit-content;
+}
+.bx-menu-dropdown:hover .bx-menu-icon{
+    box-shadow: 0 0 10pt 1pt #9d9d9d;
+}
 
 .dropdown.hide{
-    width: 0px;
-    padding: 0px;
+    width: 0;
+    padding: 0;
 }
 
 .bx-menu-icon {

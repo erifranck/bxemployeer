@@ -6,7 +6,6 @@ import './personApi.css';
 export function Homepage(){
     return(
         <React.Fragment>
-            
             <div className="bx-dashboard-wrapper">
                 <div className="bx-dashboard-container">
                     <img src={require("../images/PersonApi.png")} className="personApi"></img>
@@ -15,11 +14,8 @@ export function Homepage(){
                         <li> <a href="/kinships">Kinships</a></li>
                         <li> <a href="/about">About</a></li>
                     </div>
-                    <div style={{position: 'absolute', bottom: 10, right: 20, color: "gray"}}>Belatrix Software | "personAPI v0.0.1"</div>
-                        
                 </div>
             </div>
         </React.Fragment>
-
     )
 }

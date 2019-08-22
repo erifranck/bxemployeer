@@ -19,6 +19,7 @@ class App extends React.Component {
                     <Route path="/kinships/:id" component={KinshipList}/>
                     <Route path="/about" component={About}/>
                 </Router>
+                <div style={{position: 'absolute', bottom: 10, right: 20, color: "gray"}}>Belatrix Software | "personAPI v1.0.0"</div>
             </Provider>
         );
     }

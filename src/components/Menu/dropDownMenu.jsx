@@ -18,7 +18,6 @@ export class DropDownMenu extends Component {
   
   showMenu(event) {
     event.preventDefault();
-    
     this.setState({ showMenu: true }, () => {
       document.addEventListener('click', this.closeMenu);
     });
@@ -34,10 +33,10 @@ export class DropDownMenu extends Component {
       const clases = classNames({"dropdown": true, "hide": !this.state.showMenu})
     return (
       <div>
-        <div onClick={this.showMenu}>
-        <span className='bx-menu-icon'/>
-        <span className='bx-menu-icon'/>
-        <span className='bx-menu-icon'/>
+        <div className="bx-menu-dropdown" onClick={this.showMenu}>
+            <span className='bx-menu-icon'/>
+            <span className='bx-menu-icon'/>
+            <span className='bx-menu-icon'/>
         </div>
      
                 <ul className={clases} style = {{background: "white"}}>
