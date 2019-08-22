@@ -8,6 +8,7 @@ import {Button} from '../Button/Button'
 import {CountryPicker} from './CountryPicker/CountryPicker';
 import {getDate} from "../../utils/dateManagement";
 import {editPerson} from "../../services/peopleService";
+import DatePicker from 'react-date-picker';
 import './newEmployeeWithFormik.css';
 
 const MyForm = props => {
@@ -92,6 +93,7 @@ const MyForm = props => {
                         <label>Date of birth</label>
                         <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
+                                <DatePicker />
                                 <Field render={
                                         ({field}) =>
                                             (<input
