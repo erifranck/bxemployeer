@@ -2,6 +2,8 @@ import {
     KINSHIPS_REQUEST,
     CREATE_KINSHIP_SUCCESS,
     CREATE_KINSHIP_FAIL,
+    UPDATE_KINSHIP_SUCCESS,
+    UPDATE_KINSHIP_FAIL,
     DELETE_KINSHIPS_FAIL,
     DELETE_KINSHIPS_SUCCESS,
     GET_KINSHIPS_FAIL,
@@ -13,13 +15,17 @@ import {
 } from "../reducers/kinships";
 
 import {createKinship} from "../../services/kinshipsService";
-import {deleteKinships, getKinships, getKinshipById} from "../../services/kinshipsService";
+import {deleteKinships, getKinships, getKinshipById, updateKinship} from "../../services/kinshipsService";
 
 const onFetch = () => (  { type: KINSHIPS_REQUEST, } );
 
 const createKinshipSuccess = (kinship) => ( { type: CREATE_KINSHIP_SUCCESS, kinship: kinship } );
 
 const createKinshipFail = (error) =>  ({ type: CREATE_KINSHIP_FAIL, response: {error: error}});
+
+const updateKinshipSuccess = (kinship) => ( { type: UPDATE_KINSHIP_SUCCESS, kinship: kinship } );
+
+const updateKinshipFail = (error) =>  ({ type: UPDATE_KINSHIP_FAIL, response: {error: error}});
 
 const getKinshipsSuccess = (data) => ( { type: GET_KINSHIPS_SUCCESS, response: data } );
 
@@ -88,6 +94,7 @@ export function getKinshipByIdRequest(id,callback) {
             .then(value => {
                 dispatch(getKinshipByIdSuccess({data: value}))
                 let kinshipInit = {}
+                kinshipInit.kinshipId = id
                 kinshipInit.sourceEmployee = value.idSource
                 kinshipInit.targetEmployee = value.idTarget
                 kinshipInit.kinship = value.type
@@ -95,6 +102,23 @@ export function getKinshipByIdRequest(id,callback) {
             })
             .catch(error => {
                 dispatch(getKinshipByIdFail(error));
+            })
+    }
+}
+
+export function updateKinshipRequest(payload) {
+    return (dispatch) => {
+        dispatch(onFetch());
+        updateKinship(payload)
+            .then( () => {
+                dispatch(updateKinshipSuccess({...payload,id: Math.random()})); // Workaround to show employee on table. When the API returns the ID created that should replace the math.random
+                alert("Kinship updated succesfully")
+                window.location.reload();
+            })
+            .catch(error => {
+                dispatch(updateKinshipFail(error));
+                alert(error)
+
             })
     }
 }

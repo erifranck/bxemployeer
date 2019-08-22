@@ -10,6 +10,9 @@ export const GET_KINSHIPS_BY_ID_FAIL = 'GET_KINSHIPS_BY_ID_FAIL';
 export const CREATE_KINSHIP_SUCCESS = 'CREATE_KINSHIP_SUCCESS';
 export const CREATE_KINSHIP_FAIL = 'CREATE_KINSHIP_FAIL';
 
+export const UPDATE_KINSHIP_SUCCESS = 'UPDATE_KINSHIP_SUCCESS';
+export const UPDATE_KINSHIP_FAIL = 'UPDATE_KINSHIP_FAIL';
+
 export const DELETE_KINSHIPS_SUCCESS = 'DELETE_KINSHIPS_SUCCESS';
 export const DELETE_KINSHIPS_FAIL = 'DELETE_KINSHIPS_FAIL';
 
@@ -60,6 +63,18 @@ export function kinshipsReducer(state = INITIAL_STATE, action) {
                 isFetch: false,
             };
         case CREATE_KINSHIP_FAIL:
+            return {
+                ...state,
+                error: action.response.error,
+                isFetch: false,
+            };
+        case UPDATE_KINSHIP_SUCCESS:
+            return {
+                ...state,
+                data: state.data.concat([action.kinship]),
+                isFetch: false,
+            };
+        case UPDATE_KINSHIP_FAIL:
             return {
                 ...state,
                 error: action.response.error,

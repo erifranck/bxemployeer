@@ -27,7 +27,6 @@ export function createKinship(payload) {
         kinBody += payload.targetEmployee
         kinBody += "&type="
         kinBody += payload.kinship
-        console.log(kinBody)
         fetch('http://localhost:8080/personAPI/kinships', {
             method: 'POST',
             headers: {
@@ -38,9 +37,37 @@ export function createKinship(payload) {
         .then( async function (res){
             let response = await res.text()
             if(res.status === 200) {
-                resolve(res.json());
+                resolve(res);
             } else {
-                reject( new Error(response[0]));
+                reject( new Error(JSON.parse(response).message));
+            }
+        })
+    });
+   
+}
+
+
+export function updateKinship(payload) {
+
+    return new Promise((resolve, reject) => {
+        let kinBody = "kinshipId="
+        kinBody += payload.kinshipId
+        kinBody += "&type="
+        kinBody += payload.kinship
+        console.log(kinBody)
+        fetch('http://localhost:8080/personAPI/kinships', {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: kinBody
+        })
+        .then( async function (res){
+            let response = await res.text()
+            if(res.status === 200) {
+                resolve(res);
+            } else {
+                reject( new Error(JSON.parse(response).message));
             }
         })
     });

@@ -1,19 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {createKinshipRequest} from "../../redux/actions/kinshipsActions";
+import {createKinshipRequest, updateKinshipRequest} from "../../redux/actions/kinshipsActions";
 import {getPeopleRequest} from "../../redux/actions/peopleActions";
 import './newKinship.css';
 
 class NewKinshipComponent extends React.Component {
     constructor(props) {
         super(props);
-        
         this.state = {
             sourceDisabled: this.props.kinshipInit.sourceEmployee !== null ,
             targetDisabled: this.props.kinshipInit.targetEmployee !== null ,
             sourceEmployee: this.props.kinshipInit.sourceEmployee || '',
             targetEmployee: this.props.kinshipInit.targetEmployee || '',
-            kinship:        this.props.kinshipInit.kinship || ''
+            kinship:        this.props.kinshipInit.kinship || '',
+            kinshipId:      this.props.kinshipInit.kinshipId,
+            isThisAnUpdate: this.props.kinshipInit.sourceEmployee !== null && this.props.kinshipInit.targetEmployee !== null
+
         }
         this.onChangeInput = this.onChangeInput.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -38,8 +40,8 @@ class NewKinshipComponent extends React.Component {
 
 
     onSubmit(e) {
-        e.preventDefault()     
-        this.props.createKinship(this.state)
+        e.preventDefault()  
+        this.state.isThisAnUpdate ? this.props.updateKinship(this.state) : this.props.createKinship(this.state)
     }
     
 
@@ -129,6 +131,7 @@ const mapStateToProps = (state) => ({
  
 const mapDispatchToProps = (dispatch) => ({
     createKinship: (payload) => dispatch(createKinshipRequest(payload)),
+    updateKinship: (payload) => dispatch(updateKinshipRequest(payload)),
     getPeopleRequest: () => dispatch(getPeopleRequest()),
 });
 
