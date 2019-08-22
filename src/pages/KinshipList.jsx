@@ -12,11 +12,12 @@ import {popupContent} from "../components/Container/Container";
 
 class KinshipListComponent extends React.Component {
     componentDidMount() {
-        const { match, location, history } = this.props;
-        if (match.params.id){
+        const {match, location, history} = this.props;
+        if (match.params.id) {
+            console.log("entra a donde debe");
             this.props.getKinshipsFromPeople(match.params.id);
-        }
-        else{
+        }else {
+            console.log("aca no");
             this.props.getKinshipsRequest();
         }
     }
@@ -39,19 +40,19 @@ class KinshipListComponent extends React.Component {
                                 })}
                                 onDeleteKinship={ (id) => toggleModal(true, null, () => this.deleteKinships(id))()}
                                 onEditKinship={ (objectValue) => {
-                                    this.props.getKinshipByIdRequest(objectValue.id)  
-                                    setTimeout(() => { 
-                                        console.log(this.props.kinById) 
-                                        let kinshipInit = {}
-                                        kinshipInit.sourceEmployee = this.props.kinById.Source
-                                        kinshipInit.targetEmployee = this.props.kinById.Target
-                                        kinshipInit.kinship = this.props.kinById.Type
-                                        return openPopup(popupContent.NEW_KINSHIP,kinshipInit)
+                                    this.props.getKinshipByIdRequest(objectValue.id)
+                                    setTimeout(() => {
+                                        console.log(this.props.kinById)
+                                        let kinshipInit = {};
+                                        kinshipInit.sourceEmployee = this.props.kinById.Source;
+                                        kinshipInit.targetEmployee = this.props.kinById.Target;
+                                        kinshipInit.kinship = this.props.kinById.Type;
+                                        return openPopup(popupContent.NEW_KINSHIP,kinshipInit);
                                     }, 1000);
                                     }
                                 }
                                 onClickColumn={(key) => this.props.sortKinshipBy(key)}
-                            />
+                                />
                         </>
                     )}
                 </ModalConsumer>

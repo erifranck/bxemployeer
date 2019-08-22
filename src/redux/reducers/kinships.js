@@ -38,7 +38,7 @@ export function kinshipsReducer(state = INITIAL_STATE, action) {
                 data: action.response.data,
                 isFetch: false,
             };
-        case GET_KINSHIPS_FAIL:      
+        case GET_KINSHIPS_FAIL:
 
         case GET_KINSHIPS_BY_ID_SUCCESS:
             return {

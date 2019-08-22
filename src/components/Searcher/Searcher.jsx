@@ -49,10 +49,10 @@ class SearchComponent extends React.Component {
     render() {
         return (
             <div className="bx-searcher-container">
-                { window.location.pathname === '/kinships/' ?
-                    <input type="text" className="Searcher" onChange={this.handleChange}  placeholder="Search by employee source ..."/>
-                    :
+                { window.location.pathname === '/' ?
                     <input type="number" className="Searcher" onKeyDown={this.ignoreArrows} onChange={this.handleChange}  placeholder="Search by document ..."/>
+                    :
+                    <input type="text" className="Searcher" onChange={this.handleChange}  placeholder="Search by employee source ..."/>
                 }
             </div>
         )

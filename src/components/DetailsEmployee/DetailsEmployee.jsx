@@ -4,8 +4,6 @@ import {Button} from "../Button/Button";
 import PropTypes from "prop-types";
 import './detailsEmployee.css';
 import {classNames} from "../../utils/classNames";
-import {DetailsKinship} from "../DetailsKinship/DetailsKinship";
-import {getKinshipsFromPeople} from "../../services/kinshipsService"
 
 class DetailsEmployeeComponent extends React.Component {
     constructor(props) {

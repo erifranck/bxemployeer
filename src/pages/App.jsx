@@ -12,7 +12,7 @@ class App extends React.Component {
             <Provider store={store}>
                 <Router>
                     <Route exact path="/" component={PeopleList} />
-                    <Route path="/kinships" component={KinshipList} />
+                    <Route exact path="/kinships" component={KinshipList} />
                     <Route path="/kinships/:id" component={KinshipList}/>
                 </Router>
             </Provider>
