@@ -39,6 +39,7 @@ export function About(){
                         <p>
                             Instructors
                             <li> Porco Ezequiel</li>
+                            <li> Fernando Romero Alvarez</li>
                         </p>
                         <p>
                             
