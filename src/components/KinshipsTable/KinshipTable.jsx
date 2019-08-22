@@ -44,6 +44,5 @@ KinshipTable.propTypes = {
     onDeleteKinship: PropTypes.func.isRequired,
     onEditKinship: PropTypes.func.isRequired,
     data: PropTypes.array.isRequired,
-    editKinship: PropTypes.func.isRequired,
     onClickColumn: PropTypes.func.isRequired,
 };
