@@ -8,12 +8,12 @@ export function Homepage(){
         <React.Fragment>
             <div className="bx-dashboard-wrapper">
                 <div className="bx-dashboard-container">
-                    <img src={require("../images/PersonApi.png")} className="personApi"></img>
-                    <div style={{ position: 'flex', justifyContent:'center', width: 200, color: "#ffffff"}}>
+                    <div className="menu">
                         <li> <a href="/employee-list">Employees</a></li>
                         <li> <a href="/kinships">Kinships</a></li>
                         <li> <a href="/about">About</a></li>
                     </div>
+                    <img src={require("../images/PersonApi.png")} className="personApi"></img>
                 </div>
             </div>
         </React.Fragment>
