@@ -14,8 +14,9 @@ class App extends React.Component {
             <Provider store={store}>
                 <Router>
                     <Route exact path="/" component={Homepage}/>
-                    <Route path="/kinships" component={KinshipList} />
+                    <Route exact path="/kinships" component={KinshipList} />
                     <Route path="/employee-list" component={PeopleList} />
+                    <Route path="/kinships/:id" component={KinshipList}/>
                     <Route path="/about" component={About}/>
                 </Router>
             </Provider>

@@ -12,10 +12,11 @@ import {
     GET_KINSHIPS_BY_ID_FAIL,
     SEARCH_KINSHIP,
     SORT_KINSHIP_BY,
+    GET_KINSHIPS_BY_PEOPLE_SUCCESS,
+    GET_KINSHIPS_BY_PEOPLE_FAIL
 } from "../reducers/kinships";
 
-import {createKinship} from "../../services/kinshipsService";
-import {deleteKinships, getKinships, getKinshipById, updateKinship} from "../../services/kinshipsService";
+import {createKinship, deleteKinships, getKinships, getKinshipById, getKinshipsPeople,updateKinship} from "../../services/kinshipsService";
 
 const onFetch = () => (  { type: KINSHIPS_REQUEST, } );
 
@@ -42,6 +43,10 @@ const deleteKinshipsFail = (error) => ({ type: DELETE_KINSHIPS_FAIL, response: {
 export const searchKinship = (search) => ({type: SEARCH_KINSHIP, search: search});
 
 export const sortKinshipBy = (key) => ({type: SORT_KINSHIP_BY, key: key});
+
+export const getKinshipsFromPeopleSuccess = (data) => ( { type: GET_KINSHIPS_BY_PEOPLE_SUCCESS, response: data } );
+
+const getKinshipsFromPeopleFail = (error) =>  ({ type: GET_KINSHIPS_BY_PEOPLE_FAIL, response: {error: error}});
 
 export function getKinshipsRequest() {
     return (dispatch, getState) => {
@@ -118,7 +123,19 @@ export function updateKinshipRequest(payload) {
             .catch(error => {
                 dispatch(updateKinshipFail(error));
                 alert(error)
+            })
+    }
+}
 
+export function getKinshipsFromPeople(id) {
+    return (dispatch, getState) => {
+        dispatch(onFetch());
+        getKinshipsPeople(id)
+            .then(value => {
+                dispatch(getKinshipsFromPeopleSuccess({data: value}))
+            })
+            .catch(error => {
+                dispatch(getKinshipsFromPeopleFail(error));
             })
     }
 }

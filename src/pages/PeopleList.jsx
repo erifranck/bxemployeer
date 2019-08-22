@@ -12,12 +12,6 @@ class PeopleListComponent extends React.Component {
         this.props.getPeopleRequest();
     }
 
-    componentDidUpdate(preProps){
-       if(preProps !== this.props){
-           this.setState(this.props);
-       }
-    }
-
     deletePerson(id){
         this.props.deletePeopleRequest(id);
     }
@@ -28,7 +22,7 @@ class PeopleListComponent extends React.Component {
                 {({toggleModal, toggleDetails, openPopup}) => (
 
                     <>
-                            <Searcher items={this.props.data}/>
+                        <Searcher items={this.props.data}/>
                         <Table
                             dataLabels={peopleListLabels}
                             data={this.props.data.filter(items => {
@@ -60,7 +54,6 @@ const mapStateToProps = (state) => ({
    data: state.people.data,
     error: state.people.error,
     searchValue: state.people.search,
-    //sortKey: state.people.key
 });
 
 const mapDispatchToProps = (dispatch) => ({
