@@ -17,9 +17,12 @@ export function deleteKinships(id, url) {
     }).then(response => response.json());
 }
 
+export function getKinshipsPeople(id) {
+    return fetch('http://localhost:8080/personAPI/kinships/employee/' + id)
+        .then(res => res.json());
+}
 
 export function createKinship(payload) {
-
     return new Promise((resolve, reject) => {
         let kinBody = "sourceId="
         kinBody += payload.sourceEmployee

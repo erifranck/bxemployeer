@@ -1,16 +1,22 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import Container, {ModalConsumer} from "../components/Container/Container";
 import {KinshipTable} from "../components/KinshipsTable/KinshipTable";
 import {kinshipListLabels} from "../constants/peopleData";
 import {connect} from 'react-redux';
-import {deleteKinshipsRequest, getKinshipsRequest, getKinshipByIdRequest} from "../redux/actions/kinshipsActions";
+import {deleteKinshipsRequest, getKinshipsRequest, getKinshipByIdRequest, getKinshipsFromPeople} from "../redux/actions/kinshipsActions";
 import {Searcher} from "../components/Searcher/Searcher";
 import {sortKinshipBy} from "../redux/actions/kinshipsActions";
 import {popupContent} from "../components/Container/Container";
 
+
 class KinshipListComponent extends React.Component {
     componentDidMount() {
-        this.props.getKinshipsRequest();
+        const {match, location, history} = this.props;
+        if (match.params.id)
+            this.props.getKinshipsFromPeople(match.params.id);
+        else
+            this.props.getKinshipsRequest();
     }
 
     deleteKinships(id){
@@ -20,7 +26,7 @@ class KinshipListComponent extends React.Component {
         return (
             <Container>
                 <ModalConsumer>
-                    {({toggleModal, toggleKinshipDetails,openPopup}) => (
+                    {({toggleModal, openPopup}) => (
                         <>
                             <Searcher items={this.props.data}/>
                             <KinshipTable
@@ -38,7 +44,7 @@ class KinshipListComponent extends React.Component {
                                 }
                                 }
                                 onClickColumn={(key) => this.props.sortKinshipBy(key)}
-                            />
+                                />
                         </>
                     )}
                 </ModalConsumer>
@@ -59,7 +65,8 @@ const mapDispatchToProps = (dispatch) => ({
     deleteKinshipsRequest: (id) => dispatch(deleteKinshipsRequest(id)),
     sortKinshipBy: (key) => dispatch(sortKinshipBy(key)),
     getKinshipByIdRequest: (id,callback) => dispatch(getKinshipByIdRequest(id,callback)),
+    getKinshipsFromPeople: (id) => dispatch(getKinshipsFromPeople(id)),
 
 });
 
-export const KinshipList = connect(mapStateToProps, mapDispatchToProps)(KinshipListComponent);
+export const KinshipList = connect(mapStateToProps, mapDispatchToProps)(withRouter(KinshipListComponent));

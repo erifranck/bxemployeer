@@ -1,11 +1,12 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import {Button} from "../Button/Button";
 import PropTypes from "prop-types";
 import './detailsEmployee.css';
 import {classNames} from "../../utils/classNames";
 import {getDate} from "../../utils/dateManagement";
 
-export class DetailsEmployee extends React.Component {
+class DetailsEmployeeComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -27,7 +28,7 @@ export class DetailsEmployee extends React.Component {
     };
 
     openKinships = () => {
-        alert("Debe abrir otro modal con las kinships");
+        this.props.history.push('/kinships/' + this.props.objectValue.id);
     };
 
     showGender(gender){
@@ -77,10 +78,12 @@ export class DetailsEmployee extends React.Component {
     }
 }
 
-DetailsEmployee.propTypes = {
+DetailsEmployeeComponent.propTypes = {
     openDetails: PropTypes.bool.isRequired,
     onCloseDetails: PropTypes.func,
     onConfirmDetails: PropTypes.func,
     objectValue: PropTypes.object,
     onEdit: PropTypes.func,
 };
+
+export const DetailsEmployee = withRouter(DetailsEmployeeComponent);
