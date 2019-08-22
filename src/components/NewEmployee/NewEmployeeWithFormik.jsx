@@ -41,18 +41,10 @@ const MyForm = props => {
                 nationality: Yup.string().required(),
                 phone: Yup.string().matches(phoneRegEx,"Phone number doesn't look ok"),
                 email: Yup.string().matches(emailRegEx,"Email is not a valid adress"),
-                // email: Yup.string().matches(emailRegEx,"Email is not a valid adress").test( (value) => {
-                //   console.log(value)
-                //   const {phone} = this.parent;
-                //   if (!phone) return value != null
-                //   return true
-                // }),
               })
           }
 
           onSubmit={ (values) => {
-
-
               const objToSend = {
                   firstNames: values.firstName,
                   lastNames: values.lastName,
@@ -100,7 +92,7 @@ const MyForm = props => {
                         <label>Date of birth</label>
                         <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
-                                    <Field render={
+                                <Field render={
                                         ({field}) =>
                                             (<input
                                                 type="date"
