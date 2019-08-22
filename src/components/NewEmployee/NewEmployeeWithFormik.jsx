@@ -8,8 +8,11 @@ import {Button} from '../Button/Button'
 import {CountryPicker} from './CountryPicker/CountryPicker';
 import {getDate} from "../../utils/dateManagement";
 import {editPerson} from "../../services/peopleService";
-import DatePicker from 'react-date-picker';
+import DatePicker from 'react-toolbox/lib/date_picker';
 import './newEmployeeWithFormik.css';
+
+const datetime = new Date(2015, 10, 16);
+const min_datetime = new Date(new Date(datetime).setDate(8));
 
 const MyForm = props => {
   const {
@@ -93,16 +96,20 @@ const MyForm = props => {
                         <label>Date of birth</label>
                         <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
-                                <DatePicker />
+
+
                                 <Field render={
                                         ({field}) =>
-                                            (<input
-                                                type="date"
-                                                value={getDate(new Date(field.value))}
-                                                onChange={(ev) => {
-                                                    setFieldValue('dateOfBirth', String(ev.target.value))
-                                                }}
-                                            />)
+                                            (
+                                                <DatePicker 
+                                                    sundayFirstDayOfWeek
+                                                    onChange={(value) => {
+                                                        setFieldValue('dateOfBirth', value)
+                                                    }}
+                                                    
+                                                    value={getDate(new Date(field.value))} 
+                                                />
+                                            )
                                     }
                                         type="date"
                                         name="dateOfBirth"
