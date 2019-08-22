@@ -13,13 +13,10 @@ import {popupContent} from "../components/Container/Container";
 class KinshipListComponent extends React.Component {
     componentDidMount() {
         const {match, location, history} = this.props;
-        if (match.params.id) {
-            console.log("entra a donde debe");
+        if (match.params.id)
             this.props.getKinshipsFromPeople(match.params.id);
-        }else {
-            console.log("aca no");
+        else
             this.props.getKinshipsRequest();
-        }
     }
 
     deleteKinships(id){
