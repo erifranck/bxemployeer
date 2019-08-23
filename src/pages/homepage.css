@@ -1,5 +1,4 @@
 .menu{
-    bottom: 0;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -9,12 +8,15 @@
     border-radius: 25px;
     padding: 16px; 
     width: 300px;
-    transition: width 0.5s;
-    overflow: hidden;
 }
 
-.personApi{
+.wrapper{
     display: inline-flex;
-    flex-direction: row;  
     width: 100%;  
+    flex-direction: row;
+}
+
+.logo{
+    flex-direction: row;  
+    width: 70%;  
 }
