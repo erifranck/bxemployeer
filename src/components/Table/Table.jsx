@@ -24,7 +24,7 @@ export const Table = (props) => (
         {
             props.data.map((objectValue) => (
                 <tr key={objectValue.id}>
-                    {   //person array : [id, name, lastname, doc type, doc number, gender, nationality, contacts...]
+                    {
                         Object.values(objectValue).slice(1,3).concat(Object.values(objectValue).slice(5,6), Object.values(objectValue).slice(7,8)).map( (value, index) => (
                             <td key={index}>{value}</td>
                         ))

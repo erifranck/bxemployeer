@@ -69,7 +69,7 @@ const MyForm = props => {
                   <Form>
                     <div className="bx-form-inputs">
 
-                      <label>Name</label>
+                      <strong>Name</strong>
 
                         <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
@@ -90,7 +90,28 @@ const MyForm = props => {
                         { touched.firstName && errors.firstName && <li>{errors.firstName}</li> }
                         { touched.lastName && errors.lastName && <li>{errors.lastName}</li> }
 
-                        <label>Date of birth</label>
+                        <strong>Nationality</strong>
+                        <div className="bx-emp-form-row">
+                            <div className="bx-emp-nationality-field">
+
+                                <Field render={(field) => {
+                                    return (
+                                        <CountryPicker value={field.field.value}
+                                                       onSelectCountry = {(value) => setFieldValue('nationality',value)}
+                                        />
+                                    )
+                                }
+                                }
+                                       name="nationality"
+                                />
+
+                            </div>
+
+                        </div>
+                        { touched.nationality && errors.nationality && <li>{errors.nationality}</li> }
+
+
+                        <strong>Date of birth</strong>
                         <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
                                     <Field render={
@@ -110,7 +131,7 @@ const MyForm = props => {
                         </div>
                         { touched.dateOfBirth && errors.dateOfBirth && <li>{errors.dateOfBirth}</li> }
 
-                        <label>Document number</label>
+                        <strong>Document number</strong>
                         <div className="bx-emp-form-row">
                               <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
@@ -133,7 +154,7 @@ const MyForm = props => {
                         { touched.docType && errors.docType && <li>{errors.docType}</li> }
                         { touched.docNumber && errors.docNumber && <li>{errors.docNumber}</li> }
 
-                        <label>Gender</label>
+                        <strong>Gender</strong>
                         <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
                                     <Field component="select" name="gender">
@@ -146,27 +167,7 @@ const MyForm = props => {
                           </div>
                           { touched.gender && errors.gender && <li>{errors.gender}</li> }
 
-                          <label>Nationality</label>
-                          <div className="bx-emp-form-row">
-                              <div className="bx-emp-nationality-field">
-
-                                  <Field render={(field) => {
-                                      return (
-                                      <CountryPicker value={field.field.value}
-                                      onSelectCountry = {(value) => setFieldValue('nationality',value)}
-                                    />
-                                  )
-                                  }
-                                  }
-                                    name="nationality"
-                                  />                               
-                                  
-                              </div>
-
-                          </div>
-                        { touched.nationality && errors.nationality && <li>{errors.nationality}</li> }
-
-                        <label>Contact</label>
+                        <strong>Contact</strong>
                         <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
                                     <Field
