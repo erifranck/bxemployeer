@@ -3,6 +3,7 @@ import {NewEmployeeWithFormik} from '../NewEmployee/NewEmployeeWithFormik';
 import {popupContent} from '../Container/Container';
 import {Button} from "../Button/Button";
 import {NewKinship} from '../NewKinship/NewKinship';
+import {getDate} from "../../utils/dateManagement";
 import './popup.css';
 
 export class Popup extends React.Component { 
@@ -11,7 +12,7 @@ export class Popup extends React.Component {
         this.state = {
             firstName: "" || this.props.initialValues.firstNames,
             lastName: "" || this.props.initialValues.lastNames,
-            dateOfBirth: "" || this.props.initialValues.dateOfBirth,
+            dateOfBirth: "" || getDate(new Date(this.props.initialValues.dateOfBirth)),
             docType: ""|| this.props.initialValues.documentType,
             docNumber: "" || this.props.initialValues.documentID,
             gender: "" || this.props.initialValues.gender,

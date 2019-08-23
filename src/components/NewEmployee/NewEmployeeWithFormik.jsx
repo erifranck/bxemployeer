@@ -6,7 +6,6 @@ import {connect} from "react-redux";
 import {createPersonRequest, editPersonRequest} from "../../redux/actions/peopleActions";
 import {Button} from '../Button/Button'
 import {CountryPicker} from './CountryPicker/CountryPicker';
-import {getDate} from "../../utils/dateManagement";
 import {editPerson} from "../../services/peopleService";
 import './newEmployeeWithFormik.css';
 
@@ -41,12 +40,6 @@ const MyForm = props => {
                 nationality: Yup.string().required(),
                 phone: Yup.string().matches(phoneRegEx,"Phone number doesn't look ok"),
                 email: Yup.string().matches(emailRegEx,"Email is not a valid adress"),
-                // email: Yup.string().matches(emailRegEx,"Email is not a valid adress").test( (value) => {
-                //   console.log(value)
-                //   const {phone} = this.parent;
-                //   if (!phone) return value != null
-                //   return true
-                // }),
               })
           }
 
@@ -104,7 +97,7 @@ const MyForm = props => {
                                         ({field}) =>
                                             (<input
                                                 type="date"
-                                                value={getDate(new Date(field.value))}
+                                                value={field.value}
                                                 onChange={(ev) => {
                                                     setFieldValue('dateOfBirth', String(ev.target.value))
                                                 }}
