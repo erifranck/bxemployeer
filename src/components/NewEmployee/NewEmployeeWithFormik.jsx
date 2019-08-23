@@ -1,77 +1,73 @@
 import React from 'react';
-import { Form, Field, Formik} from 'formik';
+import {Form, Field, Formik} from 'formik';
 import * as Yup from 'yup';
 import {docTypeRegEx, emailRegEx, genderRegEx, nameRegEx, phoneRegEx} from "../../utils/validations";
 import {connect} from "react-redux";
 import {createPersonRequest, editPersonRequest} from "../../redux/actions/peopleActions";
 import {Button} from '../Button/Button'
 import {CountryPicker} from './CountryPicker/CountryPicker';
-import {editPerson} from "../../services/peopleService";
 import './newEmployeeWithFormik.css';
 
 const MyForm = props => {
-  const {
-    initialValues = {
-      firstName: '',
-      lastName: '',
-      dateOfBirth: '',
-      docType: '',
-      docNumber: '',
-      gender: '',
-      nationality: '',
-      phone: '',
-      email: '',
+    const {
+        initialValues = {
+            firstName: '',
+            lastName: '',
+            dateOfBirth: '',
+            docType: '',
+            docNumber: '',
+            gender: '',
+            nationality: '',
+            phone: '',
+            email: '',
 
-  },
-    createPerson
-  } = props;
+        }
+    } = props;
 
-  return (
-      <Formik
-          initialValues={initialValues}
-          validationSchema= {
-              Yup.object().shape({
-                firstName: Yup.string().min(3).max(20).matches(nameRegEx,"This first name doesn't seem ok").required(),
-                lastName: Yup.string().min(3).max(20).matches(nameRegEx,"This last name doesn't seem ok").required(),
-                dateOfBirth:Yup.date().min('1900-01-01','Fecha no valida').max('2002-01-01',"Fecha no valida").required(),
-                docType: Yup.string().matches(docTypeRegEx,"The selected document type is not valid").required(),
-                docNumber: Yup.number().positive().required(),
-                gender: Yup.string().matches(genderRegEx,"The selected gender is not valid").required(),
-                nationality: Yup.string().required(),
-                phone: Yup.string().matches(phoneRegEx,"Phone number doesn't look ok"),
-                email: Yup.string().matches(emailRegEx,"Email is not a valid adress"),
-              })
-          }
+    return (
+        <Formik
+            initialValues={initialValues}
+            validationSchema={
+                Yup.object().shape({
+                    firstName: Yup.string().min(3).max(20).matches(nameRegEx, "This first name doesn't seem ok").required(),
+                    lastName: Yup.string().min(3).max(20).matches(nameRegEx, "This last name doesn't seem ok").required(),
+                    dateOfBirth: Yup.date().min('1900-01-01', 'Fecha no valida').max('2002-01-01', "Fecha no valida").required(),
+                    docType: Yup.string().matches(docTypeRegEx, "The selected document type is not valid").required(),
+                    docNumber: Yup.number().positive().required(),
+                    gender: Yup.string().matches(genderRegEx, "The selected gender is not valid").required(),
+                    nationality: Yup.string().required(),
+                    phone: Yup.string().matches(phoneRegEx, "Phone number doesn't look ok"),
+                    email: Yup.string().matches(emailRegEx, "Email is not a valid adress"),
+                })
+            }
 
-          onSubmit={ (values) => {
+            onSubmit={(values) => {
+                const objToSend = {
+                    firstNames: values.firstName,
+                    lastNames: values.lastName,
+                    dateOfBirth: values.dateOfBirth,
+                    documentType: values.docType,
+                    documentID: values.docNumber,
+                    gender: values.gender,
+                    nationality: values.nationality,
+                    email: values.email,
+                    phoneNumber: values.phoneNumber,
+                };
+                props.initialValues.id ?
+                    props.editPerson({...objToSend, id: props.initialValues.id})
+                    :
+                    props.createPerson({...objToSend});
+                alert(props.initialValues.id ? "Update successful, please refresh the page to see the changes" : "Person saved successfully");
+            }}
 
+            render={
+                ({touched, errors, setFieldValue}) => (
+                    <Form>
+                        <div className="bx-form-inputs">
 
-              const objToSend = {
-                  firstNames: values.firstName,
-                  lastNames: values.lastName,
-                  dateOfBirth: values.dateOfBirth,
-                  documentType: values.docType,
-                  documentID: values.docNumber,
-                  gender: values.gender,
-                  nationality: values.nationality,
-                  contact: values.email,
-              };
-              props.initialValues.id ?
-                  editPerson({...objToSend, id: props.initialValues.id})
-              :
-                  createPerson({...objToSend, relationships: []});
-            alert(props.initialValues.id ? "Update successful, please refresh the page to see the changes" : "Person saved successfully");
-          }}
+                            <strong>Name</strong>
 
-
-          render={
-              ({touched, errors, setFieldValue}) => (
-                  <Form>
-                    <div className="bx-form-inputs">
-
-                      <strong>Name</strong>
-
-                        <div className="bx-emp-form-row">
+                            <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
                                     <Field
                                         type="firstName"
@@ -86,33 +82,33 @@ const MyForm = props => {
                                         placeholder="Last name"
                                     />
                                 </div>
-                        </div>
-                        { touched.firstName && errors.firstName && <li>{errors.firstName}</li> }
-                        { touched.lastName && errors.lastName && <li>{errors.lastName}</li> }
+                            </div>
+                            {touched.firstName && errors.firstName && <li>{errors.firstName}</li>}
+                            {touched.lastName && errors.lastName && <li>{errors.lastName}</li>}
 
-                        <strong>Nationality</strong>
-                        <div className="bx-emp-form-row">
-                            <div className="bx-emp-nationality-field">
+                            <strong>Nationality</strong>
+                            <div className="bx-emp-form-row">
+                                <div className="bx-emp-nationality-field">
 
-                                <Field render={(field) => {
-                                    return (
-                                        <CountryPicker value={field.field.value}
-                                                       onSelectCountry = {(value) => setFieldValue('nationality',value)}
-                                        />
-                                    )
-                                }
-                                }
-                                       name="nationality"
-                                />
+                                    <Field render={(field) => {
+                                        return (
+                                            <CountryPicker value={field.field.value}
+                                                           onSelectCountry={(value) => setFieldValue('nationality', value)}
+                                            />
+                                        )
+                                    }
+                                    }
+                                           name="nationality"
+                                    />
+
+                                </div>
 
                             </div>
-
-                        </div>
-                        { touched.nationality && errors.nationality && <li>{errors.nationality}</li> }
+                            {touched.nationality && errors.nationality && <li>{errors.nationality}</li>}
 
 
-                        <strong>Date of birth</strong>
-                        <div className="bx-emp-form-row">
+                            <strong>Date of birth</strong>
+                            <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
                                     <Field render={
                                         ({field}) =>
@@ -124,38 +120,38 @@ const MyForm = props => {
                                                 }}
                                             />)
                                     }
-                                        type="date"
-                                        name="dateOfBirth"
+                                           type="date"
+                                           name="dateOfBirth"
                                     />
                                 </div>
-                        </div>
-                        { touched.dateOfBirth && errors.dateOfBirth && <li>{errors.dateOfBirth}</li> }
+                            </div>
+                            {touched.dateOfBirth && errors.dateOfBirth && <li>{errors.dateOfBirth}</li>}
 
-                        <strong>Document number</strong>
-                        <div className="bx-emp-form-row">
-                              <div className="bx-emp-form-row">
-                                <div className="bx-emp-form-field">
-                                    <Field component="select" name="docType">
-                                      <option value="">Select</option>
-                                      <option value="DNI">DNI</option>
-                                      <option value="LC">LC</option>
-                                    </Field>
+                            <strong>Document number</strong>
+                            <div className="bx-emp-form-row">
+                                <div className="bx-emp-form-row">
+                                    <div className="bx-emp-form-field">
+                                        <Field component="select" name="docType">
+                                            <option value="">Select</option>
+                                            <option value="DNI">DNI</option>
+                                            <option value="LC">LC</option>
+                                        </Field>
+                                    </div>
+                                    <div className="bx-emp-form-field">
+                                        <Field
+                                            type="number"
+                                            name="docNumber"
+                                            placeholder="Document number"
+
+                                        />
+                                    </div>
                                 </div>
-                                <div className="bx-emp-form-field">
-                                  <Field
-                                    type="number"
-                                    name="docNumber"
-                                    placeholder="Document number"
+                            </div>
+                            {touched.docType && errors.docType && <li>{errors.docType}</li>}
+                            {touched.docNumber && errors.docNumber && <li>{errors.docNumber}</li>}
 
-                                  />
-                                </div>  
-                              </div>     
-                        </div>
-                        { touched.docType && errors.docType && <li>{errors.docType}</li> }
-                        { touched.docNumber && errors.docNumber && <li>{errors.docNumber}</li> }
-
-                        <strong>Gender</strong>
-                        <div className="bx-emp-form-row">
+                            <strong>Gender</strong>
+                            <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
                                     <Field component="select" name="gender">
                                         <option value="">Select</option>
@@ -164,15 +160,15 @@ const MyForm = props => {
                                         <option value="O">Other</option>
                                     </Field>
                                 </div>
-                          </div>
-                          { touched.gender && errors.gender && <li>{errors.gender}</li> }
+                            </div>
+                            {touched.gender && errors.gender && <li>{errors.gender}</li>}
 
-                        <strong>Contact</strong>
-                        <div className="bx-emp-form-row">
+                            <strong>Contact</strong>
+                            <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
                                     <Field
                                         type="tel"
-                                        name="phone"
+                                        name="phoneNumber"
                                         placeholder="(+88) 888 8888-8888"
 
                                     />
@@ -185,45 +181,44 @@ const MyForm = props => {
 
                                     />
                                 </div>
-                        </div>
-                        { touched.phone && errors.phone && <li>{errors.phone}</li> }
-                        { touched.email && errors.email && <li>{errors.email}</li> }
-                      
-                      </div>
-                      {
-                        props.initialValues.id ?
-                            <Button editButton={true} type="submit">Confirm changes</Button>
-                            :
-                            <Button saveButton={true} type="submit">Save</Button>
-                      }
-                  </Form>
-                  
-              )
-          }
-      >
-      </Formik>
-  );
-};
+                            </div>
+                            {touched.phone && errors.phone && <li>{errors.phone}</li>}
+                            {touched.email && errors.email && <li>{errors.email}</li>}
 
+                        </div>
+                        {
+                            props.initialValues.id ?
+                                <Button editButton={true} type="submit">Confirm changes</Button>
+                                :
+                                <Button saveButton={true} type="submit">Save</Button>
+                        }
+                    </Form>
+
+                )
+            }
+        >
+        </Formik>
+    );
+};
 
 
 const mapDispatchToProps = (dispatch) => ({
     createPerson: (payload) => dispatch(createPersonRequest(payload)),
-    editPerson: (payload) => dispatch((editPersonRequest(payload))),
+    editPerson: (payload, id) => dispatch((editPersonRequest(payload, id))),
 });
 
-const MyEnhancedForm = connect(null,mapDispatchToProps)(MyForm);
+const MyEnhancedForm = connect(null, mapDispatchToProps)(MyForm);
 
 export class NewEmployeeWithFormik extends React.Component {
 
-  render() {
-    return (
+    render() {
+        return (
 
-        <div className="bx-emp-form-container">
-            <MyEnhancedForm initialValues={this.props.initialValues}/>
-        </div>
+            <div className="bx-emp-form-container">
+                <MyEnhancedForm initialValues={this.props.initialValues}/>
+            </div>
 
-    );
-}
+        );
+    }
 }
 
