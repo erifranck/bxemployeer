@@ -40,6 +40,7 @@ export function About(){
                         <p>
                             Scrum Master:
                             <li> Porco Ezequiel</li>
+                            <li> Fernando Romero Alvarez</li>
                         </p>
                         <p>
                              Instructors:
