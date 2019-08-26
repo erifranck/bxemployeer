@@ -4,12 +4,12 @@ import {
     GET_PEOPLE_FAIL,
     PEOPLE_REQUEST,
     GET_PEOPLE_SUCCESS,
-    SEARCH_PEOPLE,
-    SORT_PEOPLE_BY,
-    CREATE_PEOPLE_FAIL, 
-    CREATE_PEOPLE_SUCCESS, 
-    EDIT_PEOPLE_SUCCESS, 
+    CREATE_PEOPLE_FAIL,
+    CREATE_PEOPLE_SUCCESS,
+    EDIT_PEOPLE_SUCCESS,
     EDIT_PEOPLE_FAIL,
+    SEARCH_PEOPLE,
+    SORT_PEOPLE_BY
 } from "../reducers/people";
 import {createPerson, deletePerson, getPeople, editPerson} from "../../services/peopleService";
 
@@ -23,9 +23,6 @@ const deletePeopleSuccess = (id) => ( { type: DELETE_PEOPLE_SUCCESS, id: id } );
 
 const deletePeopleFail = (error) => ({ type: DELETE_PEOPLE_FAIL, response: { error: error } });
 
-export const searchPeople = (search) => ({type: SEARCH_PEOPLE, search: search});
-
-export const sortPeopleBy = (key) => ({type: SORT_PEOPLE_BY, key: key});
 const createPeopleSuccess = (person) => ( { type: CREATE_PEOPLE_SUCCESS, person: person } );
 
 const createPeopleFail = (error) =>  ({ type: CREATE_PEOPLE_FAIL, response: {error: error}});
@@ -34,11 +31,16 @@ const editPeopleSuccess = (person) => ( { type: EDIT_PEOPLE_SUCCESS, person: per
 
 const editPeopleFail = (error) =>  ({ type: EDIT_PEOPLE_FAIL, response: {error: error}});
 
+export const searchPeople = (search) => ({type: SEARCH_PEOPLE, search: search});
+
+export const sortPeopleBy = (key) => ({type: SORT_PEOPLE_BY, key: key});
+
 export function getPeopleRequest() {
     return (dispatch, getState) => {
         dispatch(onFetch());
         getPeople()
             .then(value => {
+
                 dispatch(getPeopleSuccess({data: value}));
             })
             .catch(error => {
@@ -66,7 +68,7 @@ export function createPersonRequest(payload) {
         dispatch(onFetch());
         createPerson(payload)
             .then( () => {
-                dispatch(createPeopleSuccess({id: Math.random(),...payload})); // Workaround to show employee on table. When the API returns the ID created that should replace the math.random
+                dispatch(createPeopleSuccess({...payload,id: Math.random()}));
             })
             .catch(error => {
                 dispatch(createPeopleFail(error));
@@ -74,12 +76,12 @@ export function createPersonRequest(payload) {
     }
 }
 
-export function editPersonRequest(payload, id) {
+export function editPersonRequest(payload) {
     return (dispatch, getState) => {
         dispatch(onFetch());
         editPerson(payload)
             .then( () => {
-                dispatch(editPeopleSuccess({...payload,id: id}));
+                dispatch(editPeopleSuccess({...payload,id: Math.random()}));
             })
             .catch(error => {
                 dispatch(editPeopleFail(error));
