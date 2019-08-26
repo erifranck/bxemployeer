@@ -34,8 +34,6 @@ export function createPerson(payload) {
 
             resolve(res);
         } else {
-            debugger
-
             reject( new Error(JSON.parse(response).message));
         }
     })
