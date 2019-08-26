@@ -16,33 +16,27 @@ class NewKinshipComponent extends React.Component {
             kinshipId:      this.props.kinshipInit.kinshipId,
             isThisAnUpdate: this.props.kinshipInit.sourceEmployee !== null && this.props.kinshipInit.targetEmployee !== null
 
-        }
+        };
         this.onChangeInput = this.onChangeInput.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentDidMount() {
         this.props.getPeopleRequest();
-    }
+    };
 
     onChangeInput(e) {
         this.setState({[e.target.name]: e.target.value})
-    }
-
-    getSourceInfo(array) {
-        var obj = array.filter( emp => emp.id ===  this.state.sourceEmployee )[0]
-        return this.getEmployeeTag(obj)
-    }    
+    };
     
     getEmployeeTag(emp) {
         return emp.firstNames + " " + emp.lastNames + " - " + emp.documentID
-    }
-
+    };
 
     onSubmit(e) {
-        e.preventDefault()  
+        e.preventDefault();
         this.state.isThisAnUpdate ? this.props.updateKinship(this.state) : this.props.createKinship(this.state)
-    }
+    };
     
 
     render() {
@@ -118,7 +112,7 @@ class NewKinshipComponent extends React.Component {
                         </div>
                     </div>
 
-                    <input type="submit" value="Save kinship"></input>
+                    <input type="submit" value="Save kinship"/>
                 </form>
             </div>
 

@@ -57,7 +57,6 @@ const MyForm = props => {
                     props.editPerson({...objToSend, id: props.initialValues.id})
                     :
                     props.createPerson({...objToSend});
-                alert(props.initialValues.id ? "Update successful, please refresh the page to see the changes" : "Person saved successfully");
             }}
 
             render={

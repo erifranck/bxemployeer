@@ -67,6 +67,9 @@ export function createPersonRequest(payload) {
         createPerson(payload)
             .then( () => {
                 dispatch(createPeopleSuccess({id: Math.random(),...payload})); // Workaround to show employee on table. When the API returns the ID created that should replace the math.random
+                console.log(payload);
+                alert("Person " + payload.firstNames + " " + payload.lastNames + " saved successfully");
+                window.location.reload();
             })
             .catch(error => {
                 dispatch(createPeopleFail(error));
@@ -80,6 +83,9 @@ export function editPersonRequest(payload, id) {
         editPerson(payload)
             .then( () => {
                 dispatch(editPeopleSuccess({...payload,id: id}));
+                console.log(payload);
+                alert("Person " + payload.firstNames + " " + payload.lastNames + " updated successfully");
+                window.location.reload();
             })
             .catch(error => {
                 dispatch(editPeopleFail(error));
