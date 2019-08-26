@@ -68,7 +68,10 @@ export function createPersonRequest(payload) {
         dispatch(onFetch());
         createPerson(payload)
             .then( () => {
-                dispatch(createPeopleSuccess({...payload,id: Math.random()}));
+                dispatch(createPeopleSuccess({...payload})); 
+                console.log(payload);
+                alert("Person " + payload.firstNames + " " + payload.lastNames + " saved successfully");
+                window.location.reload();
             })
             .catch(error => {
                 dispatch(createPeopleFail(error));
@@ -81,7 +84,10 @@ export function editPersonRequest(payload) {
         dispatch(onFetch());
         editPerson(payload)
             .then( () => {
-                dispatch(editPeopleSuccess({...payload,id: Math.random()}));
+                dispatch(editPeopleSuccess({...payload}));
+                console.log(payload);
+                alert("Person " + payload.firstNames + " " + payload.lastNames + " updated successfully");
+                window.location.reload();
             })
             .catch(error => {
                 dispatch(editPeopleFail(error));
