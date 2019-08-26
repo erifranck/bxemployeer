@@ -18,7 +18,8 @@ export function deletePerson(id, url) {
 }
 
 export function createPerson(payload) {
-    return fetch('http://localhost:8080/personAPI/employees', {
+    return new Promise((resolve, reject) => {
+        fetch('http://localhost:8080/personAPI/employees', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -27,11 +28,24 @@ export function createPerson(payload) {
         },
         body: JSON.stringify(payload)
     })
-        .then( (response) => response.json());
+    .then( async function (res){
+        let response = await res.text()
+        if(res.status === 200) {
+
+            resolve(res);
+        } else {
+            debugger
+
+            reject( new Error(JSON.parse(response).message));
+        }
+    })
+});
+
 }
 
 export function editPerson(payload) {
-    return fetch('http://localhost:8080/personAPI/employees', {
+    return new Promise((resolve, reject) => {
+        fetch('http://localhost:8080/personAPI/employees', {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',
@@ -40,5 +54,15 @@ export function editPerson(payload) {
         },
         body: JSON.stringify(payload)
     })
-        .then( (response) => response.json());
+
+    .then( async function (res){
+        let response = await res.text()
+        if(res.status === 200) {
+            resolve(res);
+        } else {
+            reject( new Error(JSON.parse(response)));
+        }
+    })
+});
+
 }

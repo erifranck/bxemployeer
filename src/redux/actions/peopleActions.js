@@ -74,6 +74,7 @@ export function createPersonRequest(payload) {
             })
             .catch(error => {
                 dispatch(createPeopleFail(error));
+                alert(error)
             })
     }
 }

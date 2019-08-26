@@ -80,14 +80,13 @@ export function createKinshipRequest(payload) {
         dispatch(onFetch());
         createKinship(payload)
             .then( () => {
-                dispatch(createKinshipSuccess({...payload,id: Math.random()})); // Workaround to show employee on table. When the API returns the ID created that should replace the math.random
+                dispatch(createKinshipSuccess({...payload}));
                 alert("Kinship saved succesfully");
                 window.location.reload();
             })
             .catch(error => {
                 dispatch(createKinshipFail(error));
                 alert(error)
-
             })
     }
 }
