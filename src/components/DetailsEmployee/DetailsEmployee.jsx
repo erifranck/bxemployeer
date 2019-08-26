@@ -70,7 +70,8 @@ class DetailsEmployeeComponent extends React.Component {
                         <strong>Doc. Number:</strong> <p>{this.props.objectValue.documentID}</p>
                         <strong>Gender:</strong> <p>{this.showGender(this.props.objectValue.gender)}</p>
                         <strong>Nationality:</strong> <p>{this.props.objectValue.nationality}</p>
-                        <strong>Contact:</strong> <p>{this.props.objectValue.contact}</p>
+                        <strong>Email:</strong> <p>{this.props.objectValue.email}</p>
+                        <strong>Phone number:</strong> <p>{this.props.objectValue.phoneNumber}</p>
                     </div>
                 </div>
             </div>

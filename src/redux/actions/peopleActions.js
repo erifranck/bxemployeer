@@ -74,12 +74,12 @@ export function createPersonRequest(payload) {
     }
 }
 
-export function editPersonRequest(payload) {
+export function editPersonRequest(payload, id) {
     return (dispatch, getState) => {
         dispatch(onFetch());
         editPerson(payload)
             .then( () => {
-                dispatch(editPeopleSuccess({...payload,id: Math.random()}));  
+                dispatch(editPeopleSuccess({...payload,id: id}));
             })
             .catch(error => {
                 dispatch(editPeopleFail(error));

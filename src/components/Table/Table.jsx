@@ -24,14 +24,14 @@ export const Table = (props) => (
         {
             props.data.map((objectValue) => (
                 <tr key={objectValue.id}>
-                    {   //person array : [id, name, lastname, doc type, doc number, gender, nationality, contacts...]
+                    {
                         Object.values(objectValue).slice(1,3).concat(Object.values(objectValue).slice(5,6), Object.values(objectValue).slice(7,8)).map( (value, index) => (
                             <td key={index}>{value}</td>
                         ))
                     }
                     <td>
                         <Button title={"Details"} isOption={true} onClick={() => props.onDetails(objectValue)}><i className="fas fa-info-circle"/></Button>
-                        <Button title={"Add kinship"} isOption={true} onClick={() => props.onAddKinship(objectValue.id)}><i class="fas fa-users"/></Button>
+                        <Button title={"Add kinship"} isOption={true} onClick={() => props.onAddKinship(objectValue.id)}><i className="fas fa-users"/></Button>
                         <Button title={"Delete employee"} isOption={true} onClick={() => props.onDelete(objectValue.id)}><i className="fas fa-trash-alt"/></Button>
                     </td>
                 </tr>

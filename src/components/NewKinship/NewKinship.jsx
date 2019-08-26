@@ -95,7 +95,7 @@ class NewKinshipComponent extends React.Component {
                     <div className="bx-kin-form-row">
                         <div className="bx-kin-form-elem">
                             <label>
-                                Kiship:
+                                Kinship:
                                 <select required
                                     name="kinship"
                                     onChange={this.onChangeInput}

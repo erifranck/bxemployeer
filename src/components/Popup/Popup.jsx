@@ -17,8 +17,8 @@ export class Popup extends React.Component {
             docNumber: "" || this.props.initialValues.documentID,
             gender: "" || this.props.initialValues.gender,
             nationality: "" || this.props.initialValues.nationality,
-            phone: "" || this.props.initialValues.contact,
-            email: "" || this.props.initialValues.contact,
+            phone: "" || this.props.initialValues.phoneNumber,
+            email: "" || this.props.initialValues.email,
             id: this.props.initialValues.id,
         }
     }
@@ -42,13 +42,9 @@ export class Popup extends React.Component {
                     <div className='popup-content'> 
                         {
                             this.props.content === popupContent.NEW_EMPLOYEE ? 
-                            <NewEmployeeWithFormik initialValues={this.state}/> :
-                            null
-                        }
-                        {
-                            this.props.content === popupContent.NEW_KINSHIP ? 
-                            <NewKinship kinshipInit={this.props.kinshipInit} /> :
-                            null
+                            <NewEmployeeWithFormik initialValues={this.state}/>
+                            :
+                            <NewKinship kinshipInit={this.props.kinshipInit}/>
                         }
                     </div> 
                 </div>  
