@@ -29,15 +29,15 @@ const MyForm = props => {
             initialValues={initialValues}
             validationSchema={
                 Yup.object().shape({
-                    firstName: Yup.string().min(3).max(20).matches(nameRegEx, "This first name doesn't seem ok").required(),
-                    lastName: Yup.string().min(3).max(20).matches(nameRegEx, "This last name doesn't seem ok").required(),
-                    dateOfBirth: Yup.date().min('1900-01-01', 'Fecha no valida').max('2002-01-01', "Fecha no valida").required(),
-                    docType: Yup.string().matches(docTypeRegEx, "The selected document type is not valid").required(),
-                    docNumber: Yup.number().positive().required(),
-                    gender: Yup.string().matches(genderRegEx, "The selected gender is not valid").required(),
-                    nationality: Yup.string().required(),
-                    phone: Yup.string().matches(phoneRegEx, "Phone number doesn't look ok"),
-                    email: Yup.string().matches(emailRegEx, "Email is not a valid adress"),
+                    firstName: Yup.string().min(3).max(20).matches(nameRegEx, "This first name doesn't seem ok").required("First name is a required field"),
+                    lastName: Yup.string().min(3).max(20).matches(nameRegEx, "This last name doesn't seem ok").required("Last name is a required field"),
+                    dateOfBirth: Yup.date("Pick a date of birth").min('1900-01-01', 'This date is too old').max('2002-01-01', "This date is too recent").required("Date of birth is a required field"),
+                    docType: Yup.string().matches(docTypeRegEx, "The selected document type is not valid").required("Document type is a required field"),
+                    docNumber: Yup.number().positive().required("Document number is a required field"),
+                    gender: Yup.string().matches(genderRegEx, "The selected gender is not valid").required("Gender is a required field"),
+                    nationality: Yup.string().required("Nationality is a required field"),
+                    phone: Yup.string().matches(phoneRegEx, "Phone number doesn't look ok").required("Phone is a required field"),
+                    email: Yup.string().matches(emailRegEx, "Email is not a valid adress").required("Email is a required field"),
                 })
             }
 
