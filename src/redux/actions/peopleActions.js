@@ -68,8 +68,7 @@ export function createPersonRequest(payload) {
         dispatch(onFetch());
         createPerson(payload)
             .then( () => {
-                dispatch(createPeopleSuccess({...payload})); 
-                console.log(payload);
+                dispatch(createPeopleSuccess({...payload}));
                 alert("Person " + payload.firstNames + " " + payload.lastNames + " saved successfully");
                 window.location.reload();
             })
@@ -85,7 +84,6 @@ export function editPersonRequest(payload) {
         editPerson(payload)
             .then( () => {
                 dispatch(editPeopleSuccess({...payload}));
-                console.log(payload);
                 alert("Person " + payload.firstNames + " " + payload.lastNames + " updated successfully");
                 window.location.reload();
             })
