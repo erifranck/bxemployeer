@@ -17,15 +17,11 @@ export class Popup extends React.Component {
             docNumber: "" || this.props.initialValues.documentID,
             gender: "" || this.props.initialValues.gender,
             nationality: "" || this.props.initialValues.nationality,
-            phone: "" || this.props.initialValues.phoneNumber,
+            phoneNumber: "" || this.props.initialValues.phoneNumber,
             email: "" || this.props.initialValues.email,
             id: this.props.initialValues.id,
         }
-    }
-    
-    onChangeInputForm = (key, value) => {
-        this.setState({[key]: value});
-    }
+    };
     
     render() {
         return (  

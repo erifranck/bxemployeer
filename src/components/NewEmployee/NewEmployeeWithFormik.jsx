@@ -1,12 +1,13 @@
 import React from 'react';
 import {Form, Field, Formik} from 'formik';
 import * as Yup from 'yup';
-import {docTypeRegEx, emailRegEx, genderRegEx, nameRegEx, phoneRegEx} from "../../utils/validations";
+import {docTypeRegEx, emailRegEx, genderRegEx, nameRegEx, phoneRegEx, docNumberRegEx} from "../../utils/validations";
 import {connect} from "react-redux";
 import {createPersonRequest, editPersonRequest} from "../../redux/actions/peopleActions";
 import {Button} from '../Button/Button'
 import {CountryPicker} from './CountryPicker/CountryPicker';
 import './newEmployeeWithFormik.css';
+
 
 const MyForm = props => {
     const {
@@ -18,7 +19,7 @@ const MyForm = props => {
             docNumber: '',
             gender: '',
             nationality: '',
-            phone: '',
+            phoneNumber: '',
             email: '',
 
         }
@@ -33,11 +34,11 @@ const MyForm = props => {
                     lastName: Yup.string().min(3).max(20).matches(nameRegEx, "This last name doesn't seem ok").required(),
                     dateOfBirth: Yup.date().min('1900-01-01', 'Fecha no valida').max('2002-01-01', "Fecha no valida").required(),
                     docType: Yup.string().matches(docTypeRegEx, "The selected document type is not valid").required(),
-                    docNumber: Yup.number().positive().required(),
+                    docNumber: Yup.string().matches(docNumberRegEx, "Doc number doesn't look ok").required(),
                     gender: Yup.string().matches(genderRegEx, "The selected gender is not valid").required(),
                     nationality: Yup.string().required(),
-                    phone: Yup.string().matches(phoneRegEx, "Phone number doesn't look ok"),
-                    email: Yup.string().matches(emailRegEx, "Email is not a valid adress"),
+                    phoneNumber: Yup.string().matches(phoneRegEx, "Phone number doesn't look ok, must be exactly 8 numbers").required(),
+                    email: Yup.string().matches(emailRegEx, "Email is not a valid adress").required(),
                 })
             }
 
@@ -138,7 +139,7 @@ const MyForm = props => {
                                     </div>
                                     <div className="bx-emp-form-field">
                                         <Field
-                                            type="number"
+                                            type="text"
                                             name="docNumber"
                                             placeholder="Document number"
 
@@ -166,10 +167,9 @@ const MyForm = props => {
                             <div className="bx-emp-form-row">
                                 <div className="bx-emp-form-field">
                                     <Field
-                                        type="tel"
+                                        type="text"
                                         name="phoneNumber"
-                                        placeholder="(+88) 888 8888-8888"
-
+                                        placeholder="Only number between 0-9"
                                     />
                                 </div>
                                 <div className="bx-emp-form-field">
@@ -181,9 +181,8 @@ const MyForm = props => {
                                     />
                                 </div>
                             </div>
-                            {touched.phone && errors.phone && <li>{errors.phone}</li>}
+                            {touched.phoneNumber && errors.phoneNumber && <li>{errors.phoneNumber}</li>}
                             {touched.email && errors.email && <li>{errors.email}</li>}
-
                         </div>
                         {
                             props.initialValues.id ?
