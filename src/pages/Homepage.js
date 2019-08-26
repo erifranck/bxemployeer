@@ -1,6 +1,4 @@
 import React from "react";
-import {Button} from "../components/Button/Button"
-import { DropDownMenu } from "../components/Menu/dropDownMenu";
 import './homepage.css';
 
 export function Homepage(){
@@ -14,7 +12,7 @@ export function Homepage(){
                             <li> <a href="/kinships">Kinships</a></li>
                             <li> <a href="/about">About</a></li>
                         </div>
-                        <img src={require("../images/PersonApi.png")} className="logo"></img>
+                        <img src={require("../images/PersonApi.png")} className="logo" alt="Person API Logo"/>
                     </div>
                 </div>
             </div>

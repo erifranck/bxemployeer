@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import {Button} from "../Button/Button";
 import "./dropDownMenu.css";
 import { classNames } from '../../utils/classNames';
  
 export class DropDownMenu extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     
     this.state = {
       showMenu: false,
