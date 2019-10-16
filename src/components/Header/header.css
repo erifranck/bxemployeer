@@ -7,3 +7,11 @@
 .bx-navbar-buttons{
     margin-top: 15px;
 }
+
+.bx-button.home{
+    height: fit-content;
+    margin-top: 1%;
+}
+.bx-button.home:hover{
+    cursor: pointer;
+}

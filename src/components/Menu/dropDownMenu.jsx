@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import {Button} from "../Button/Button";
 import "./dropDownMenu.css";
 import { classNames } from '../../utils/classNames';
  
 export class DropDownMenu extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     
     this.state = {
       showMenu: false,
@@ -18,7 +16,6 @@ export class DropDownMenu extends Component {
   
   showMenu(event) {
     event.preventDefault();
-    
     this.setState({ showMenu: true }, () => {
       document.addEventListener('click', this.closeMenu);
     });
@@ -34,15 +31,16 @@ export class DropDownMenu extends Component {
       const clases = classNames({"dropdown": true, "hide": !this.state.showMenu})
     return (
       <div>
-        <div onClick={this.showMenu}>
-        <span className='bx-menu-icon'/>
-        <span className='bx-menu-icon'/>
-        <span className='bx-menu-icon'/>
+        <div className="bx-menu-dropdown" onClick={this.showMenu}>
+            <span className='bx-menu-icon'/>
+            <span className='bx-menu-icon'/>
+            <span className='bx-menu-icon'/>
         </div>
      
                 <ul className={clases} style = {{background: "white"}}>
                     <li> <a href="/">Home</a> </li>
                     <li> <a href="/employee-list">Employee</a></li>
+                    <li> <a href="/kinships">Kinships</a></li>
                     <li> <a href="/about">About</a></li>
                  </ul>
               

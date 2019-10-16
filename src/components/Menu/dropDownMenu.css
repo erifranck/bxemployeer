@@ -1,5 +1,6 @@
 .dropdown {
     position: absolute;
+    z-index: 1;
     display: block;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     border-radius: 25px;
@@ -8,10 +9,16 @@
     transition: width 0.5s;
     overflow: hidden;
 }
+.bx-menu-dropdown{
+    height: fit-content;
+}
+.bx-menu-dropdown:hover .bx-menu-icon{
+    box-shadow: 0 0 10pt 1pt #9d9d9d;
+}
 
 .dropdown.hide{
-    width: 0px;
-    padding: 0px;
+    width: 0;
+    padding: 0;
 }
 
 .bx-menu-icon {

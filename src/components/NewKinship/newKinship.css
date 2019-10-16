@@ -1,0 +1,47 @@
+.bx-kin-form-row { 
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0px;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.bx-kin-form-container label{
+    display: inline;
+   
+}
+
+.bx-kin-form-container p{
+    margin-top: 20px;
+   
+}
+
+.bx-kin-form-container li{
+    color: red;
+    font-size: 12px;
+    
+}
+
+.bx-kin-form-field input{
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    margin: 0 10px;
+    width: 90%;
+    height: 36px;
+    font-size: 16px;
+    padding-left: 10px;
+
+}
+
+.bx-kin-form-elem select{
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    margin: 0 10px;
+    width: 90%;
+    height: 36px;
+    font-size: 16px;
+    padding-left: 10px;
+
+}

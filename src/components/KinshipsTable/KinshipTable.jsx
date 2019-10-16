@@ -29,7 +29,7 @@ export const KinshipTable = (props) => (
                         ))
                     }
                     <td>
-                        <Button title={"Edit Kinship"} isOption={true} onClick={() => alert("Reemplazar alert en KinshipTable.jsx con: props.editKinship(objectValue)")}><i className="fas fa-edit"/></Button>
+                        <Button title={"Edit Kinship"} isOption={true} onClick={() => props.onEditKinship(objectValue) }><i className="fas fa-edit"/></Button>
                         <Button title={"Delete kinship"} isOption={true} onClick={() => props.onDeleteKinship(objectValue.id)}><i className="fas fa-trash-alt"/></Button>
                     </td>
                 </tr>
@@ -42,7 +42,7 @@ export const KinshipTable = (props) => (
 KinshipTable.propTypes = {
     dataLabels: PropTypes.array.isRequired,
     onDeleteKinship: PropTypes.func.isRequired,
+    onEditKinship: PropTypes.func.isRequired,
     data: PropTypes.array.isRequired,
-    editKinship: PropTypes.func.isRequired,
     onClickColumn: PropTypes.func.isRequired,
 };

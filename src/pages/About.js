@@ -16,12 +16,13 @@ export function About(){
                         About "personAPI"
                     </h1>
                         <div className="bx-dashboard-wrapper">
-                        <p>"PersonAPI" it's a project created to introduce "Belatrix" interns to the technologies flooded within the 
-                            company in real day-to-day projects. Is a web page that is responsible for handling queries to a 
-                            database that are made trogh an Api, it was created to be able to maintain an updated database of employees, 
-                            and to establish family relationships between them.  
-                        </p>
-                       
+                            <div style={{ position: 'flex', justifyContent: 'center', width: 1500}}>
+                            <p>"PersonAPI" is a project created to introduce "Belatrix" interns to the technologies flooded within the 
+                                company in real day-to-day projects. Is a web page that is responsible for handling queries to a 
+                                database that are made trogh an Api, it was created to be able to maintain an updated database of employees, 
+                                and to establish family relationships between them.  
+                            </p>
+                       </div>
                             <p>
                                 Technologies used:
                                 <li>Java</li>
@@ -37,9 +38,14 @@ export function About(){
                             </li>
                         </p>
                         <p>
-                            Instructors
+                            Scrum Master:
                             <li> Porco Ezequiel</li>
                             <li> Fernando Romero Alvarez</li>
+                        </p>
+                        <p>
+                             Instructors:
+                        <li> Fernando Romero Alvarez</li>
+                        <li> Erifranck Nuñez</li>
                         </p>
                         <p>
                             

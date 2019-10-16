@@ -5,16 +5,11 @@ import {peopleListLabels} from "../constants/peopleData";
 import {connect} from 'react-redux';
 import {deletePersonRequest, getPeopleRequest, sortPeopleBy} from "../redux/actions/peopleActions";
 import {Searcher} from "../components/Searcher/Searcher";
+import {popupContent} from '../components/Container/Container';
 
 class PeopleListComponent extends React.Component {
     componentDidMount() {
         this.props.getPeopleRequest();
-    }
-
-    componentDidUpdate(preProps){
-       if(preProps !== this.props){
-           this.setState(this.props);
-       }
     }
 
     deletePerson(id){
@@ -24,9 +19,10 @@ class PeopleListComponent extends React.Component {
         return (
             <Container>
                 <ModalConsumer>
-                {({toggleModal, toggleDetails}) => (
+                {({toggleModal, toggleDetails, openPopup}) => (
+
                     <>
-                            <Searcher items={this.props.data}/>
+                        <Searcher items={this.props.data}/>
                         <Table
                             dataLabels={peopleListLabels}
                             data={this.props.data.filter(items => {
@@ -35,7 +31,15 @@ class PeopleListComponent extends React.Component {
                             })}
                             onDelete={ (id) => toggleModal(true, null, () => this.deletePerson(id))()}
                             onClickColumn={(key) => this.props.sortPeopleBy(key)}
-                            onDetails={ (objectValue) => toggleDetails(true, objectValue)()}
+                            onAddKinship={ (id) => {
+                                let kinshipInit = {}
+                                kinshipInit.sourceEmployee = id
+                                kinshipInit.targetEmployee = null
+                                kinshipInit.kinship = null
+                                return openPopup(popupContent.NEW_KINSHIP,kinshipInit)
+                                }
+                            }
+                            onDetails={ (objectValue) => toggleDetails(true, objectValue)() }
                         />
                     </>
                 )}
@@ -50,8 +54,8 @@ const mapStateToProps = (state) => ({
    data: state.people.data,
     error: state.people.error,
     searchValue: state.people.search,
-    //sortKey: state.people.key
 });
+
 const mapDispatchToProps = (dispatch) => ({
     getPeopleRequest: () => dispatch(getPeopleRequest()),
     deletePeopleRequest: (id) => dispatch(deletePersonRequest(id)),

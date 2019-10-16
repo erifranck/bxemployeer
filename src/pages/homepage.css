@@ -1,0 +1,22 @@
+.menu{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    z-index: 1;
+    display: inline-flex;
+    border-radius: 25px;
+    padding: 16px; 
+    width: 300px;
+}
+
+.wrapper{
+    display: inline-flex;
+    width: 100%;  
+    flex-direction: row;
+}
+
+.logo{
+    flex-direction: row;  
+    width: 70%;  
+}
